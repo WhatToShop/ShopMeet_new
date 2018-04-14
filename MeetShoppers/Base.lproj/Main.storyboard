@@ -501,6 +501,57 @@
             </objects>
             <point key="canvasLocation" x="1841.25" y="-91.901408450704224"/>
         </scene>
+        <!--Obj Pop Up View Controller-->
+        <scene sceneID="sv4-YG-BKt">
+            <objects>
+                <viewController storyboardIdentifier="popupStoreID" id="459-8h-r0p" customClass="ObjPopUpViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MNE-Vx-0aa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MH-Sf-96Y">
+                                <rect key="frame" x="40" y="167" width="240" height="217"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJk-6f-ekP">
+                                        <rect key="frame" x="7" y="8" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="CLOSE"/>
+                                        <connections>
+                                            <action selector="closePopUp:" destination="459-8h-r0p" eventType="touchUpInside" id="EWo-7b-LWd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What do you want to do?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqV-rF-zKR">
+                                        <rect key="frame" x="25" y="46" width="191" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Hello my friends, I love to eat food." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z5t-9z-vtj">
+                                        <rect key="frame" x="25" y="83" width="191" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Roq-OX-Pgo" firstAttribute="trailing" secondItem="2MH-Sf-96Y" secondAttribute="trailing" constant="40" id="HKb-W6-qv1"/>
+                            <constraint firstItem="2MH-Sf-96Y" firstAttribute="leading" secondItem="Roq-OX-Pgo" secondAttribute="leading" constant="40" id="InV-0t-bDl"/>
+                            <constraint firstItem="Roq-OX-Pgo" firstAttribute="bottom" secondItem="2MH-Sf-96Y" secondAttribute="bottom" constant="184" id="h4F-pu-Urb"/>
+                            <constraint firstItem="2MH-Sf-96Y" firstAttribute="top" secondItem="Roq-OX-Pgo" secondAttribute="top" constant="147" id="icW-KY-C2S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Roq-OX-Pgo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdH-5M-dVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2479" y="-92"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="320" height="568"/>
