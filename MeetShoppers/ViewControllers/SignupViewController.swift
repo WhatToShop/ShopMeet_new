@@ -78,7 +78,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 self.displayMessageDialog(title: "Error", message: error.localizedDescription)
             } else {
                 // Update user's photo url if profile picture is saved
-                guard case Auth.auth().currentUser!.createProfileChangeRequest().photoURL! = URL(string: profilePictureKey) else { return }
+                guard case Auth.auth().currentUser!.createProfileChangeRequest().photoURL!? = URL(string: profilePictureKey) else { return }
             }
         }
     }
