@@ -1,0 +1,6 @@
+framework module Pods_MeetShoppersUITests {
+  umbrella header "Pods-MeetShoppersUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_MeetShoppers {
+  umbrella header "Pods-MeetShoppers-umbrella.h"
+
+  export *
+  module * { export * }
+}
