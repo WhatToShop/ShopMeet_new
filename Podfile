@@ -13,6 +13,7 @@ target 'MeetShoppers' do
   pod 'Firebase/Storage'
   pod 'Alamofire'
   pod 'AlamofireObjectMapper'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'MeetShoppersTests' do
     inherit! :search_paths
