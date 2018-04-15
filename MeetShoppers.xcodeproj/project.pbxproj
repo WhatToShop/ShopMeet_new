@@ -30,6 +30,8 @@
 		BF56E9D92077DEB800D89184 /* ColorHexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9D82077DEB800D89184 /* ColorHexable.swift */; };
 		BF56E9DB2077E3B200D89184 /* BottomBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9DA2077E3B200D89184 /* BottomBorderedTextField.swift */; };
 		C70AE8CE96DC3AB84CEB0708 /* Pods_MeetShoppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7612ADC570680EE0AF03A9E5 /* Pods_MeetShoppers.framework */; };
+		F3D7B6A120829984009F6F21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */; };
+		F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7B6A220829D36009F6F21 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		CECE193B5CAB097E9E615006 /* Pods-MeetShoppersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppersTests/Pods-MeetShoppersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFCED5EA4BCDE33AF8F5FF1B /* Pods_MeetShoppersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetShoppersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3154FDBCE430EF545FDFE22 /* Pods-MeetShoppers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.release.xcconfig"; sourceTree = "<group>"; };
+		F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3D7B6A220829D36009F6F21 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				BF56E9CD2077BCD100D89184 /* ViewControllers */,
 				7B13FB07204906B80046D4D8 /* AppDelegate.swift */,
 				7B13FB0B204906B80046D4D8 /* Main.storyboard */,
+				F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */,
 				7B13FB0E204906B80046D4D8 /* Assets.xcassets */,
 				7B4F8AB020829EC0007B91EC /* GoogleService-Info.plist */,
 				7B13FB10204906B80046D4D8 /* LaunchScreen.storyboard */,
@@ -204,6 +209,8 @@
 				BF1878E62081298700D97F9B /* MainViewController.swift */,
 				7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */,
 				7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */,
+				F3D7B6A220829D36009F6F21 /* MenuViewController.swift */,
+
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -345,7 +352,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B13FB12204906B80046D4D8 /* LaunchScreen.storyboard in Resources */,
-				7B4F8AB120829EC1007B91EC /* GoogleService-Info.plist in Resources */,
+				F3D7B6A120829984009F6F21 /* GoogleService-Info.plist in Resources */,
+
 				7B13FB0F204906B80046D4D8 /* Assets.xcassets in Resources */,
 				7B13FB0D204906B80046D4D8 /* Main.storyboard in Resources */,
 			);
@@ -543,6 +551,7 @@
 				7B4F8AAD20829B2E007B91EC /* StoreDetailViewController.swift in Sources */,
 				BF56E9D12077BDA000D89184 /* WelcomeViewController.swift in Sources */,
 				BF56E9D52077CB0300D89184 /* SignupViewController.swift in Sources */,
+				F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */,
 				BF1878E3208125B300D97F9B /* User.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,
