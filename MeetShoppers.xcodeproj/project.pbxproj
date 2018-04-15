@@ -19,6 +19,7 @@
 		7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAE20829DA7007B91EC /* MessageCell.swift */; };
 		7B4F8AB120829EC1007B91EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB020829EC0007B91EC /* GoogleService-Info.plist */; };
 		7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */; };
+		7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */; };
 		BF1878DF207FFB0E00D97F9B /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */; };
 		BF1878E3208125B300D97F9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E2208125B300D97F9B /* User.swift */; };
 		BF1878E72081298700D97F9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E62081298700D97F9B /* MainViewController.swift */; };
@@ -69,6 +70,7 @@
 		7B4F8AAE20829DA7007B91EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7B4F8AB020829EC0007B91EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPopUpViewController.swift; sourceTree = "<group>"; };
+		7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		7CDF15091F0006D86C2F68A0 /* Pods-MeetShoppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.debug.xcconfig"; sourceTree = "<group>"; };
 		A488A0B616BE69BB4B88FAE1 /* Pods_MeetShoppersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetShoppersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				BF56E9D42077CB0300D89184 /* SignupViewController.swift */,
 				BF1878E62081298700D97F9B /* MainViewController.swift */,
 				7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */,
+				7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				BF56E9D12077BDA000D89184 /* WelcomeViewController.swift in Sources */,
 				BF56E9D52077CB0300D89184 /* SignupViewController.swift in Sources */,
 				BF1878E3208125B300D97F9B /* User.swift in Sources */,
+				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,
 				BF56E9DB2077E3B200D89184 /* BottomBorderedTextField.swift in Sources */,
 				BF1878E72081298700D97F9B /* MainViewController.swift in Sources */,
