@@ -5,11 +5,12 @@
 //  Created by Kelvin Lui on 4/12/18.
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
 //
-
+import SwiftyJSON
 import Alamofire
 import AlamofireObjectMapper
 
 public class YelpAPIClient: NSObject {
+
     private let apiKey: String!
     private lazy var manager: Alamofire.SessionManager = {
         if let apiKey = self.apiKey, apiKey != "" {
@@ -23,7 +24,7 @@ public class YelpAPIClient: NSObject {
         }
     }()
     
-    public func searchBusinesses(latitude: Double?, longitude: Double?, radius: Int?) {
+    public func searchBusinesses(latitude: Double?, longitude: Double?, radius: Int?, completionHandler: @escaping (_ jsonResponse: JSON) -> ()) {
         assert((latitude != nil && longitude != nil), "Input latitude or longitude must not be null.")
         assert(radius != nil, "Input radius can not be null.")
         
@@ -35,10 +36,14 @@ public class YelpAPIClient: NSObject {
             ]
             
             self.manager.request(YelpAPIRouter.search(parameters: param)).responseJSON { (response) in
-                debugPrint(response)
-                if let json = response.result.value {
-                    print(json)
+                switch response.result {
+                case .success(let data):
+                    let json = JSON(data)
+                    completionHandler(json)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
                 }
+                
                 self.manager.session.finishTasksAndInvalidate() // Retains manager's instance
             }
         }
