@@ -17,6 +17,14 @@ class WelcomeViewController: UIViewController {
         signinButton.backgroundColor = UIColor(rgb: 0x2BC2C2)
         signinButton.layer.cornerRadius = 22
         signinButton.clipsToBounds = true
+        
+        // testing API
+        let client = YelpAPIClient(apiKey: "e9cKJ5oD_G0m9xYGjaViEdkcbSS8tauK9CucnRZqn6WuZFIJJu7WqRS-EoCkT_tECaQ4JcNUFQ4pHsLXnszUzL4uHyq5mchxi_wsVejAyH40E5ZD6d__bvsZzNfOWnYx")
+        if client.isAuthenticated() {
+            client.searchBusinesses(latitude: 32.715736, longitude: -117.161087, radius: 40000) { (json) in
+                
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
