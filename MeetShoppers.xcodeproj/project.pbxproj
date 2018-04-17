@@ -17,7 +17,6 @@
 		7B13FB28204906B80046D4D8 /* MeetShoppersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */; };
 		7B4F8AAD20829B2E007B91EC /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */; };
 		7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAE20829DA7007B91EC /* MessageCell.swift */; };
-		7B4F8AB120829EC1007B91EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB020829EC0007B91EC /* GoogleService-Info.plist */; };
 		7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */; };
 		7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */; };
 		BF1878DF207FFB0E00D97F9B /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */; };
@@ -70,7 +69,6 @@
 		7B13FB29204906B80046D4D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		7B4F8AAE20829DA7007B91EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		7B4F8AB020829EC0007B91EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPopUpViewController.swift; sourceTree = "<group>"; };
 		7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		7CDF15091F0006D86C2F68A0 /* Pods-MeetShoppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				7B13FB0B204906B80046D4D8 /* Main.storyboard */,
 				F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */,
 				7B13FB0E204906B80046D4D8 /* Assets.xcassets */,
-				7B4F8AB020829EC0007B91EC /* GoogleService-Info.plist */,
 				7B13FB10204906B80046D4D8 /* LaunchScreen.storyboard */,
 				7B13FB13204906B80046D4D8 /* Info.plist */,
 			);
@@ -210,7 +207,6 @@
 				7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */,
 				7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */,
 				F3D7B6A220829D36009F6F21 /* MenuViewController.swift */,
-
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -353,7 +349,6 @@
 			files = (
 				7B13FB12204906B80046D4D8 /* LaunchScreen.storyboard in Resources */,
 				F3D7B6A120829984009F6F21 /* GoogleService-Info.plist in Resources */,
-
 				7B13FB0F204906B80046D4D8 /* Assets.xcassets in Resources */,
 				7B13FB0D204906B80046D4D8 /* Main.storyboard in Resources */,
 			);
