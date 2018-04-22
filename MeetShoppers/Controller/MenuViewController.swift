@@ -12,6 +12,7 @@ class MenuViewController: UIViewController {
     
     let menuWidthFactor = 0.7
 
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var hideButton: UIButton!
     @IBAction func showMenu(_ sender: Any) {
         menuShow()
@@ -21,7 +22,10 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         menuHide()
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +40,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration:0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] ,
                        animations: { () -> Void in
                         self.menuView.alpha = 1
+                        self.profileImageView.alpha = 1
                         self.hideButton.alpha = 1
         }, completion: nil)
     }
@@ -44,6 +49,7 @@ class MenuViewController: UIViewController {
         UIView.animate(withDuration:0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] ,
                        animations: { () -> Void in
                         self.menuView.alpha = 0
+                        self.profileImageView.alpha = 0
                         self.hideButton.alpha = 0
         }, completion: nil)
         
