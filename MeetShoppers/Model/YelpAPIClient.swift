@@ -24,7 +24,25 @@ public class YelpAPIClient: NSObject {
         }
     }()
     
-    public func searchBusinesses(latitude: Double?, longitude: Double?, radius: Int?, completionHandler: @escaping (_ jsonResponse: JSON) -> ()) {
+    public func getBusinessInfo(id: String?, completion: @escaping (_ jsonResponse: JSON) -> ()) {
+        assert((id != nil && id != ""), "Business ID must not be empty.")
+        
+        if self.isAuthenticated() {
+            let param: Parameters = [:]
+            
+            self.manager.request(YelpAPIRouter.business(id: id!, parameters: param)).responseJSON { (response) in
+                switch response.result {
+                case .success(let data):
+                    let json = JSON(data)
+                    completion(json)
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+            }
+        }
+    }
+    
+    public func searchBusinesses(latitude: Double?, longitude: Double?, radius: Int?, completion: @escaping (_ jsonResponse: JSON) -> ()) {
         assert((latitude != nil && longitude != nil), "Input latitude or longitude must not be null.")
         assert(radius != nil, "Input radius can not be null.")
         
@@ -39,7 +57,7 @@ public class YelpAPIClient: NSObject {
                 switch response.result {
                 case .success(let data):
                     let json = JSON(data)
-                    completionHandler(json)
+                    completion(json)
                 case .failure(let error):
                     print("Request failed with error: \(error)")
                 }

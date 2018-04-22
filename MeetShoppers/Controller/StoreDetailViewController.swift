@@ -20,9 +20,6 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var storeImage: UIImageView!
     @IBOutlet weak var checkInButtonView: UIButton!
     
-    // individual cell view labels
-    
-    
     var stores: [String] = ["Kevin"]
     
     override func viewDidLoad() {

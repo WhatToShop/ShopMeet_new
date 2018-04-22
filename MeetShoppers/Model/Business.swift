@@ -6,7 +6,6 @@
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
 //
 
-import Foundation
 import SwiftyJSON
 
 struct BusinessKey {
@@ -14,6 +13,13 @@ struct BusinessKey {
     static let imageURL = "image_url"
     static let location = "location"
     static let distance = "distance"
+    static let coordinates = "coordinates"
+    static let id = "id"
+}
+
+struct CoordinateKey {
+    static let latitude = "latitude"
+    static let longitude = "longitude"
 }
 
 struct LocationKey {
@@ -26,9 +32,13 @@ class Business: NSObject {
     let address: String?
     let imageURL: URL?
     let distance: String?
+    let longitude: Float?
+    let latitude: Float?
+    let id: String?
     
     init(dictionary: JSON) {
         name = dictionary[BusinessKey.name].string
+        id = dictionary[BusinessKey.id].string
         
         let imageURLString = dictionary[BusinessKey.imageURL].string
         if imageURLString != nil {
@@ -37,20 +47,30 @@ class Business: NSObject {
             imageURL = nil
         }
         
-        let location = dictionary[BusinessKey.location] as? NSDictionary
+        var latitude: Float = 0
+        var longitude: Float = 0
+        if let coordinates = dictionary[BusinessKey.coordinates].dictionaryObject{
+            if let latitudeNumber = coordinates[CoordinateKey.latitude] as? NSNumber {
+                latitude = latitudeNumber.floatValue
+            }
+            if let longitudeNumber = coordinates[CoordinateKey.longitude] as? NSNumber {
+                longitude = longitudeNumber.floatValue
+            }
+        }
+        self.latitude = latitude
+        self.longitude = longitude
+        
         var address = ""
-        if location != nil {
-            let addressArray = location![LocationKey.address] as? NSArray
-            if addressArray != nil && addressArray!.count > 0 {
-                address = addressArray![0] as! String
+        if let location = dictionary[BusinessKey.location].dictionaryObject {
+            if let addressArray = location[LocationKey.address] as? NSArray {
+                address = addressArray[0] as! String
             }
             
-            let neighborhoods = location![LocationKey.neighborhoods] as? NSArray
-            if neighborhoods != nil && neighborhoods!.count > 0 {
+            if let neighborhoods = location[LocationKey.neighborhoods] as? NSArray {
                 if !address.isEmpty {
                     address += ", "
                 }
-                address += neighborhoods![0] as! String
+                address += neighborhoods[0] as! String
             }
         }
         self.address = address

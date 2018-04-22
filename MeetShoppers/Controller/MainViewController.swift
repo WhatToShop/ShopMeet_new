@@ -12,9 +12,10 @@ import SwiftyJSON
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var menuLauncher: SideMenu!
+    var originalCellCenter: CGPoint!
     var businesses: [Business]!
     var locationManager: CLLocationManager!
     var userLocation: CLLocationCoordinate2D? {
@@ -39,10 +40,21 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 160
+        tableView.rowHeight = 240
         tableView.separatorStyle = .none
-        
         refreshBusinesses(api: api)
+        
+        let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
+        edgePanRecognizer.edges = .left
+        view.addGestureRecognizer(edgePanRecognizer)
+        
+        menuLauncher = SideMenu()
+    }
+    
+    @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        if recognizer.state == .ended {
+            menuLauncher.showMenu()
+        }
     }
     
     func refreshBusinesses(api: YelpAPIClient) {
@@ -54,8 +66,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        performSegue(withIdentifier: "detailViewSegue", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,6 +83,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell", for: indexPath) as! BusinessCell
         cell.business = businesses[indexPath.row]
+        print("longitude: \(cell.business.longitude!), latitude: \(cell.business.latitude!)")
         return cell
     }
     
@@ -77,14 +92,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        switch segue.identifier! {
+        case "detailViewSegue":
+            let vc = segue.destination as! StoreDetailViewController
+            break
+        default:
+            break
+        }
      }
-     */
-    
 }

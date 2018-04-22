@@ -15,17 +15,20 @@ enum YelpAPIRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
-        case .search(let parameters):
+        case .search(let parameters),
+             .business(id: _, let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
         return urlRequest
     }
     
+    case business(id: String, parameters: Parameters)
     case search(parameters: Parameters)
 
     var method: HTTPMethod {
         switch self {
-        case .search(parameters: _):
+        case .search(parameters: _),
+             .business(id: _, parameters: _):
             return .get
         }
     }
@@ -34,6 +37,8 @@ enum YelpAPIRouter: URLRequestConvertible {
         switch self {
         case .search(parameters: _):
             return "businesses/search"
+        case .business(let id, parameters: _):
+            return "businesses/\(id)"
         }
     }
 }

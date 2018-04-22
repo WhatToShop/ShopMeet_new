@@ -11,9 +11,11 @@ import AlamofireImage
 
 class BusinessCell: UITableViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: LongLabel!
+    @IBOutlet weak var distanceLabel: LongLabel!
     @IBOutlet weak var businessImageView: UIImageView!
     
+    var originalCenter: CGPoint!
     var business: Business! {
         didSet {
             if let url = business.imageURL {
@@ -23,9 +25,13 @@ class BusinessCell: UITableViewCell {
             if let name = business.name {
                 nameLabel.text = name
             }
+            
+            if let distance = business.distance {
+                distanceLabel.text = distance
+            }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,19 +40,31 @@ class BusinessCell: UITableViewCell {
         businessImageView.clipsToBounds = true
         
         nameLabel.sizeToFit()
-        nameLabel.backgroundColor = UIColor(rgb: 0xFFFFFF)
+        nameLabel.backgroundColor = UIColor.white
         nameLabel.textColor = UIColor(rgb: 0xD43D3D)
         nameLabel.layer.cornerRadius = 8
         nameLabel.clipsToBounds = true
         nameLabel.textAlignment = .center
         
-        self.layer.borderWidth = 0
+        distanceLabel.sizeToFit()
+        distanceLabel.backgroundColor = UIColor.white
+        distanceLabel.textColor = UIColor(rgb: 0xD43D3D)
+        distanceLabel.layer.cornerRadius = 8
+        distanceLabel.clipsToBounds = true
+        distanceLabel.textAlignment = .center
+        
+        originalCenter = center
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+        if selected {
+            UIView.animate(withDuration: 0.5) {
+                self.nameLabel.isHidden = true
+                self.distanceLabel.isHighlighted = true
+            }
+        }
     }
-
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class MenuViewController: UIViewController {
+    
+    let menuWidthFactor = 0.7
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var hideButton: UIButton!
@@ -16,6 +18,7 @@ class MenuViewController: UIViewController {
         menuShow()
     }
     @IBOutlet weak var menuView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,8 +26,6 @@ class MenuViewController: UIViewController {
         menuHide()
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
-        
-
     }
 
     override func didReceiveMemoryWarning() {

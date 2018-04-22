@@ -25,3 +25,17 @@ extension UIColor {
         )
     }
 }
+
+extension UICollectionViewCell {
+    func addContraintsWithFormat(_ format: String, views: UIView...) {
+        var viewDict = [String: UIView]()
+        
+        for (index, view) in views.enumerated() {
+            let key = "v\(index)"
+            view.translatesAutoresizingMaskIntoConstraints = false
+            viewDict[key] = view
+        }
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDict))
+    }
+}
