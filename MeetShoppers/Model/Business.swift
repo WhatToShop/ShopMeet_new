@@ -75,7 +75,7 @@ class Business: NSObject {
         }
         self.address = address
         
-        let distanceMeters = dictionary[BusinessKey.distance] as? NSNumber
+        let distanceMeters = dictionary[BusinessKey.distance].number
         if distanceMeters != nil {
             let milesPerMeter = 0.000621371
             distance = String(format: "%.2f mi", milesPerMeter * distanceMeters!.doubleValue)

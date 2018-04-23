@@ -14,9 +14,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    var scrollCounter: Int = 0
     var menuLauncher: SideMenu!
     var originalCellCenter: CGPoint!
-    var businesses: [Business]!
+    var businesses: [Business] = []
     var locationManager: CLLocationManager!
     var userLocation: CLLocationCoordinate2D? {
         get {
@@ -40,7 +41,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 240
+        tableView.rowHeight = 300
         tableView.separatorStyle = .none
         refreshBusinesses(api: api)
         
@@ -57,15 +58,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
     }
     
+    @IBAction func handleMap(_ sender: UIButton) {
+        performSegue(withIdentifier: "mapViewSegue", sender: nil)
+    }
+    
     func refreshBusinesses(api: YelpAPIClient) {
         if api.isAuthenticated() {
-            api.searchBusinesses(latitude: userLocation?.latitude, longitude: userLocation?.longitude, radius: 40000) { (json) in
-                self.businesses = Business.businesses(json: json)
-                self.tableView.reloadData()
+            if let location = userLocation {
+                api.searchBusinesses(latitude: location.latitude, longitude: location.longitude, radius: 40000, offset: scrollCounter*20, sortBy: "distance") { (json) in
+                    self.businesses += Business.businesses(json: json)
+                    self.tableView.reloadData()
+                }
             }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
@@ -92,18 +98,29 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    // Implements infinte scrolling
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == businesses.count - 1 {
+            scrollCounter += 1
+            refreshBusinesses(api: api!)
+        }
+    }
+    
+    // MARK: - Navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         switch segue.identifier! {
         case "detailViewSegue":
             let vc = segue.destination as! StoreDetailViewController
             break
+        case "mapViewSegue":
+            let vc = segue.destination as! MapViewController
+            vc.businesses = self.businesses
+            break
         default:
             break
         }
-     }
+    }
 }
