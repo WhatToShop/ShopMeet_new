@@ -42,7 +42,7 @@ public class YelpAPIClient: NSObject {
         }
     }
     
-    public func searchBusinesses(latitude: Double?, longitude: Double?, radius: Int?, completion: @escaping (_ jsonResponse: JSON) -> ()) {
+    public func searchBusinesses(latitude: Double?, longitude: Double?, radius: Int?, offset: Int?, sortBy: String?, completion: @escaping (_ jsonResponse: JSON) -> ()) {
         assert((latitude != nil && longitude != nil), "Input latitude or longitude must not be null.")
         assert(radius != nil, "Input radius can not be null.")
         
@@ -50,9 +50,9 @@ public class YelpAPIClient: NSObject {
             let param: Parameters = [
                 "latitude": latitude,
                 "longitude": longitude,
-                "radius": radius
+                "radius": radius,
+                "offset": offset
             ]
-            
             self.manager.request(YelpAPIRouter.search(parameters: param)).responseJSON { (response) in
                 switch response.result {
                 case .success(let data):
@@ -61,8 +61,7 @@ public class YelpAPIClient: NSObject {
                 case .failure(let error):
                     print("Request failed with error: \(error)")
                 }
-                
-                self.manager.session.finishTasksAndInvalidate() // Retains manager's instance
+//        self.manager.session.finishTasksAndInvalidate() // May need to retain manager instance?
             }
         }
     }
