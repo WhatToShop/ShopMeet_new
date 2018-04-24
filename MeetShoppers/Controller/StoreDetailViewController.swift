@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+
 class StoreDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let DEBUG = true
@@ -20,7 +21,7 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var storeImage: UIImageView!
     @IBOutlet weak var checkInButtonView: UIButton!
     
-    var stores: [String] = ["Kevin"]
+    var stores: Business?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,14 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.rowHeight = UITableViewAutomaticDimension
         // set the labels as an oval
         checkInButtonView.layer.cornerRadius = checkInButtonView.frame.height / 2
+        if let stores = stores {
+            storeNameLabel.text = stores.name
+            storeImage.af_setImage(withURL: stores.imageURL!)
+            
+        }
+        storeImage.layer.cornerRadius = 20
+        storeImage.clipsToBounds = true
+        
         
         // Do any additional setup after loading the view.
     }
@@ -68,7 +77,7 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
         if DEBUG {
             print("Inside number Of Rows in section")
         }
-        return stores.count
+        return 1
     }
     
     /*
