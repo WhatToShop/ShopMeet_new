@@ -60,11 +60,5 @@ class BusinessCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-        if selected {
-            UIView.animate(withDuration: 0.5) {
-                self.nameLabel.isHidden = true
-                self.distanceLabel.isHighlighted = true
-            }
-        }
     }
 }
