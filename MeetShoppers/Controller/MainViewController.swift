@@ -69,13 +69,20 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                     self.businesses += Business.businesses(json: json)
                     self.tableView.reloadData()
                 }
+            } else {
+                api.searchBusinesses(latitude: 22.3204, longitude: 114.1698, radius: 40000, offset: scrollCounter*20, sortBy: "distance") { (json) in
+                    self.businesses += Business.businesses(json: json)
+                    self.tableView.reloadData()
+                }
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        performSegue(withIdentifier: "detailViewSegue", sender: nil)
+        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatLogViewController.business = businesses[indexPath.row]
+        navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,7 +96,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell", for: indexPath) as! BusinessCell
         cell.business = businesses[indexPath.row]
-        print("longitude: \(cell.business.longitude!), latitude: \(cell.business.latitude!)")
         return cell
     }
     
@@ -112,13 +118,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         switch segue.identifier! {
-        case "detailViewSegue":
-            let vc = segue.destination as! StoreDetailViewController
-            break
         case "mapViewSegue":
             let vc = segue.destination as! MapViewController
             vc.businesses = self.businesses
-            break
         default:
             break
         }
