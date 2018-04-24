@@ -5,7 +5,6 @@
 //  Created by Kelvin Lui on 4/23/18.
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -19,13 +18,43 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         return textField
     }()
     
+    var messages = [Message]()
     var business: Business!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView?.backgroundColor = UIColor.white
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
         setupInputComponents()
+        
+        observeMessages()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
+        return cell
+    }
+    
+    // Update cell view and messages when a new message node is created in the database
+    func observeMessages() {
+        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+        ref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? NSDictionary {
+                let message = Message(dictionary: dictionary)
+                self.messages.append(message)
+                
+                // Reload data asynchronously to avoid crashing
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+            }
+        }, withCancel: nil)
     }
     
     func setupInputComponents() {
@@ -39,6 +68,7 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     
+        // Add send button to allow users to send text a
         let sendButton = UIButton(type: .system)
         sendButton.setTitle("Send", for: .normal)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +88,7 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
         inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
+        // Add seperator line above the text field
         let seperatorLineView = UIView()
         seperatorLineView.backgroundColor = UIColor(red: 220, green: 220, blue: 220)
         seperatorLineView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,9 +111,14 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
             uid = currentUser.uid
         }
         
-        let ref = Firebase.Database.database().reference().child("messages").child(business.id!)
+        let timestamp = NSTimeIntervalSince1970
+        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
         let childRef = ref.childByAutoId()
-        let values = ["text": inputTextField.text!, "uid": uid]
+        let values: [String: Any] = [
+            "text": inputTextField.text!,
+            "fromId": uid,
+            "timestamp": timestamp
+        ]
         childRef.updateChildValues(values)
     }
     

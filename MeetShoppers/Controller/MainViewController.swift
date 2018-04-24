@@ -82,6 +82,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: false)
         let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogViewController.business = businesses[indexPath.row]
+        
+        // Pass in messages before pushing chat log view??
+        
         navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
