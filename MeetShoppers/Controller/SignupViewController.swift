@@ -141,11 +141,23 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                     self.uploadProfileImageToFirebaseStorage(data: imageData)
                 }
                 
+                // Write new user data to the database
+                self.writeUserData(uid: Auth.auth().currentUser?.uid, name: "Test User", email: email, imageUrl: "Test Image URL")
+                
                 self.performSegue(withIdentifier: "signinSegue", sender: nil)
                 let alert = UIAlertController(title: "Success", message: "You have successfully signed in. Please log in to to enjoy the unique shopping experience.", preferredStyle: UIAlertControllerStyle.alert)
                 self.present(alert, animated: false, completion: nil)
             }
         }
+    }
+    
+    func writeUserData(uid: String?, name: String?, email: String?, imageUrl: String?) {
+        guard let uid = uid else { return }
+        
+        let ref = Firebase.Database.database().reference().child("users").child(uid).
+        
+    
+    
     }
     
     @IBAction func onSignin(_ sender: UIButton) {
