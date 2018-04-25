@@ -729,7 +729,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello my friends, I love to eat food." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z5t-9z-vtj">
-                                        <rect key="frame" x="25" y="83" width="191" height="90"/>
+                                        <rect key="frame" x="25" y="83" width="191" height="58"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -741,22 +741,36 @@
                                             <segue destination="cgn-sW-tDE" kind="show" id="ZQx-9S-bOw"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEo-yI-O5c">
+                                        <rect key="frame" x="130" y="143" width="33" height="30"/>
+                                        <state key="normal" title="Chat"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bn2-CZ-0c0">
+                                        <rect key="frame" x="57" y="143" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="E7U-rR-McU" firstAttribute="top" secondItem="2MH-Sf-96Y" secondAttribute="top" constant="8" id="2IP-O2-lbd"/>
                                     <constraint firstAttribute="trailing" secondItem="E7U-rR-McU" secondAttribute="trailing" constant="22" id="3cK-Kq-Ckp"/>
+                                    <constraint firstAttribute="trailing" secondItem="QEo-yI-O5c" secondAttribute="trailing" constant="77" id="5N6-1R-ypE"/>
                                     <constraint firstAttribute="trailing" secondItem="z5t-9z-vtj" secondAttribute="trailing" constant="24" id="6z1-1d-t84"/>
                                     <constraint firstItem="zqV-rF-zKR" firstAttribute="top" secondItem="E7U-rR-McU" secondAttribute="bottom" constant="8" id="FbY-Ac-csG"/>
                                     <constraint firstAttribute="trailing" secondItem="zqV-rF-zKR" secondAttribute="trailing" constant="24" id="Kzy-9R-0xx"/>
+                                    <constraint firstItem="QEo-yI-O5c" firstAttribute="top" secondItem="z5t-9z-vtj" secondAttribute="bottom" constant="2" id="Mce-5L-YA8"/>
                                     <constraint firstItem="mJk-6f-ekP" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="7" id="PR0-Z1-qEb"/>
-                                    <constraint firstAttribute="bottom" secondItem="z5t-9z-vtj" secondAttribute="bottom" id="QLP-uq-5A8"/>
                                     <constraint firstItem="zqV-rF-zKR" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="25" id="TyQ-pX-aVO"/>
                                     <constraint firstItem="zqV-rF-zKR" firstAttribute="top" secondItem="mJk-6f-ekP" secondAttribute="bottom" constant="8" id="W2y-AV-7rr"/>
                                     <constraint firstItem="z5t-9z-vtj" firstAttribute="top" secondItem="zqV-rF-zKR" secondAttribute="bottom" constant="16.5" id="Yoa-1h-CyF"/>
+                                    <constraint firstItem="Bn2-CZ-0c0" firstAttribute="top" secondItem="z5t-9z-vtj" secondAttribute="bottom" constant="2" id="bHs-tD-GB5"/>
+                                    <constraint firstItem="Bn2-CZ-0c0" firstAttribute="top" secondItem="z5t-9z-vtj" secondAttribute="bottom" constant="2" id="buI-LW-Kdh"/>
                                     <constraint firstItem="E7U-rR-McU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mJk-6f-ekP" secondAttribute="trailing" constant="113" id="fQk-wg-OJI"/>
                                     <constraint firstItem="mJk-6f-ekP" firstAttribute="top" secondItem="2MH-Sf-96Y" secondAttribute="top" constant="8" id="pTA-e8-zJy"/>
+                                    <constraint firstItem="Bn2-CZ-0c0" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="57" id="r1L-bO-5fv"/>
                                     <constraint firstItem="z5t-9z-vtj" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="25" id="rxD-2b-D1M"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bn2-CZ-0c0" secondAttribute="bottom" id="sE1-Bf-Xgm"/>
+                                    <constraint firstItem="QEo-yI-O5c" firstAttribute="leading" secondItem="Bn2-CZ-0c0" secondAttribute="trailing" constant="36" id="sRX-BI-PWb"/>
                                 </constraints>
                             </view>
                         </subviews>

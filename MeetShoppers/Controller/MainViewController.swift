@@ -138,13 +138,4 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
     }
     
- /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell){
-            let store = businesses[indexPath.row]
-            let detailViewController = segue.destination as! StoreDetailViewController
-            detailViewController.stores = store
-        }
-    }// sending data to another view controller
-*/
  }
