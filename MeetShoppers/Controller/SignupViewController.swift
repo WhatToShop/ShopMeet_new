@@ -154,8 +154,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     func writeUserData(uid: String?, name: String?, email: String?, imageUrl: String?) {
         guard let uid = uid else { return }
         
-        let ref = Firebase.Database.database().reference().child("users").child(uid).
-        
     
     
     }

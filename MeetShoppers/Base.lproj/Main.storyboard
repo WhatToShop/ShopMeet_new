@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O9X-cK-DkE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -454,7 +454,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcT-V9-BWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3851" y="584"/>
+            <point key="canvasLocation" x="3662" y="583"/>
         </scene>
         <!--Nearby Shops-->
         <scene sceneID="klM-lD-UVR">
@@ -702,7 +702,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bd-en-fdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3851" y="-769"/>
+            <point key="canvasLocation" x="3662" y="-769"/>
         </scene>
         <!--Obj Pop Up View Controller-->
         <scene sceneID="sv4-YG-BKt">
@@ -773,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdH-5M-dVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4586.25" y="-96.126760563380287"/>
+            <point key="canvasLocation" x="4399" y="-96"/>
         </scene>
         <!--To Do View Controller-->
         <scene sceneID="JiJ-Rf-x5Q">
@@ -826,7 +826,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UjP-SG-he8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5310" y="-97.183098591549296"/>
+            <point key="canvasLocation" x="5123" y="-97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eh0-fB-qvu">
@@ -844,7 +844,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsP-Mn-5Ed" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3851.25" y="-96.126760563380287"/>
+            <point key="canvasLocation" x="3664" y="-96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hgO-1f-wvc">
