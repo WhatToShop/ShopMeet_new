@@ -82,6 +82,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: false)
         let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogViewController.business = businesses[indexPath.row]
+        
+        // Pass in messages before pushing chat log view??
+        
+        
         navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
@@ -121,8 +125,25 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         case "mapViewSegue":
             let vc = segue.destination as! MapViewController
             vc.businesses = self.businesses
+        case "detailSegue":
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let store = businesses[indexPath.row]
+                let detailViewController = segue.destination as! StoreDetailViewController
+                detailViewController.stores = store
+            }
         default:
             break
         }
     }
-}
+    
+ /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell){
+            let store = businesses[indexPath.row]
+            let detailViewController = segue.destination as! StoreDetailViewController
+            detailViewController.stores = store
+        }
+    }// sending data to another view controller
+*/
+ }

@@ -24,6 +24,7 @@
 		BF1878E72081298700D97F9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E62081298700D97F9B /* MainViewController.swift */; };
 		BF1879092082725D00D97F9B /* YelpAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1879082082725D00D97F9B /* YelpAPIRouter.swift */; };
 		BF18790D20829B8C00D97F9B /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18790C20829B8C00D97F9B /* Business.swift */; };
+		BF2EBB35208ED85F00592D72 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EBB34208ED85F00592D72 /* Message.swift */; };
 		BF56E9D12077BDA000D89184 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9D02077BDA000D89184 /* WelcomeViewController.swift */; };
 		BF56E9D32077CAF600D89184 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9D22077CAF600D89184 /* SigninViewController.swift */; };
 		BF56E9D52077CB0300D89184 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9D42077CB0300D89184 /* SignupViewController.swift */; };
@@ -31,6 +32,8 @@
 		BF56E9DB2077E3B200D89184 /* BottomBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9DA2077E3B200D89184 /* BottomBorderedTextField.swift */; };
 		BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18790E2082AC9000D97F9B /* BusinessCell.swift */; };
 		BF674F502085C43E0083AD0C /* LongLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF674F4F2085C43E0083AD0C /* LongLabel.swift */; };
+		BF7C56C220939AEB0040164B /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7C56C120939AEB0040164B /* ChatMessageCell.swift */; };
+		BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDB79432092DCF800C019B2 /* UsernameViewController.swift */; };
 		BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF12FD8208D559900A05269 /* MapViewController.swift */; };
 		BFF12FDB208E92AB00A05269 /* ChatLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */; };
 		BFF402DF208A544200E6D9B5 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF402DE208A544200E6D9B5 /* SideMenu.swift */; };
@@ -87,12 +90,15 @@
 		BF1879082082725D00D97F9B /* YelpAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIRouter.swift; sourceTree = "<group>"; };
 		BF18790C20829B8C00D97F9B /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		BF18790E2082AC9000D97F9B /* BusinessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
+		BF2EBB34208ED85F00592D72 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BF56E9D02077BDA000D89184 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BF56E9D22077CAF600D89184 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		BF56E9D42077CB0300D89184 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		BF56E9D82077DEB800D89184 /* UIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
 		BF56E9DA2077E3B200D89184 /* BottomBorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderedTextField.swift; sourceTree = "<group>"; };
 		BF674F4F2085C43E0083AD0C /* LongLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongLabel.swift; sourceTree = "<group>"; };
+		BF7C56C120939AEB0040164B /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		BFDB79432092DCF800C019B2 /* UsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
 		BFF12FD8208D559900A05269 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewController.swift; sourceTree = "<group>"; };
 		BFF402DE208A544200E6D9B5 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
@@ -225,6 +231,7 @@
 				F3D7B6A220829D36009F6F21 /* MenuViewController.swift */,
 				BFF12FD8208D559900A05269 /* MapViewController.swift */,
 				BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */,
+				BFDB79432092DCF800C019B2 /* UsernameViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 				BFF402DE208A544200E6D9B5 /* SideMenu.swift */,
 				BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */,
 				BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */,
+				BF7C56C120939AEB0040164B /* ChatMessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 				BF1878E2208125B300D97F9B /* User.swift */,
 				BF1879082082725D00D97F9B /* YelpAPIRouter.swift */,
 				BF18790C20829B8C00D97F9B /* Business.swift */,
+				BF2EBB34208ED85F00592D72 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -580,12 +589,15 @@
 				BF1878E3208125B300D97F9B /* User.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,
+				BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */,
 				BFF12FDB208E92AB00A05269 /* ChatLogViewController.swift in Sources */,
 				BF56E9DB2077E3B200D89184 /* BottomBorderedTextField.swift in Sources */,
 				BF1878E72081298700D97F9B /* MainViewController.swift in Sources */,
+				BF7C56C220939AEB0040164B /* ChatMessageCell.swift in Sources */,
 				7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */,
 				BF56E9D92077DEB800D89184 /* UIExtension.swift in Sources */,
 				BF18790D20829B8C00D97F9B /* Business.swift in Sources */,
+				BF2EBB35208ED85F00592D72 /* Message.swift in Sources */,
 				BF56E9D32077CAF600D89184 /* SigninViewController.swift in Sources */,
 				BF1879092082725D00D97F9B /* YelpAPIRouter.swift in Sources */,
 			);
