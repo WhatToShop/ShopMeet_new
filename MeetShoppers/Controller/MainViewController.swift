@@ -85,6 +85,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         // Pass in messages before pushing chat log view??
         
+        
         navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
@@ -124,7 +125,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         case "mapViewSegue":
             let vc = segue.destination as! MapViewController
             vc.businesses = self.businesses
-            break
         case "detailSegue":
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell){
@@ -132,7 +132,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 let detailViewController = segue.destination as! StoreDetailViewController
                 detailViewController.stores = store
             }
-            break
         default:
             break
         }
