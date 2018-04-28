@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -67,13 +67,13 @@
                     </view>
                     <connections>
                         <outlet property="signinButton" destination="Ywg-YJ-MTG" id="9QA-99-3u7"/>
-                        <segue destination="IAW-fj-AMf" kind="show" identifier="signinSegue" animates="NO" id="tbF-lh-h42"/>
-                        <segue destination="O9X-cK-DkE" kind="show" identifier="signupSegue" animates="NO" id="pLH-PO-NdN"/>
+                        <segue destination="IAW-fj-AMf" kind="show" identifier="signinSegue" id="tbF-lh-h42"/>
+                        <segue destination="O9X-cK-DkE" kind="show" identifier="signupSegue" id="pLH-PO-NdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-427.5" y="36.971830985915496"/>
+            <point key="canvasLocation" x="-1221" y="33"/>
         </scene>
         <!--Signin View Controller-->
         <scene sceneID="LbZ-d6-OfP">
@@ -137,7 +137,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgs-cs-aNB">
-                                        <rect key="frame" x="45" y="57" width="66" height="10"/>
+                                        <rect key="frame" x="45" y="57" width="66" height="12"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,13 +189,14 @@
                         <outlet property="passwordTextField" destination="3UV-dp-DBF" id="BoH-fa-Paz"/>
                         <outlet property="signinButton" destination="lsK-W0-c9J" id="FkB-FJ-hgz"/>
                         <outlet property="signinView" destination="lsn-yr-fCA" id="aOL-hE-fhA"/>
-                        <segue destination="O9X-cK-DkE" kind="show" identifier="signupSegue" animates="NO" id="Izv-sT-nom"/>
+                        <segue destination="O9X-cK-DkE" kind="show" identifier="signupSegue" id="Izv-sT-nom"/>
                         <segue destination="QrO-Vn-hTo" kind="show" identifier="mainSegue" id="RXb-f9-wlr"/>
+                        <segue destination="AIA-19-Fg8" kind="show" identifier="usernameViewSegue" id="3gT-Ek-d6i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hg5-3i-XZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294" y="401"/>
+            <point key="canvasLocation" x="-428" y="324"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="jvF-OK-AEd">
@@ -332,12 +333,14 @@
                         <outlet property="passwordTextField" destination="PrQ-3Q-mwM" id="uzb-h9-eDg"/>
                         <outlet property="signinButton" destination="RPw-2c-Ti2" id="x7g-kS-a9Z"/>
                         <outlet property="signupView" destination="Qfn-UL-6qw" id="ra2-lj-ihv"/>
-                        <segue destination="IAW-fj-AMf" kind="show" identifier="signinSegue" animates="NO" id="2V3-xr-ypw"/>
+                        <segue destination="IAW-fj-AMf" kind="show" identifier="signinSegue" id="2V3-xr-ypw"/>
+                        <segue destination="AIA-19-Fg8" kind="show" identifier="I" id="ROr-ri-spj"/>
+                        <segue destination="AIA-19-Fg8" kind="show" identifier="usernameViewSegue" id="uMw-DH-mln"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4PI-Vq-2p2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294.375" y="-298.94366197183098"/>
+            <point key="canvasLocation" x="-426" y="-399"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="vGA-x3-EBA">
@@ -510,7 +513,6 @@
                                             <outlet property="businessImageView" destination="Okh-ZU-Tfx" id="1PX-9x-c2S"/>
                                             <outlet property="distanceLabel" destination="1OP-tX-g2R" id="Z7R-sQ-EhR"/>
                                             <outlet property="nameLabel" destination="xRc-YT-Zc1" id="dXN-Le-knM"/>
-                                            <segue destination="bEd-CS-nwI" kind="show" identifier="detailSegue" id="DFZ-NG-WjB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -530,18 +532,15 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Shops" id="XP1-n5-Zf3">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="10R-uf-ogI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SmI-5G-G08">
-                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                        <barButtonItem key="rightBarButtonItem" image="map" style="plain" id="10R-uf-ogI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SmI-5G-G08">
+                                <rect key="frame" x="236" y="6" width="68" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Map"/>
+                                <state key="normal" image="map"/>
                                 <connections>
                                     <action selector="handleMap:" destination="BhF-ek-jGG" eventType="touchUpInside" id="XCw-tH-o7x"/>
                                 </connections>
                             </button>
-                            <connections>
-                                <action selector="handleMap:" destination="BhF-ek-jGG" id="cUV-fB-G0X"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -563,7 +562,7 @@
             <objects>
                 <viewController id="bEd-CS-nwI" customClass="StoreDetailViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yR2-fh-Fid">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wZz-Er-6UP">
@@ -573,7 +572,7 @@
                                 </constraints>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Jm-LY-etO">
-                                <rect key="frame" x="0.0" y="371" width="320" height="133"/>
+                                <rect key="frame" x="0.0" y="371" width="320" height="197"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="76" id="Ifg-CS-k5C" customClass="MessageCell" customModule="MeetShoppers" customModuleProvider="target">
@@ -846,6 +845,37 @@
             </objects>
             <point key="canvasLocation" x="3851.25" y="-96.126760563380287"/>
         </scene>
+        <!--Username View Controller-->
+        <scene sceneID="bqG-Ep-WsX">
+            <objects>
+                <viewController id="AIA-19-Fg8" customClass="UsernameViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W44-EB-SeE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WA-D9-i3i">
+                                <rect key="frame" x="-61" y="483" width="210" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSignin:" destination="IAW-fj-AMf" eventType="touchUpInside" id="TDe-G3-0kr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pKu-Ir-ZuS"/>
+                    </view>
+                    <connections>
+                        <segue destination="QrO-Vn-hTo" kind="show" identifier="mainViewSegue" id="aKL-bM-UTS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miV-za-I4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247.5" y="-399.29577464788736"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="hgO-1f-wvc">
             <objects>
@@ -870,11 +900,14 @@
         <image name="camera" width="100" height="100"/>
         <image name="envelope" width="25" height="18"/>
         <image name="logo" width="130" height="130"/>
+        <image name="map" width="32" height="32"/>
         <image name="password-icon" width="25" height="32"/>
         <image name="signup" width="320" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pLH-PO-NdN"/>
-        <segue reference="2V3-xr-ypw"/>
+        <segue reference="RXb-f9-wlr"/>
+        <segue reference="3gT-Ek-d6i"/>
+        <segue reference="Izv-sT-nom"/>
+        <segue reference="tbF-lh-h42"/>
     </inferredMetricsTieBreakers>
 </document>

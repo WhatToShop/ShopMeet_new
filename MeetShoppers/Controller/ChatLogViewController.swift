@@ -4,11 +4,10 @@
 //
 //  Created by Kelvin Lui on 4/23/18.
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
-//
 import UIKit
 import Firebase
 
-class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
+class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
 
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -18,15 +17,22 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         return textField
     }()
     
-    var messages = [Message]()
+    var messages = [Message]() {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     var business: Business!
+    let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         collectionView?.delegate = self
         collectionView?.dataSource = self
+        collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponents()
         
         observeMessages()
@@ -37,8 +43,14 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChatMessageCell
+        let message = messages[indexPath.item]
+        cell.textView.text = message.text
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 80)
     }
     
     // Update cell view and messages when a new message node is created in the database
@@ -48,19 +60,16 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
             if let dictionary = snapshot.value as? NSDictionary {
                 let message = Message(dictionary: dictionary)
                 self.messages.append(message)
-                
-                // Reload data asynchronously to avoid crashing
-                DispatchQueue.main.async {
-                    self.collectionView?.reloadData()
-                }
             }
-        }, withCancel: nil)
+        }) { (error) in
+            debugPrint(error)
+        }
     }
     
     func setupInputComponents() {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        containerView.backgroundColor = UIColor.white
         view.addSubview(containerView)
         
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -82,7 +91,6 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         
         // Add input text field
         containerView.addSubview(inputTextField)
-        
         inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
         inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
@@ -123,6 +131,7 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
+        view.endEditing(true)
+        return false
     }
 }
