@@ -41,7 +41,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 300
+        tableView.estimatedRowHeight = 500
         tableView.separatorStyle = .none
         refreshBusinesses(api: api)
         
@@ -50,6 +50,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         view.addGestureRecognizer(edgePanRecognizer)
         
         menuLauncher = SideMenu()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            return cell.frame.height
+        } else {
+            return tableView.estimatedRowHeight
+        }
     }
     
     @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
@@ -82,10 +90,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: false)
         let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogViewController.business = businesses[indexPath.row]
-        
-        // Pass in messages before pushing chat log view??
-        
-        
         navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
