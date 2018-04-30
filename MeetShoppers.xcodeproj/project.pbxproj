@@ -24,6 +24,7 @@
 		BF1878E72081298700D97F9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E62081298700D97F9B /* MainViewController.swift */; };
 		BF1879092082725D00D97F9B /* YelpAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1879082082725D00D97F9B /* YelpAPIRouter.swift */; };
 		BF18790D20829B8C00D97F9B /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18790C20829B8C00D97F9B /* Business.swift */; };
+		BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28F3792096366C0063EEBD /* BusinessComment.swift */; };
 		BF2EBB35208ED85F00592D72 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EBB34208ED85F00592D72 /* Message.swift */; };
 		BF56E9D12077BDA000D89184 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9D02077BDA000D89184 /* WelcomeViewController.swift */; };
 		BF56E9D32077CAF600D89184 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF56E9D22077CAF600D89184 /* SigninViewController.swift */; };
@@ -90,6 +91,7 @@
 		BF1879082082725D00D97F9B /* YelpAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIRouter.swift; sourceTree = "<group>"; };
 		BF18790C20829B8C00D97F9B /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		BF18790E2082AC9000D97F9B /* BusinessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
+		BF28F3792096366C0063EEBD /* BusinessComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessComment.swift; sourceTree = "<group>"; };
 		BF2EBB34208ED85F00592D72 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BF56E9D02077BDA000D89184 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BF56E9D22077CAF600D89184 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -221,11 +223,11 @@
 		BF56E9CD2077BCD100D89184 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BF1878E62081298700D97F9B /* MainViewController.swift */,
 				BF56E9D02077BDA000D89184 /* WelcomeViewController.swift */,
 				BF56E9D22077CAF600D89184 /* SigninViewController.swift */,
 				7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */,
 				BF56E9D42077CB0300D89184 /* SignupViewController.swift */,
-				BF1878E62081298700D97F9B /* MainViewController.swift */,
 				7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */,
 				7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */,
 				F3D7B6A220829D36009F6F21 /* MenuViewController.swift */,
@@ -260,6 +262,7 @@
 				BF1879082082725D00D97F9B /* YelpAPIRouter.swift */,
 				BF18790C20829B8C00D97F9B /* Business.swift */,
 				BF2EBB34208ED85F00592D72 /* Message.swift */,
+				BF28F3792096366C0063EEBD /* BusinessComment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
 				BF1878E3208125B300D97F9B /* User.swift in Sources */,
+				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,
 				BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */,

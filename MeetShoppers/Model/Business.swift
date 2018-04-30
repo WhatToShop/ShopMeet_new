@@ -7,14 +7,22 @@
 //
 
 import SwiftyJSON
+import UIKit
+import Firebase
 
-struct BusinessKey {
+struct APIBusinessKey {
     static let name = "name"
     static let imageURL = "image_url"
     static let location = "location"
     static let distance = "distance"
     static let coordinates = "coordinates"
     static let id = "id"
+}
+
+struct CustomizedBusinessKey {
+    static let likes = "likes"
+    static let likeCount = "likeCount"
+    static let comments = "comments" // Returns a JSON object of comments
 }
 
 struct CoordinateKey {
@@ -35,12 +43,14 @@ class Business: NSObject {
     let longitude: Float?
     let latitude: Float?
     let id: String?
+    let likeCount: Int?
+    let likes: [String: Any]?
     
     init(dictionary: JSON) {
-        name = dictionary[BusinessKey.name].string
-        id = dictionary[BusinessKey.id].string
+        name = dictionary[APIBusinessKey.name].string
+        id = dictionary[APIBusinessKey.id].string
         
-        let imageURLString = dictionary[BusinessKey.imageURL].string
+        let imageURLString = dictionary[APIBusinessKey.imageURL].string
         if imageURLString != nil {
             imageURL = URL(string: imageURLString!)!
         } else {
@@ -49,7 +59,7 @@ class Business: NSObject {
         
         var latitude: Float = 0
         var longitude: Float = 0
-        if let coordinates = dictionary[BusinessKey.coordinates].dictionaryObject{
+        if let coordinates = dictionary[APIBusinessKey.coordinates].dictionaryObject{
             if let latitudeNumber = coordinates[CoordinateKey.latitude] as? NSNumber {
                 latitude = latitudeNumber.floatValue
             }
@@ -61,7 +71,7 @@ class Business: NSObject {
         self.longitude = longitude
         
         var address = ""
-        if let location = dictionary[BusinessKey.location].dictionaryObject {
+        if let location = dictionary[APIBusinessKey.location].dictionaryObject {
             if let addressArray = location[LocationKey.address] as? NSArray {
                 address = addressArray[0] as! String
             }
@@ -75,12 +85,34 @@ class Business: NSObject {
         }
         self.address = address
         
-        let distanceMeters = dictionary[BusinessKey.distance].number
+        let distanceMeters = dictionary[APIBusinessKey.distance].number
         if distanceMeters != nil {
             let milesPerMeter = 0.000621371
             distance = String(format: "%.2f mi", milesPerMeter * distanceMeters!.doubleValue)
         } else {
             distance = nil
+        }
+        
+        // Get "likes" dictionary
+        if let likes = dictionary[CustomizedBusinessKey.likes].dictionaryObject {
+            self.likes = likes
+        } else {
+            self.likes = [:]
+        }
+        
+        // Get like count
+        if let likeCount = dictionary[CustomizedBusinessKey.likeCount].int {
+            self.likeCount = likeCount
+        } else {
+            self.likeCount = 0
+        }
+    }
+    
+    func observeLikeStatus(by uid: String, completion: @escaping (_ result: Bool) -> ()) -> Void {
+        let ref = Database.database().reference().child("businesses").child(uid)
+        let result = true
+        ref.observeSingleEvent(of: DataEventType.value) { (snapshot) in
+//            completion(snapshot.hasChild(uid))
         }
     }
     

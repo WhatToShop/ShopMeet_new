@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "map.png",
+      "filename" : "start_inactive.png",
       "scale" : "1x"
     },
     {
