@@ -10,12 +10,15 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 
-class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate{
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
-    
     var scrollCounter: Int = 0
     var menuLauncher: SideMenu!
+    var sideMenu = [SideMenu]()
     var originalCellCenter: CGPoint!
     var businesses: [Business] = []
     var locationManager: CLLocationManager!
@@ -38,7 +41,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         locationManager.requestWhenInUseAuthorization()
         
         api = YelpAPIClient(apiKey: "e9cKJ5oD_G0m9xYGjaViEdkcbSS8tauK9CucnRZqn6WuZFIJJu7WqRS-EoCkT_tECaQ4JcNUFQ4pHsLXnszUzL4uHyq5mchxi_wsVejAyH40E5ZD6d__bvsZzNfOWnYx")
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 300
@@ -48,7 +50,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
         edgePanRecognizer.edges = .left
         view.addGestureRecognizer(edgePanRecognizer)
-        
+                
         menuLauncher = SideMenu()
     }
     
@@ -112,7 +114,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         switch segue.identifier! {
+        case "cameraViewSegue":
+            print("reached cameraViewSegue")
+            let vc = segue.destination as! CameraViewController
+            break
         case "detailViewSegue":
+            print("reached detailView")
             let vc = segue.destination as! StoreDetailViewController
             break
         case "mapViewSegue":
@@ -123,4 +130,31 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             break
         }
     }
-}
+    
+    @IBAction func handleMenu(_ sender: Any) {
+        menuLauncher.showMenu()
+    }
+    
+    func testScan(){
+        print("coming into testScan")
+        performSegue(withIdentifier: "cameraViewSegue", sender: nil)
+        //let cameraViewController = CameraViewController()
+        //self.navigationController?.pushViewController(cameraViewController, animated: true)
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        //let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
+        //self.present(vc, animated: true, completion: nil);
+        //navigationController?.pushViewController(cameraViewController, animated: true)
+    }
+        
+    }
+    
+    
+    
+    /*func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //self.photo = originalImage
+        //dismiss(animated: true, completion: nil)
+        //performSegue(withIdentifier: "tagSegue", sender: nil)
+        print("success")
+    }*/
+

@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate{
+    var mainVC = MainViewController()
     let blackView = UIView()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,6 +36,54 @@ class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource,
                 self.blackView.alpha = 1
                 self.collectionView.frame = CGRect(x: 0, y: 0, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
             }, completion: nil)
+            
+            let signOutButton = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+            signOutButton.backgroundColor = nil
+            signOutButton.setTitle("Logout", for: .normal)
+            signOutButton.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+            
+            window.addSubview(signOutButton)
+            
+            let scanButton = UIButton(frame: CGRect(x: 100, y: 200, width: 100, height: 50))
+            scanButton.backgroundColor = nil
+            scanButton.setTitle("Scan", for: .normal)
+            scanButton.addTarget(self, action: #selector(scan), for: .touchUpInside)
+            
+            window.addSubview(scanButton)
+        }
+    }
+    
+    @objc func scan(sender: UIButton!) {
+        print("button being pressed")
+        let cameraViewController = CameraViewController()
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        //mainVC.navigationController?.pushViewController(cameraViewController, animated: true)
+        //let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
+        //mainVC?.present(vc, animated: true, completion: nil);
+        let mainViewController = MainViewController()
+        //mainViewController.prepare(for: UIStoryboardSegue, sender: mainViewController)
+        //mainViewController.performSegue(withIdentifier: "cameraViewSegue", sender: mainViewController)
+        mainViewController.present(cameraViewController, animated: false, completion: nil)
+        
+    }
+    
+    func showNextView(mainViewController: MainViewController){
+        mainViewController.testScan()
+    }
+
+    
+    @objc func signOut(sender: UIButton!) {
+        do
+        {
+            let window = UIApplication.shared.keyWindow
+            try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "welcomeVC")
+        }
+        catch let error as NSError
+        {
+            print (error.localizedDescription)
         }
     }
     
@@ -88,3 +137,6 @@ class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource,
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: "profileCell")
     }
 }
+
+
+
