@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 class SigninViewController : UIViewController, UITextFieldDelegate {
 
@@ -126,7 +126,15 @@ class SigninViewController : UIViewController, UITextFieldDelegate {
                     self.displayMessageDialog(title: "Unknown Error", message: "Please try again.")
                 }
             } else {
-                self.performSegue(withIdentifier: "mainSegue", sender: nil)
+                let userRef = Database.database().reference().child("users").child(user!.uid)
+                userRef.observe(DataEventType.value, with: { (snapshot) in
+                    if snapshot.hasChild("displayName") {
+                        self.performSegue(withIdentifier: "mainSegue", sender: nil)
+                    } else {
+                        // If user does not have an username in the database, ask for an username
+                        self.performSegue(withIdentifier: "usernameViewSegue", sender: nil)
+                    }
+                })
             }
         }
     }

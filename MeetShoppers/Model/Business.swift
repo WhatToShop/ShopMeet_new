@@ -7,14 +7,22 @@
 //
 
 import SwiftyJSON
+import UIKit
+import Firebase
 
-struct BusinessKey {
+struct APIBusinessKey {
     static let name = "name"
     static let imageURL = "image_url"
     static let location = "location"
     static let distance = "distance"
     static let coordinates = "coordinates"
     static let id = "id"
+}
+
+struct CustomizedBusinessKey {
+    static let likes = "likes"
+    static let likeCount = "likeCount"
+    static let comments = "comments" // Returns a JSON object of comments
 }
 
 struct CoordinateKey {
@@ -28,19 +36,38 @@ struct LocationKey {
 }
 
 class Business: NSObject {
+    var hasFinishedInitialization = false   // Identifies whether initialization of fields have been completed
+    
     let name: String?
     let address: String?
     let imageURL: URL?
-    let distance: String?
+    var distance: String?
     let longitude: Float?
     let latitude: Float?
     let id: String?
+    var likeCount: Int? {
+        didSet {
+            guard let id = id else { return }
+            if !hasFinishedInitialization { return }
+            if likeCount! < 0 { likeCount = 0 } // Some safety protocol that may avoid bugs
+            Database.database().reference().child("businesses").child(id).child("likeCount").setValue(likeCount!)
+        }
+    }
+    
+    var likes: [String: Any]? {
+        didSet {
+//            guard let id = id else { return }
+//            let uid = Auth.auth().currentUser!.uid
+//            Database.database().reference().child("businesses").child(id).child("likes").child(uid)
+        }
+    }
     
     init(dictionary: JSON) {
-        name = dictionary[BusinessKey.name].string
-        id = dictionary[BusinessKey.id].string
+        // Get data from Yelp API
+        name = dictionary[APIBusinessKey.name].string
+        id = dictionary[APIBusinessKey.id].string
         
-        let imageURLString = dictionary[BusinessKey.imageURL].string
+        let imageURLString = dictionary[APIBusinessKey.imageURL].string
         if imageURLString != nil {
             imageURL = URL(string: imageURLString!)!
         } else {
@@ -49,7 +76,7 @@ class Business: NSObject {
         
         var latitude: Float = 0
         var longitude: Float = 0
-        if let coordinates = dictionary[BusinessKey.coordinates].dictionaryObject{
+        if let coordinates = dictionary[APIBusinessKey.coordinates].dictionaryObject{
             if let latitudeNumber = coordinates[CoordinateKey.latitude] as? NSNumber {
                 latitude = latitudeNumber.floatValue
             }
@@ -61,11 +88,10 @@ class Business: NSObject {
         self.longitude = longitude
         
         var address = ""
-        if let location = dictionary[BusinessKey.location].dictionaryObject {
+        if let location = dictionary[APIBusinessKey.location].dictionaryObject {
             if let addressArray = location[LocationKey.address] as? NSArray {
                 address = addressArray[0] as! String
             }
-            
             if let neighborhoods = location[LocationKey.neighborhoods] as? NSArray {
                 if !address.isEmpty {
                     address += ", "
@@ -75,12 +101,35 @@ class Business: NSObject {
         }
         self.address = address
         
-        let distanceMeters = dictionary[BusinessKey.distance].number
+        let distanceMeters = dictionary[APIBusinessKey.distance].number
         if distanceMeters != nil {
             let milesPerMeter = 0.000621371
             distance = String(format: "%.2f mi", milesPerMeter * distanceMeters!.doubleValue)
         } else {
             distance = nil
+        }
+        
+        // Get data from customized realtime database for businesses
+//        let businessRef = Database.database().reference().child("businesses").child(id!)
+//        businessRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+//            if !snapshot.hasChild("likeCount") {
+//                businessRef.child("likeCount").setValue(0)
+//                self.likeCount = 0
+//            }
+//        }) { (error) in
+//            debugPrint(error)
+//        }
+        likeCount = 0   // TODO
+        likes = [:] // TODO
+        
+        hasFinishedInitialization = true
+    }
+    
+    func observeLikeStatus(by uid: String, completion: @escaping (_ result: Bool) -> ()) -> Void {
+        let ref = Database.database().reference().child("businesses").child(uid)
+        let result = true
+        ref.observeSingleEvent(of: DataEventType.value) { (snapshot) in
+//            completion(snapshot.hasChild(uid))
         }
     }
     

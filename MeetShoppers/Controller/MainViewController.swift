@@ -41,7 +41,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 300
+        tableView.estimatedRowHeight = 500
         tableView.separatorStyle = .none
         refreshBusinesses(api: api)
         
@@ -50,6 +50,14 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         view.addGestureRecognizer(edgePanRecognizer)
         
         menuLauncher = SideMenu()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            return cell.frame.height
+        } else {
+            return tableView.estimatedRowHeight
+        }
     }
     
     @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
@@ -82,9 +90,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: false)
         let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogViewController.business = businesses[indexPath.row]
-        
-        // Pass in messages before pushing chat log view??
-        
         navigationController?.pushViewController(chatLogViewController, animated: true)
     }
     
@@ -124,7 +129,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         case "mapViewSegue":
             let vc = segue.destination as! MapViewController
             vc.businesses = self.businesses
-            break
         case "detailSegue":
             let cell = sender as! UITableViewCell
             if let indexPath = tableView.indexPath(for: cell){
@@ -132,7 +136,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 let detailViewController = segue.destination as! StoreDetailViewController
                 detailViewController.stores = store
             }
-            break
         default:
             break
         }

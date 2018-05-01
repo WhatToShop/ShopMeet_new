@@ -8,14 +8,18 @@
 import UIKit
 
 class User: NSObject {
-    var uid: String?
+    var uid: String? {
+        didSet {
+            profileImageUrl = "users/\(uid!)/profileImage/profileImage.jpg"
+        }
+    }
+    
     var name: String?
     var email: String?
     var profileImageUrl: String?
-    
+
     init(dictionary: NSDictionary) {
         uid = dictionary["name"] as? String
         email = dictionary["email"] as? String
-        profileImageUrl = dictionary["imageUrl"] as? String
     }
 }
