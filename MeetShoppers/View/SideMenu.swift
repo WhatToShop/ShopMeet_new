@@ -8,7 +8,8 @@
 import UIKit
 import FirebaseAuth
 
-class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate{
+class SideMenu : UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate{
+    //var delegate: scanButtonTapped!
     var mainVC = MainViewController()
     let blackView = UIView()
     let collectionView: UICollectionView = {
@@ -55,20 +56,7 @@ class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource,
     
     @objc func scan(sender: UIButton!) {
         print("button being pressed")
-        let cameraViewController = CameraViewController()
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        //mainVC.navigationController?.pushViewController(cameraViewController, animated: true)
-        //let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
-        //mainVC?.present(vc, animated: true, completion: nil);
-        let mainViewController = MainViewController()
-        //mainViewController.prepare(for: UIStoryboardSegue, sender: mainViewController)
-        //mainViewController.performSegue(withIdentifier: "cameraViewSegue", sender: mainViewController)
-        mainViewController.present(cameraViewController, animated: false, completion: nil)
         
-    }
-    
-    func showNextView(mainViewController: MainViewController){
-        mainViewController.testScan()
     }
 
     
@@ -90,6 +78,8 @@ class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+
     
     @objc func handleDismiss() {
         UIView.animate(withDuration: 0.5) {
@@ -128,15 +118,20 @@ class SideMenu : NSObject, UICollectionViewDelegate, UICollectionViewDataSource,
         return cell
     }
     
-    override init() {
+    /*override init() {
         super.init()
         
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(OptionCell.self, forCellWithReuseIdentifier: "optionCell")
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: "profileCell")
-    }
+    }*/
+    
 }
+
+/*protocol scanButtonTapped {
+    func testScan()
+}*/
 
 
 

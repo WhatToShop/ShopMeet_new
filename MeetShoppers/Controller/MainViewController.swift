@@ -9,16 +9,17 @@
 import UIKit
 import CoreLocation
 import SwiftyJSON
+import FirebaseAuth
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
-    
-    
-    
+
+    @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var viewConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var scrollCounter: Int = 0
-    var menuLauncher: SideMenu!
-    var sideMenu = [SideMenu]()
+    //var menuLauncher: SideMenu!
+    //let menuView = SideMenu()
     var originalCellCenter: CGPoint!
     var businesses: [Business] = []
     var locationManager: CLLocationManager!
@@ -50,13 +51,37 @@ UINavigationControllerDelegate{
         let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
         edgePanRecognizer.edges = .left
         view.addGestureRecognizer(edgePanRecognizer)
+        
+        viewConstraint.constant = -175
                 
-        menuLauncher = SideMenu()
+        //menuLauncher = SideMenu()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        menuView.alpha = 0
     }
     
     @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        if recognizer.state == .ended {
-            menuLauncher.showMenu()
+        showMenu()
+
+    }
+    
+    func showMenu(){
+        
+            UIView.animate(withDuration: 0.2, animations: {
+                self.menuView.alpha = 1
+                self.viewConstraint.constant = 0
+                self.menuView.layoutIfNeeded()
+            })
+            
+        
+        menuView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+    }
+    
+    @objc func handleDismiss() {
+        UIView.animate(withDuration: 0.5) {
+            self.menuView.alpha = 0
+            self.viewConstraint.constant = -175
         }
     }
     
@@ -132,10 +157,33 @@ UINavigationControllerDelegate{
     }
     
     @IBAction func handleMenu(_ sender: Any) {
-        menuLauncher.showMenu()
+        showMenu()
     }
     
-    func testScan(){
+    @IBAction func logOut(_ sender: Any) {
+        do
+        {
+            let window = UIApplication.shared.keyWindow
+            try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "welcomeVC")
+        }
+        catch let error as NSError
+        {
+            print (error.localizedDescription)
+        }
+    }
+    
+    
+    @IBAction func showReceipts(_ sender: Any) {
+    }
+    
+    @IBAction func showNotes(_ sender: Any) {
+    }
+    
+    /*func testScan(){
+        menuView.delegate = self
         print("coming into testScan")
         performSegue(withIdentifier: "cameraViewSegue", sender: nil)
         //let cameraViewController = CameraViewController()
@@ -144,7 +192,7 @@ UINavigationControllerDelegate{
         //let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
         //self.present(vc, animated: true, completion: nil);
         //navigationController?.pushViewController(cameraViewController, animated: true)
-    }
+    }*/
         
     }
     
