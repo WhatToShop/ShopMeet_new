@@ -55,7 +55,8 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
     
     // Update cell view and messages when a new message node is created in the database
     func observeMessages() {
-        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+//        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+        let ref = Database.database().reference().child("businesses").child(business.id!).child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? NSDictionary {
                 let message = Message(dictionary: dictionary)
@@ -120,7 +121,8 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         }
         
         let timestamp = NSTimeIntervalSince1970
-        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+//        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+        let ref = Firebase.Database.database().reference().child("businesses").child(business.id!).child("messages")
         let childRef = ref.childByAutoId()
         let values: [String: Any] = [
             "text": inputTextField.text!,

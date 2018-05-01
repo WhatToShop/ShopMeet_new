@@ -7,6 +7,8 @@
 //
 import UIKit
 import AlamofireImage
+import Firebase
+import SwiftyJSON
 
 class BusinessCell: UITableViewCell {
     let cellId = "cellId"
@@ -22,8 +24,9 @@ class BusinessCell: UITableViewCell {
     
     lazy var bookmarkButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(handleStar), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(handleBookmark), for: UIControlEvents.touchUpInside)
         button.setImage(#imageLiteral(resourceName: "bookmark_inactive"), for: UIControlState.normal)
+        button.setImage(#imageLiteral(resourceName: "bookmark_active"), for: UIControlState.selected)
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -42,6 +45,7 @@ class BusinessCell: UITableViewCell {
         let button = UIButton()
         button.addTarget(self, action: #selector(handleLike), for: UIControlEvents.touchUpInside)
         button.setImage(#imageLiteral(resourceName: "like_inactive"), for: UIControlState.normal)
+        button.setImage(#imageLiteral(resourceName: "like_active"), for: UIControlState.selected)
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -76,11 +80,15 @@ class BusinessCell: UITableViewCell {
     
     var business: Business! {
         didSet {
+            if let likeCount = business.likeCount { likeCountLabel.text = String(likeCount) + (likeCount > 1 ? " likes" : " like") }
             if let url = business.imageURL { businessImageView.af_setImage(withURL: url) }
             if let name = business.name { nameLabel.text = name }
             if let distance = business.distance { distanceLabel.text = distance }
-            likeCountLabel.text = "0 likes" // TODO
         }
+    }
+    
+    @objc func handleBookmark() {
+        bookmarkButton.isSelected = !bookmarkButton.isSelected
     }
     
     @objc func handleStar() {
@@ -89,12 +97,14 @@ class BusinessCell: UITableViewCell {
     }
     
     @objc func handleLike() {
-        // TODO
+        let didUserLike = !likeButton.isSelected
+        likeButton.isSelected = didUserLike
+        business.likeCount! += (didUserLike ? 1 : -1)
+        likeCountLabel.text = "\(business.likeCount!) " + (business.likeCount! > 1 ? "likes" : "like")
     }
     
     @objc func handleChat() {
         // TODO
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
     }
     
@@ -107,7 +117,8 @@ class BusinessCell: UITableViewCell {
         nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8).isActive = true
+//        nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8).isActive = true
+        nameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width - 32)*0.8).isActive = true
         
         // Add distance label
         contentView.addSubview(distanceLabel)
