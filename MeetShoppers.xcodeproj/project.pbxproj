@@ -15,6 +15,7 @@
 		7B13FB12204906B80046D4D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B13FB10204906B80046D4D8 /* LaunchScreen.storyboard */; };
 		7B13FB1D204906B80046D4D8 /* MeetShoppersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB1C204906B80046D4D8 /* MeetShoppersTests.swift */; };
 		7B13FB28204906B80046D4D8 /* MeetShoppersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */; };
+		7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */; };
 		7B4F8AAD20829B2E007B91EC /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */; };
 		7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAE20829DA7007B91EC /* MessageCell.swift */; };
 		7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */; };
@@ -80,6 +81,7 @@
 		7B13FB23204906B80046D4D8 /* MeetShoppersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetShoppersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetShoppersUITests.swift; sourceTree = "<group>"; };
 		7B13FB29204906B80046D4D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpViewController.swift; sourceTree = "<group>"; };
 		7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		7B4F8AAE20829DA7007B91EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPopUpViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				BFF12FD8208D559900A05269 /* MapViewController.swift */,
 				BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */,
 				BFDB79432092DCF800C019B2 /* UsernameViewController.swift */,
+				7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
 				BF1878E3208125B300D97F9B /* User.swift in Sources */,
 				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
+				7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,
 				BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */,
