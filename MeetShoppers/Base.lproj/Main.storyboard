@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bWN-mo-h0d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BhF-ek-jGG">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -190,7 +190,7 @@
                         <outlet property="signinButton" destination="lsK-W0-c9J" id="FkB-FJ-hgz"/>
                         <outlet property="signinView" destination="lsn-yr-fCA" id="aOL-hE-fhA"/>
                         <segue destination="O9X-cK-DkE" kind="show" identifier="signupSegue" animates="NO" id="Izv-sT-nom"/>
-                        <segue destination="bWN-mo-h0d" kind="show" identifier="mainSegue" id="RXb-f9-wlr"/>
+                        <segue destination="BhF-ek-jGG" kind="show" identifier="mainSegue" id="RXb-f9-wlr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hg5-3i-XZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,7 +376,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="wU5-Bu-1AW" id="Kyh-5z-7Ef"/>
-                        <segue destination="bWN-mo-h0d" kind="show" identifier="mainViewSegue" animates="NO" id="VLJ-ya-HWQ"/>
+                        <segue destination="BhF-ek-jGG" kind="show" identifier="mainViewSegue" animates="NO" id="VLJ-ya-HWQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q77-Ph-oTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
