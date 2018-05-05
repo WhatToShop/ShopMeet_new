@@ -19,7 +19,11 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var storeImage: UIImageView!
+    
     @IBOutlet weak var checkInButtonView: UIButton!
+    @IBOutlet weak var myListbtn: UIButton!
+    @IBOutlet weak var mapBtn: UIButton!
+    @IBOutlet weak var chatBtn: UIButton!
     
     var stores: Business?
     
@@ -34,7 +38,12 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         // set the labels as an oval
+        
         checkInButtonView.layer.cornerRadius = checkInButtonView.frame.height / 2
+        myListbtn.layer.cornerRadius = myListbtn.frame.height / 2
+        mapBtn.layer.cornerRadius = mapBtn.frame.height / 2
+        chatBtn.layer.cornerRadius = chatBtn.frame.height / 2
+        
         if let stores = stores {
             storeNameLabel.text = stores.name
             storeImage.af_setImage(withURL: stores.imageURL!)
@@ -42,8 +51,7 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
         storeImage.layer.cornerRadius = 20
         storeImage.clipsToBounds = true
-        
-        
+        self.view.bringSubview(toFront: storeNameLabel);
         // Do any additional setup after loading the view.
     }
 
@@ -53,14 +61,15 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func checkInButton(_ sender: Any) {
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popupStoreID") as! ObjPopUpViewController
+       
+    }
+    @IBAction func mapBtn(_ sender: Any) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mapPopUpId") as! MapPopUpViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
-    
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if DEBUG {
@@ -71,7 +80,6 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         return cell
     }
-    
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if DEBUG {
@@ -79,15 +87,9 @@ class StoreDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
         return 1
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func chatButton(_ sender: Any) {
+        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatLogViewController.business = stores
+        navigationController?.pushViewController(chatLogViewController, animated: true)
     }
-    */
-
 }
