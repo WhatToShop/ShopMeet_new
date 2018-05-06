@@ -32,7 +32,6 @@
 		BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18790E2082AC9000D97F9B /* BusinessCell.swift */; };
 		BF674F502085C43E0083AD0C /* LongLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF674F4F2085C43E0083AD0C /* LongLabel.swift */; };
 		BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF12FD8208D559900A05269 /* MapViewController.swift */; };
-		BFF402DF208A544200E6D9B5 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF402DE208A544200E6D9B5 /* SideMenu.swift */; };
 		BFF402E1208AA17C00E6D9B5 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */; };
 		BFF402E3208AB58C00E6D9B5 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */; };
 		C70AE8CE96DC3AB84CEB0708 /* Pods_MeetShoppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7612ADC570680EE0AF03A9E5 /* Pods_MeetShoppers.framework */; };
@@ -94,7 +93,6 @@
 		BF56E9DA2077E3B200D89184 /* BottomBorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderedTextField.swift; sourceTree = "<group>"; };
 		BF674F4F2085C43E0083AD0C /* LongLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongLabel.swift; sourceTree = "<group>"; };
 		BFF12FD8208D559900A05269 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		BFF402DE208A544200E6D9B5 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		CECE193B5CAB097E9E615006 /* Pods-MeetShoppersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppersTests/Pods-MeetShoppersTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 				BF56E9DA2077E3B200D89184 /* BottomBorderedTextField.swift */,
 				BF18790E2082AC9000D97F9B /* BusinessCell.swift */,
 				BF674F4F2085C43E0083AD0C /* LongLabel.swift */,
-				BFF402DE208A544200E6D9B5 /* SideMenu.swift */,
 				BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */,
 				BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */,
 			);
@@ -332,7 +329,7 @@
 				TargetAttributes = {
 					7B13FB03204906B80046D4D8 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					7B13FB17204906B80046D4D8 = {
 						CreatedOnToolsVersion = 9.2;
@@ -574,7 +571,6 @@
 				BF56E9D52077CB0300D89184 /* SignupViewController.swift in Sources */,
 				BFF402E3208AB58C00E6D9B5 /* ProfileCell.swift in Sources */,
 				BFF402E1208AA17C00E6D9B5 /* OptionCell.swift in Sources */,
-				BFF402DF208A544200E6D9B5 /* SideMenu.swift in Sources */,
 				F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */,
 				BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
@@ -754,8 +750,8 @@
 			baseConfigurationReference = 7CDF15091F0006D86C2F68A0 /* Pods-MeetShoppers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2Y5XUSGWXK;
 				INFOPLIST_FILE = MeetShoppers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kinmnalui.shopmeet;
@@ -771,8 +767,8 @@
 			baseConfigurationReference = D3154FDBCE430EF545FDFE22 /* Pods-MeetShoppers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2Y5XUSGWXK;
 				INFOPLIST_FILE = MeetShoppers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kinmnalui.shopmeet;
