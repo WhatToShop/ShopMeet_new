@@ -25,10 +25,6 @@ class ObjPopUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func closePopUp(_ sender: Any) {
         self.view.removeFromSuperview()
     }
@@ -36,17 +32,7 @@ class ObjPopUpViewController: UIViewController {
     @IBAction func saveMessageBtn(_ sender: Any) {
         let userID = Firebase.Auth.auth().currentUser!.uid
     ref?.child("users").child(userID).child("Notes").child(titleTextField.text).setValue(noteTextField.text)
-      
+        noteTextField.text = ""
+        titleTextField.text = ""
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

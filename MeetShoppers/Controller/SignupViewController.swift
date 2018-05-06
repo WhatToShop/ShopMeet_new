@@ -66,23 +66,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return false
     }
     
-    // Put profile image to storage if user has taken/choosen a picture during sign up
-    func uploadProfileImageToFirebaseStorage(data: Data) {
-        let userid = Auth.auth().currentUser!.uid
-        let profilePictureKey = "users/\(userid)/profilePicture/profilePicture.jpg"
-        let storageRef = Storage.storage().reference(withPath: profilePictureKey)
-        let uploadMetadata = StorageMetadata()
-        uploadMetadata.contentType = "image/jpeg"
-        let uploadTask = storageRef.putData(data, metadata: uploadMetadata) { (metadata, error) in
-            if let error = error {
-                self.displayMessageDialog(title: "Error", message: error.localizedDescription)
-            } else {
-                // Update user's photo url if profile picture is saved
-                guard case Auth.auth().currentUser!.createProfileChangeRequest().photoURL!? = URL(string: profilePictureKey) else { return }
-            }
-        }
-    }
-    
     @objc func dismissKeyboard(sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
@@ -135,31 +118,38 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             } else {
                 // Send email verification to the user when there is no error
                 Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in})
+                user!.sendEmailVerification(completion: { (error) in
+                    debugPrint("An email has been sent to the user to verify his/her email.")
+                })
+                
+                // Write new user data to the database
+                let ref = Firebase.Database.database().reference().child("users/\(user!.uid)")
+                ref.child("email").setValue(email)
            
                 // Set user profile picture if user picks/takes a picture when sign up
                 if let image = self.profileImage, let imageData = UIImageJPEGRepresentation(image, 1.0) {
-                    self.uploadProfileImageToFirebaseStorage(data: imageData)
+//                    let userid = Auth.auth().currentUser!.uid
+                    let profilePictureKey = "users/\(user!.uid)/profilePicture/profilePicture.jpg"
+                    let storageRef = Storage.storage().reference(withPath: profilePictureKey)
+                    let uploadMetadata = StorageMetadata()
+                    uploadMetadata.contentType = "image/jpeg"
+            
+                    storageRef.putData(imageData, metadata: uploadMetadata, completion: { (metadata, error) in
+                        storageRef.downloadURL(completion: { (url, error) in
+                            if let error = error {
+                                debugPrint(error)
+                            } else if let urlString = url?.absoluteString {
+                                ref.child("photoUrl").setValue(urlString)
+                            }
+                        })
+                    })
                 }
                 
-                // Write new user data to the database
-                self.writeUserData(uid: Auth.auth().currentUser?.uid, name: "Test User", email: email, imageUrl: "Test Image URL")
-                
-                self.performSegue(withIdentifier: "signinSegue", sender: nil)
-                let alert = UIAlertController(title: "Success", message: "You have successfully signed in. Please log in to to enjoy the unique shopping experience.", preferredStyle: UIAlertControllerStyle.alert)
-                self.present(alert, animated: false, completion: nil)
+                self.performSegue(withIdentifier: "usernameViewSegue", sender: nil)
             }
         }
     }
-    
-    func writeUserData(uid: String?, name: String?, email: String?, imageUrl: String?) {
-        guard let uid = uid else { return }
-        
-    //    let ref = Firebase.Database.database().reference().child("users").child(uid).
-        
-    
-    
-    }
-    
+
     @IBAction func onSignin(_ sender: UIButton) {
         performSegue(withIdentifier: "signinSegue", sender: nil)
     }

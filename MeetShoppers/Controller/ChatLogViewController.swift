@@ -4,11 +4,10 @@
 //
 //  Created by Kelvin Lui on 4/23/18.
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
-//
 import UIKit
 import Firebase
 
-class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
+class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
 
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -18,15 +17,24 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         return textField
     }()
     
-    var messages = [Message]()
+    var messages = [Message]() {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
     var business: Business!
+    let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.contentInset = UIEdgeInsetsMake(8, 0, 58, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
+        collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         collectionView?.delegate = self
         collectionView?.dataSource = self
+        collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponents()
         
         observeMessages()
@@ -37,30 +45,82 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! ChatMessageCell
+        let message = messages[indexPath.item]
+        setupCell(cell: cell, message: message)
+        
         return cell
+    }
+    
+    private func setupCell(cell: ChatMessageCell, message: Message) {
+        if let profileImageUrl = Firebase.Auth.auth().currentUser?.photoURL {
+            cell.profileImageView.af_setImage(withURL: profileImageUrl)
+        }
+        
+        let photoUrlRef = Firebase.Database.database().reference().child("users").child(message.fromId!)
+        photoUrlRef.observe(DataEventType.value) { (snapshot) in
+            if snapshot.hasChild("photoUrl") {
+                let photoUrlString = snapshot.childSnapshot(forPath: "photoUrl").value as! String
+                let photoUrl = URL(string: photoUrlString)
+                cell.profileImageView.af_setImage(withURL: photoUrl!)
+            }
+        }
+        
+        // Toggle between grey/blue message bubbles
+        if message.fromId == Firebase.Auth.auth().currentUser?.uid {
+            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
+            cell.textView.textColor = UIColor.white
+            cell.profileImageView.isHidden = true
+            cell.bubbleRightAnchor?.isActive = true
+            cell.bubbleLeftAnchor?.isActive = false
+        } else {
+            cell.bubbleView.backgroundColor = UIColor(red: 240, green: 240, blue: 240)
+            cell.textView.textColor = UIColor.black
+            cell.profileImageView.isHidden = false
+            cell.bubbleRightAnchor?.isActive = false
+            cell.bubbleLeftAnchor?.isActive  = true
+        }
+        
+        cell.textView.text = message.text
+        cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var height: CGFloat = 80
+        
+        // get estimated height somehow
+        if let text = messages[indexPath.item].text {
+            height = estimateFrameForText(text: text).height + 20
+        }
+        
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    private func estimateFrameForText(text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
     // Update cell view and messages when a new message node is created in the database
     func observeMessages() {
-        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+//        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+        let ref = Database.database().reference().child("businesses").child(business.id!).child("messages")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? NSDictionary {
                 let message = Message(dictionary: dictionary)
                 self.messages.append(message)
-                
-                // Reload data asynchronously to avoid crashing
-                DispatchQueue.main.async {
-                    self.collectionView?.reloadData()
-                }
             }
-        }, withCancel: nil)
+        }) { (error) in
+            debugPrint(error)
+        }
     }
     
     func setupInputComponents() {
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        containerView.backgroundColor = UIColor.white
         view.addSubview(containerView)
         
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -82,7 +142,6 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         
         // Add input text field
         containerView.addSubview(inputTextField)
-        
         inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
         inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
@@ -112,7 +171,8 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
         }
         
         let timestamp = NSTimeIntervalSince1970
-        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+//        let ref = Firebase.Database.database().reference().child("messages").child("businesses").child(business.id!)
+        let ref = Firebase.Database.database().reference().child("businesses").child(business.id!).child("messages")
         let childRef = ref.childByAutoId()
         let values: [String: Any] = [
             "text": inputTextField.text!,
@@ -123,6 +183,7 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return true
+        view.endEditing(true)
+        return false
     }
 }
