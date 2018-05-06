@@ -15,10 +15,12 @@
 		7B13FB12204906B80046D4D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B13FB10204906B80046D4D8 /* LaunchScreen.storyboard */; };
 		7B13FB1D204906B80046D4D8 /* MeetShoppersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB1C204906B80046D4D8 /* MeetShoppersTests.swift */; };
 		7B13FB28204906B80046D4D8 /* MeetShoppersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */; };
+		7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */; };
 		7B4F8AAD20829B2E007B91EC /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */; };
 		7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAE20829DA7007B91EC /* MessageCell.swift */; };
 		7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */; };
 		7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */; };
+		7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */; };
 		BF1878DF207FFB0E00D97F9B /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */; };
 		BF1878E72081298700D97F9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E62081298700D97F9B /* MainViewController.swift */; };
 		BF1879092082725D00D97F9B /* YelpAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1879082082725D00D97F9B /* YelpAPIRouter.swift */; };
@@ -78,10 +80,12 @@
 		7B13FB23204906B80046D4D8 /* MeetShoppersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetShoppersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetShoppersUITests.swift; sourceTree = "<group>"; };
 		7B13FB29204906B80046D4D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpViewController.swift; sourceTree = "<group>"; };
 		7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		7B4F8AAE20829DA7007B91EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPopUpViewController.swift; sourceTree = "<group>"; };
 		7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		7CDF15091F0006D86C2F68A0 /* Pods-MeetShoppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.debug.xcconfig"; sourceTree = "<group>"; };
 		A488A0B616BE69BB4B88FAE1 /* Pods_MeetShoppersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetShoppersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				BFF12FD8208D559900A05269 /* MapViewController.swift */,
 				BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */,
 				BFDB79432092DCF800C019B2 /* UsernameViewController.swift */,
+				7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				BFF402DE208A544200E6D9B5 /* SideMenu.swift */,
 				BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */,
 				BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */,
+				7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */,
 				BF7C56C120939AEB0040164B /* ChatMessageCell.swift */,
 			);
 			path = View;
@@ -587,6 +593,7 @@
 				BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
 				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
+				7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,
 				BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */,
@@ -595,6 +602,7 @@
 				BF1878E72081298700D97F9B /* MainViewController.swift in Sources */,
 				BF7C56C220939AEB0040164B /* ChatMessageCell.swift in Sources */,
 				7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */,
+				7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */,
 				BF56E9D92077DEB800D89184 /* UIExtension.swift in Sources */,
 				BF18790D20829B8C00D97F9B /* Business.swift in Sources */,
 				BF2EBB35208ED85F00592D72 /* Message.swift in Sources */,
