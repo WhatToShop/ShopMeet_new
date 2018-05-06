@@ -10,12 +10,24 @@ import UIKit
 
 class OptionCell: UICollectionViewCell {
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Setting"
-        label.textColor = UIColor.white
-        return label
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.gray : UIColor(rgb: 0xD43D3D)
+        }
+    }
+    
+    let optionButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Option", for: UIControlState.normal)
+        button.setTitleColor(UIColor.black, for: UIControlState.selected)
+        button.titleLabel?.textColor = UIColor.white
+        button.addTarget(self, action: #selector(handleOption), for: UIControlEvents.touchUpInside)
+        return button
     }()
+    
+    @objc func handleOption() {
+        optionButton.isSelected = !optionButton.isSelected
+    }
     
     let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
@@ -27,11 +39,11 @@ class OptionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(nameLabel)
+        addSubview(optionButton)
         addSubview(iconImageView)
         
-        addContraintsWithFormat("H:|-16-[v0(30)]-16-[v1]|", views: iconImageView, nameLabel)
-        addContraintsWithFormat("V:|[v0]|", views: nameLabel)
+        addContraintsWithFormat("H:|-16-[v0(30)]-16-[v1]|", views: iconImageView, optionButton)
+        addContraintsWithFormat("V:|[v0]|", views: optionButton)
         addContraintsWithFormat("V:[v0(30)]", views: iconImageView)
         addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
     }

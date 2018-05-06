@@ -22,7 +22,6 @@
 		7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */; };
 		7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */; };
 		BF1878DF207FFB0E00D97F9B /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */; };
-		BF1878E3208125B300D97F9B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E2208125B300D97F9B /* User.swift */; };
 		BF1878E72081298700D97F9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E62081298700D97F9B /* MainViewController.swift */; };
 		BF1879092082725D00D97F9B /* YelpAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1879082082725D00D97F9B /* YelpAPIRouter.swift */; };
 		BF18790D20829B8C00D97F9B /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18790C20829B8C00D97F9B /* Business.swift */; };
@@ -90,7 +89,6 @@
 		7CDF15091F0006D86C2F68A0 /* Pods-MeetShoppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.debug.xcconfig"; sourceTree = "<group>"; };
 		A488A0B616BE69BB4B88FAE1 /* Pods_MeetShoppersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetShoppersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
-		BF1878E2208125B300D97F9B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BF1878E62081298700D97F9B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BF1879082082725D00D97F9B /* YelpAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIRouter.swift; sourceTree = "<group>"; };
 		BF18790C20829B8C00D97F9B /* Business.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 			children = (
 				BF56E9D82077DEB800D89184 /* UIExtension.swift */,
 				BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */,
-				BF1878E2208125B300D97F9B /* User.swift */,
 				BF1879082082725D00D97F9B /* YelpAPIRouter.swift */,
 				BF18790C20829B8C00D97F9B /* Business.swift */,
 				BF2EBB34208ED85F00592D72 /* Message.swift */,
@@ -595,7 +592,6 @@
 				F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */,
 				BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
-				BF1878E3208125B300D97F9B /* User.swift in Sources */,
 				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
 				7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,

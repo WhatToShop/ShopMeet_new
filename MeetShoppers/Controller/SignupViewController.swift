@@ -133,17 +133,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                     let storageRef = Storage.storage().reference(withPath: profilePictureKey)
                     let uploadMetadata = StorageMetadata()
                     uploadMetadata.contentType = "image/jpeg"
-                    let uploadTask = storageRef.putData(imageData, metadata: uploadMetadata) { (metadata, error) in
-                        user!.createProfileChangeRequest().photoURL = URL(string: profilePictureKey)
-                        ref.child("photoUrl").setValue(profilePictureKey)
-                    }
+            
+                    storageRef.putData(imageData, metadata: uploadMetadata, completion: { (metadata, error) in
+                        storageRef.downloadURL(completion: { (url, error) in
+                            if let error = error {
+                                debugPrint(error)
+                            } else if let urlString = url?.absoluteString {
+                                ref.child("photoUrl").setValue(urlString)
+                            }
+                        })
+                    })
                 }
                 
-//                let alert = UIAlertController(title: "Success", message: "Please log in to to enjoy the unique shopping experience.", preferredStyle: UIAlertControllerStyle.alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-//                    self.performSegue(withIdentifier: "signinSegue", sender: nil)
-//                }))
-//                self.present(alert, animated: false, completion: nil)
                 self.performSegue(withIdentifier: "usernameViewSegue", sender: nil)
             }
         }
