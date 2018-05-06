@@ -14,7 +14,11 @@ import FirebaseAuth
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
 
+   
+    
+    
     @IBOutlet weak var menuView: UIView!
+    
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var scrollCounter: Int = 0
@@ -58,7 +62,7 @@ UINavigationControllerDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        menuView.alpha = 0
+        menuView.alpha = 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
