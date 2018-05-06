@@ -16,6 +16,10 @@
 		7B13FB1D204906B80046D4D8 /* MeetShoppersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB1C204906B80046D4D8 /* MeetShoppersTests.swift */; };
 		7B13FB28204906B80046D4D8 /* MeetShoppersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */; };
 		7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */; };
+		7B4F0B71209ED0B400948CDE /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B6A209ED0B300948CDE /* BEMAnimationManager.m */; };
+		7B4F0B72209ED0B400948CDE /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B6C209ED0B300948CDE /* BEMCheckBox.m */; };
+		7B4F0B73209ED0B400948CDE /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B6E209ED0B300948CDE /* BEMCheckBoxGroup.m */; };
+		7B4F0B74209ED0B400948CDE /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F0B70209ED0B300948CDE /* BEMPathManager.m */; };
 		7B4F8AAD20829B2E007B91EC /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */; };
 		7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AAE20829DA7007B91EC /* MessageCell.swift */; };
 		7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */; };
@@ -82,6 +86,15 @@
 		7B13FB27204906B80046D4D8 /* MeetShoppersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetShoppersUITests.swift; sourceTree = "<group>"; };
 		7B13FB29204906B80046D4D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPopUpViewController.swift; sourceTree = "<group>"; };
+		7B4F0B69209ED0B300948CDE /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationManager.h; sourceTree = "<group>"; };
+		7B4F0B6A209ED0B300948CDE /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationManager.m; sourceTree = "<group>"; };
+		7B4F0B6B209ED0B300948CDE /* BEMCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBox.h; sourceTree = "<group>"; };
+		7B4F0B6C209ED0B300948CDE /* BEMCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBox.m; sourceTree = "<group>"; };
+		7B4F0B6D209ED0B300948CDE /* BEMCheckBoxGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBoxGroup.h; sourceTree = "<group>"; };
+		7B4F0B6E209ED0B300948CDE /* BEMCheckBoxGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBoxGroup.m; sourceTree = "<group>"; };
+		7B4F0B6F209ED0B300948CDE /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPathManager.h; sourceTree = "<group>"; };
+		7B4F0B70209ED0B300948CDE /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPathManager.m; sourceTree = "<group>"; };
+		7B4F0B76209ED23000948CDE /* CheckMarkHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckMarkHeader.h; sourceTree = "<group>"; };
 		7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 		7B4F8AAE20829DA7007B91EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPopUpViewController.swift; sourceTree = "<group>"; };
@@ -170,11 +183,13 @@
 		7B13FB06204906B80046D4D8 /* MeetShoppers */ = {
 			isa = PBXGroup;
 			children = (
+				7B4F0B68209ED0B300948CDE /* Classes */,
 				BF56E9CF2077BD0100D89184 /* Model */,
 				BF56E9CE2077BCFB00D89184 /* View */,
 				BF56E9CD2077BCD100D89184 /* Controller */,
 				7B13FB07204906B80046D4D8 /* AppDelegate.swift */,
 				7B13FB0B204906B80046D4D8 /* Main.storyboard */,
+				7B4F0B76209ED23000948CDE /* CheckMarkHeader.h */,
 				F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */,
 				7B13FB0E204906B80046D4D8 /* Assets.xcassets */,
 				7B13FB10204906B80046D4D8 /* LaunchScreen.storyboard */,
@@ -199,6 +214,22 @@
 				7B13FB29204906B80046D4D8 /* Info.plist */,
 			);
 			path = MeetShoppersUITests;
+			sourceTree = "<group>";
+		};
+		7B4F0B68209ED0B300948CDE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				7B4F0B69209ED0B300948CDE /* BEMAnimationManager.h */,
+				7B4F0B6A209ED0B300948CDE /* BEMAnimationManager.m */,
+				7B4F0B6B209ED0B300948CDE /* BEMCheckBox.h */,
+				7B4F0B6C209ED0B300948CDE /* BEMCheckBox.m */,
+				7B4F0B6D209ED0B300948CDE /* BEMCheckBoxGroup.h */,
+				7B4F0B6E209ED0B300948CDE /* BEMCheckBoxGroup.m */,
+				7B4F0B6F209ED0B300948CDE /* BEMPathManager.h */,
+				7B4F0B70209ED0B300948CDE /* BEMPathManager.m */,
+			);
+			name = Classes;
+			path = "../../../../../Downloads/BEMCheckBox-master/Classes";
 			sourceTree = "<group>";
 		};
 		83E7111076E2901E4A5B3C5C /* Pods */ = {
@@ -584,6 +615,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B13FB08204906B80046D4D8 /* AppDelegate.swift in Sources */,
+				7B4F0B74209ED0B400948CDE /* BEMPathManager.m in Sources */,
 				BF1878DF207FFB0E00D97F9B /* YelpAPIClient.swift in Sources */,
 				BF674F502085C43E0083AD0C /* LongLabel.swift in Sources */,
 				7B4F8AAD20829B2E007B91EC /* StoreDetailViewController.swift in Sources */,
@@ -594,6 +626,7 @@
 				BFF402DF208A544200E6D9B5 /* SideMenu.swift in Sources */,
 				F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */,
 				BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */,
+				7B4F0B71209ED0B400948CDE /* BEMAnimationManager.m in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
 				BF1878E3208125B300D97F9B /* User.swift in Sources */,
 				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
@@ -603,8 +636,10 @@
 				BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */,
 				BFF12FDB208E92AB00A05269 /* ChatLogViewController.swift in Sources */,
 				BF56E9DB2077E3B200D89184 /* BottomBorderedTextField.swift in Sources */,
+				7B4F0B73209ED0B400948CDE /* BEMCheckBoxGroup.m in Sources */,
 				BF1878E72081298700D97F9B /* MainViewController.swift in Sources */,
 				BF7C56C220939AEB0040164B /* ChatMessageCell.swift in Sources */,
+				7B4F0B72209ED0B400948CDE /* BEMCheckBox.m in Sources */,
 				7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */,
 				7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */,
 				BF56E9D92077DEB800D89184 /* UIExtension.swift in Sources */,
@@ -784,6 +819,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kinmnalui.shopmeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = MeetShoppers/CheckMarkHeader.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -800,6 +836,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kinmnalui.shopmeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = MeetShoppers/CheckMarkHeader.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

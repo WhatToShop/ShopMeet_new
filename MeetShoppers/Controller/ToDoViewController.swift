@@ -40,9 +40,9 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ref = Database.database().reference()
     ref?.child("users").child(userID).child("Notes").observe(.childAdded, with: {snapShot in
         
-            //let messageV = snapShot.childSnapshot(forPath: titleV).value as! String
         let messageV = ""
         self.notes.append(note(title: snapShot.key as! String, message: snapShot.value as! String))
+        self.noteFilter.append(note(title: snapShot.key as! String, message: snapShot.value as! String))
         self.tableView.reloadData()
         print("Title: ", snapShot.key)
         print("value: ", snapShot.value)
@@ -52,15 +52,8 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ref?.child("users").child(userID).child("Notes").observe(.childAdded, with: {(snapShot) in
           
         })
-         noteFilter = notes
          self.tableView.reloadData()
-        // Do any additional setup after loading the view.
     }
-    
-    /*
-     tableView.estimatedRowHeight = 100
-     tableView.rowHeight = UITableViewAutomaticDimension
- */
 
     @IBAction func addNoteAction(_ sender: Any) {
         print("add Note action")
