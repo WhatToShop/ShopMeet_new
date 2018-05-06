@@ -52,13 +52,13 @@ UINavigationControllerDelegate{
         edgePanRecognizer.edges = .left
         view.addGestureRecognizer(edgePanRecognizer)
         
-        viewConstraint.constant = -175
-                
+//        viewConstraint.constant = -175
+        
         //menuLauncher = SideMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        menuView.alpha = 0
+//        menuView.alpha = 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -235,4 +235,3 @@ UINavigationControllerDelegate{
         }
     }// sending data to another view controller
 */
- }
