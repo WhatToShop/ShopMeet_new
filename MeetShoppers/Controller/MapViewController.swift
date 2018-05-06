@@ -43,6 +43,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             mapView.showsUserLocation = true
             userRegion = MKCoordinateRegion(center: userLocation.coordinate, span: mapSpan)
             mapView.setRegion(userRegion!, animated: false)
+        } else {
+            let customizedLocation = CLLocationCoordinate2D(latitude: 22.3204, longitude: 114.1698)
+            userRegion = MKCoordinateRegion(center: customizedLocation, span: mapSpan)
+            mapView.setRegion(userRegion!, animated: false)
         }
         
         // Add shop pins to the map view 
@@ -54,10 +58,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func handleBack(_ sender: UIButton) {
-        performSegue(withIdentifier: "mainViewSegue", sender: nil)
     }
 
     /*
