@@ -58,7 +58,7 @@ UINavigationControllerDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        menuView.alpha = 0
+//        menuView.alpha = 0kml
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
