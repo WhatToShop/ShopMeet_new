@@ -5,6 +5,7 @@
 //  Created by Kelvin Lui on 4/14/18.
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
 //
+
 import UIKit
 import AlamofireImage
 import Firebase
@@ -84,6 +85,7 @@ class BusinessCell: UITableViewCell {
             if let url = business.imageURL { businessImageView.af_setImage(withURL: url) }
             if let name = business.name { nameLabel.text = name }
             if let distance = business.distance { distanceLabel.text = distance }
+            
         }
     }
     
@@ -94,6 +96,7 @@ class BusinessCell: UITableViewCell {
     @objc func handleStar() {
         // TODO
         
+        
     }
     
     @objc func handleLike() {
@@ -101,6 +104,9 @@ class BusinessCell: UITableViewCell {
         likeButton.isSelected = didUserLike
         business.likeCount! += (didUserLike ? 1 : -1)
         likeCountLabel.text = "\(business.likeCount!) " + (business.likeCount! > 1 ? "likes" : "like")
+        
+        // Add uid to database to specify the user has liked the busienss
+        
     }
     
     @objc func handleChat() {
