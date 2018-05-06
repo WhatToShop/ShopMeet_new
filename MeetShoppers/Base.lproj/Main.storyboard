@@ -880,7 +880,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miV-za-I4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="247.5" y="-399.29577464788736"/>
+            <point key="canvasLocation" x="253" y="-399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hgO-1f-wvc">
@@ -910,9 +910,9 @@
         <image name="signup" width="320" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RXb-f9-wlr"/>
+        <segue reference="aKL-bM-UTS"/>
         <segue reference="3gT-Ek-d6i"/>
-        <segue reference="Izv-sT-nom"/>
+        <segue reference="pLH-PO-NdN"/>
         <segue reference="tbF-lh-h42"/>
     </inferredMetricsTieBreakers>
 </document>
