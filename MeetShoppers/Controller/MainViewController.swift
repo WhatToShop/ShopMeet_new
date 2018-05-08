@@ -62,11 +62,7 @@ UINavigationControllerDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-<<<<<<< HEAD
         menuView.alpha = 0
-=======
-//        menuView.alpha = 0kml
->>>>>>> ea01ec1e1cfd0569ca5c7a24f789f0846146268a
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,6 +97,9 @@ UINavigationControllerDelegate{
         }
     }
     
+    @IBAction func toNotes(_ sender: Any) {
+        performSegue(withIdentifier: "notesSegue", sender: nil)
+    }
     @IBAction func handleMap(_ sender: UIButton) {
         performSegue(withIdentifier: "mapViewSegue", sender: nil)
     }
@@ -164,6 +163,9 @@ UINavigationControllerDelegate{
         case "cameraViewSegue":
             print("reached cameraViewSegue")
             let vc = segue.destination as! CameraViewController
+            break
+        case "notesSegue":
+            let vc = segue.destination as! ToDoViewController
             break
         case "detailViewSegue":
             print("reached detailView")

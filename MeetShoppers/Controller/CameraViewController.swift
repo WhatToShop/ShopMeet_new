@@ -8,17 +8,35 @@
 
 import UIKit
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("camera view controller view did load")
+        
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            vc.sourceType = .camera
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+        }
+        
+        self.present(vc, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        print("this is working!")
+
     }
     
 
