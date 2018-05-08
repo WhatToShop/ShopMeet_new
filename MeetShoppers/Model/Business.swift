@@ -35,18 +35,33 @@ struct LocationKey {
     static let neighborhoods = "neighborhoods"
 }
 
-class Business: NSObject {
+class Business {
     let name: String?
     let address: String?
     let imageURL: URL?
-    let distance: String?
+    var distance: String?
     let longitude: Float?
     let latitude: Float?
     let id: String?
-    let likeCount: Int?
-    let likes: [String: Any]?
+    var likeCount: Int? {
+        didSet {
+            guard let id = id else { return }
+            if likeCount! < 0 { likeCount = 0 } // Some safety protocol that may avoid bugs
+            Database.database().reference().child("businesses").child(id).child("likeCount").setValue(likeCount)
+        }
+    }
+    
+    var likes: [String: Any]? {
+        didSet {
+//            guard let id = id else { return }
+//            let uid = Auth.auth().currentUser!.uid
+//            Database.database().reference().child("businesses").child(id).child("likes").child(uid)
+        }
+    }
+    let businessRef: DatabaseReference?
     
     init(dictionary: JSON) {
+        // Get data from Yelp API
         name = dictionary[APIBusinessKey.name].string
         id = dictionary[APIBusinessKey.id].string
         
@@ -75,7 +90,6 @@ class Business: NSObject {
             if let addressArray = location[LocationKey.address] as? NSArray {
                 address = addressArray[0] as! String
             }
-            
             if let neighborhoods = location[LocationKey.neighborhoods] as? NSArray {
                 if !address.isEmpty {
                     address += ", "
@@ -93,27 +107,23 @@ class Business: NSObject {
             distance = nil
         }
         
-        // Get "likes" dictionary
-        if let likes = dictionary[CustomizedBusinessKey.likes].dictionaryObject {
-            self.likes = likes
-        } else {
-            self.likes = [:]
-        }
-        
-        // Get like count
-        if let likeCount = dictionary[CustomizedBusinessKey.likeCount].int {
-            self.likeCount = likeCount
-        } else {
-            self.likeCount = 0
+        // Store database reference
+        businessRef = Database.database().reference().child("businesses").child(id!)
+        businessRef!.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            // If like count is not already set, create a new instance in database
+            if !snapshot.hasChild("likeCount") {
+                self.businessRef!.child("likeCount").setValue(0)
+                self.likeCount = 0
+            } else {
+                self.likeCount = snapshot.childSnapshot(forPath: "likeCount").value as? Int
+            }
+        }) { (error) in
+            debugPrint(error)
         }
     }
     
-    func observeLikeStatus(by uid: String, completion: @escaping (_ result: Bool) -> ()) -> Void {
-        let ref = Database.database().reference().child("businesses").child(uid)
-        let result = true
-        ref.observeSingleEvent(of: DataEventType.value) { (snapshot) in
-//            completion(snapshot.hasChild(uid))
-        }
+    func modifyLike(uid: String, liked: Bool) {
+        
     }
     
     class func businesses(json: JSON) -> [Business] {
