@@ -452,7 +452,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-Ae-WUh">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-Ae-WUh">
                                 <rect key="frame" x="0.0" y="64" width="140" height="504"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-3G-a2v">
@@ -468,7 +468,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Scan"/>
                                         <connections>
-                                            <segue destination="LR8-4Z-vuI" kind="show" identifier="cameraViewSegue" id="Ny6-Jg-6rU"/>
+                                            <action selector="showCamera:" destination="BhF-ek-jGG" eventType="touchUpInside" id="Bpl-cn-ge9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cV-xM-HYr">
@@ -542,21 +542,6 @@
                 </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1494.375" y="-91.901408450704224"/>
-        </scene>
-        <!--Camera View Controller-->
-        <scene sceneID="y18-vp-W8z">
-            <objects>
-                <viewController id="LR8-4Z-vuI" customClass="CameraViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="K2u-j9-Xm4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="TV3-3m-ssk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Wx-Eh-0XR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1545" y="627"/>
         </scene>
         <!--Store Detail View Controller-->
         <scene sceneID="D7C-Vd-TBw">
@@ -1012,7 +997,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
-        <segue reference="xYN-xl-PTz"/>
+        <segue reference="hd8-3G-b0l"/>
         <segue reference="pLH-PO-NdN"/>
         <segue reference="2V3-xr-ypw"/>
     </inferredMetricsTieBreakers>
