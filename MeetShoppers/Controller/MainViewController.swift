@@ -229,6 +229,8 @@ UINavigationControllerDelegate{
         self.present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func showBookmarks(_ sender: Any) {
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         var selectedImageFromPicker: UIImage?
@@ -247,6 +249,7 @@ UINavigationControllerDelegate{
             let storageRef = Storage.storage().reference(withPath: receiptsKey)
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
+            let ref = Firebase.Database.database().reference().child("users/\(userID)/receipts")
             
 
             if let uploadData = UIImagePNGRepresentation(selectedImage){
@@ -263,7 +266,7 @@ UINavigationControllerDelegate{
                                 self.present(alert, animated: true, completion: nil)
                             }
                         }
-                        else{
+                        else if let urlString = url?.absoluteString{
                             let alert = UIAlertController(title: "Receipt Uploaded", message: "Look at your receipts in the receipts section of the menu", preferredStyle: .alert)
                             let okayAction = UIAlertAction(title: "Continue", style: .default) { _ in
                                 // do nothing
@@ -272,6 +275,7 @@ UINavigationControllerDelegate{
                             DispatchQueue.main.async {
                                 self.present(alert, animated: true, completion: nil)
                             }
+                             ref.child(uuid).setValue(urlString)
                         }
                     })
                 })

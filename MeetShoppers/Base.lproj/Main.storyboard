@@ -488,6 +488,14 @@
                                             <action selector="toNotes:" destination="BhF-ek-jGG" eventType="touchUpInside" id="0fw-yJ-sZG"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cA-Cj-nKK">
+                                        <rect key="frame" x="30" y="237" width="86" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Bookmarked"/>
+                                        <connections>
+                                            <action selector="showBookmarks:" destination="BhF-ek-jGG" eventType="touchUpInside" id="GXD-EA-4MC"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.83137254901960778" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
