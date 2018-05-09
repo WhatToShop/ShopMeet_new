@@ -45,6 +45,8 @@
 		BFF402E1208AA17C00E6D9B5 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */; };
 		BFF402E3208AB58C00E6D9B5 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */; };
 		C70AE8CE96DC3AB84CEB0708 /* Pods_MeetShoppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7612ADC570680EE0AF03A9E5 /* Pods_MeetShoppers.framework */; };
+		F31653E720A3624200FFD757 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31653E620A3624200FFD757 /* ReceiptCell.swift */; };
+		F39D334D20A154770004AA89 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D334C20A154770004AA89 /* ReceiptsViewController.swift */; };
 		F3D7B6A120829984009F6F21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */; };
 		F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7B6A220829D36009F6F21 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +124,8 @@
 		CECE193B5CAB097E9E615006 /* Pods-MeetShoppersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppersTests/Pods-MeetShoppersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFCED5EA4BCDE33AF8F5FF1B /* Pods_MeetShoppersUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetShoppersUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3154FDBCE430EF545FDFE22 /* Pods-MeetShoppers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.release.xcconfig"; sourceTree = "<group>"; };
+		F31653E620A3624200FFD757 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
+		F39D334C20A154770004AA89 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3D7B6A220829D36009F6F21 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,6 +265,7 @@
 				7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */,
 				7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */,
 				F3D7B6A220829D36009F6F21 /* MenuViewController.swift */,
+				F39D334C20A154770004AA89 /* ReceiptsViewController.swift */,
 				BFF12FD8208D559900A05269 /* MapViewController.swift */,
 				BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */,
 				BFDB79432092DCF800C019B2 /* UsernameViewController.swift */,
@@ -277,6 +282,7 @@
 				BF18790E2082AC9000D97F9B /* BusinessCell.swift */,
 				BF674F4F2085C43E0083AD0C /* LongLabel.swift */,
 				BFF402E0208AA17C00E6D9B5 /* OptionCell.swift */,
+				F31653E620A3624200FFD757 /* ReceiptCell.swift */,
 				BFF402E2208AB58C00E6D9B5 /* ProfileCell.swift */,
 				7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */,
 				BF7C56C120939AEB0040164B /* ChatMessageCell.swift */,
@@ -627,7 +633,9 @@
 				BFDB79442092DCF800C019B2 /* UsernameViewController.swift in Sources */,
 				BFF12FDB208E92AB00A05269 /* ChatLogViewController.swift in Sources */,
 				BF56E9DB2077E3B200D89184 /* BottomBorderedTextField.swift in Sources */,
+				F31653E720A3624200FFD757 /* ReceiptCell.swift in Sources */,
 				7BE839F520A13FD8007E3659 /* BEMCheckBoxGroup.m in Sources */,
+				F39D334D20A154770004AA89 /* ReceiptsViewController.swift in Sources */,
 				BF1878E72081298700D97F9B /* MainViewController.swift in Sources */,
 				BF7C56C220939AEB0040164B /* ChatMessageCell.swift in Sources */,
 				7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */,

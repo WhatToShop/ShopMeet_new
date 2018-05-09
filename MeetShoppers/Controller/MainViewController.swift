@@ -161,10 +161,9 @@ UINavigationControllerDelegate{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         switch segue.identifier! {
-        /*case "cameraViewSegue":
-            print("reached cameraViewSegue")
-            let vc = segue.destination as! CameraViewController
-            break*/
+        case "receiptsSegue":
+            let vc = segue.destination as! ReceiptsViewController
+            break
         case "notesSegue":
             let vc = segue.destination as! ToDoViewController
             break
@@ -208,6 +207,7 @@ UINavigationControllerDelegate{
     
     
     @IBAction func showReceipts(_ sender: Any) {
+        performSegue(withIdentifier: "receiptsSegue", sender: nil)
     }
     
     @IBAction func showNotes(_ sender: Any) {
