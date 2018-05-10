@@ -25,6 +25,7 @@
 		7BE839F420A13FD8007E3659 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839EE20A13FD7007E3659 /* BEMCheckBox.m */; };
 		7BE839F520A13FD8007E3659 /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839F020A13FD7007E3659 /* BEMCheckBoxGroup.m */; };
 		7BE839F620A13FD8007E3659 /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839F220A13FD7007E3659 /* BEMPathManager.m */; };
+		7BE839F820A1444E007E3659 /* IndividualNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839F720A1444E007E3659 /* IndividualNoteViewController.swift */; };
 		BF1878DF207FFB0E00D97F9B /* YelpAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */; };
 		BF1878E72081298700D97F9B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1878E62081298700D97F9B /* MainViewController.swift */; };
 		BF1879092082725D00D97F9B /* YelpAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1879082082725D00D97F9B /* YelpAPIRouter.swift */; };
@@ -101,6 +102,7 @@
 		7BE839F020A13FD7007E3659 /* BEMCheckBoxGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBoxGroup.m; sourceTree = "<group>"; };
 		7BE839F120A13FD7007E3659 /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPathManager.h; sourceTree = "<group>"; };
 		7BE839F220A13FD7007E3659 /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPathManager.m; sourceTree = "<group>"; };
+		7BE839F720A1444E007E3659 /* IndividualNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualNoteViewController.swift; sourceTree = "<group>"; };
 		7CDF15091F0006D86C2F68A0 /* Pods-MeetShoppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.debug.xcconfig"; sourceTree = "<group>"; };
 		A488A0B616BE69BB4B88FAE1 /* Pods_MeetShoppersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetShoppersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF1878DE207FFB0E00D97F9B /* YelpAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIClient.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */,
 				BFDB79432092DCF800C019B2 /* UsernameViewController.swift */,
 				7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */,
+				7BE839F720A1444E007E3659 /* IndividualNoteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */,
 				7BE839F320A13FD8007E3659 /* BEMAnimationManager.m in Sources */,
 				BF674F4E2085A37A0083AD0C /* BusinessCell.swift in Sources */,
+				7BE839F820A1444E007E3659 /* IndividualNoteViewController.swift in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
 				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
 				7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */,
