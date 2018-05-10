@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -406,6 +406,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="receiptsImageView" destination="QKP-fb-8Aq" id="WPJ-bY-yYT"/>
+                                            <segue destination="aV5-rN-Y9y" kind="show" id="hQ2-wx-KYW"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -421,6 +422,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENO-N0-imZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1395" y="667.6056338028169"/>
+        </scene>
+        <!--Detail Receipt View Controller-->
+        <scene sceneID="amO-8u-J0b">
+            <objects>
+                <viewController id="aV5-rN-Y9y" customClass="DetailReceiptViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H20-cC-OjW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uNE-TK-wxe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLQ-Qt-AR2">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FLQ-Qt-AR2" firstAttribute="leading" secondItem="uNE-TK-wxe" secondAttribute="leading" id="7Jq-vw-zpt"/>
+                                    <constraint firstAttribute="trailing" secondItem="FLQ-Qt-AR2" secondAttribute="trailing" id="EXn-ma-Dq9"/>
+                                    <constraint firstAttribute="bottom" secondItem="FLQ-Qt-AR2" secondAttribute="bottom" id="lW2-JN-Hec"/>
+                                    <constraint firstItem="FLQ-Qt-AR2" firstAttribute="top" secondItem="uNE-TK-wxe" secondAttribute="top" id="yfV-2x-0vC"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uNE-TK-wxe" firstAttribute="leading" secondItem="Lay-DG-3Jn" secondAttribute="leading" id="3nX-LP-J6l"/>
+                            <constraint firstItem="uNE-TK-wxe" firstAttribute="trailing" secondItem="Lay-DG-3Jn" secondAttribute="trailing" id="LOY-Jp-nhU"/>
+                            <constraint firstItem="uNE-TK-wxe" firstAttribute="bottom" secondItem="Lay-DG-3Jn" secondAttribute="bottom" id="VWD-U7-2NM"/>
+                            <constraint firstItem="uNE-TK-wxe" firstAttribute="top" secondItem="Lay-DG-3Jn" secondAttribute="top" id="zEn-dm-pif"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lay-DG-3Jn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xlG-jd-Hzi">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="o5m-hz-7q8">
+                            <connections>
+                                <action selector="shareAction:" destination="aV5-rN-Y9y" id="lga-Mf-Fo6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="FLQ-Qt-AR2" id="bph-Se-tI1"/>
+                        <outlet property="scrollView" destination="uNE-TK-wxe" id="zSx-fR-qCA"/>
+                        <outlet property="view" destination="H20-cC-OjW" id="Mr4-TK-R0u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Mk-1f-IPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="1498.943661971831"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="vGA-x3-EBA">

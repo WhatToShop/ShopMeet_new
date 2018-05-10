@@ -10,13 +10,15 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class ReceiptsViewController: UIViewController, UICollectionViewDataSource {
+class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var receiptsURL: [NSURL] = []
+    var currReceipt : UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
+        collectionView.delegate = self
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = layout.minimumInteritemSpacing
@@ -30,7 +32,7 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource {
     }
 
     func loadReceipts(){
-        let userID : String = (Auth.auth().currentUser?.uid)!
+        let userID  = (Auth.auth().currentUser?.uid)!
         let ref = Firebase.Database.database().reference().child("users/\(userID)/receipts")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get download URL from snapshot
@@ -39,12 +41,11 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource {
                 let value = snap.value
                 let convertedURL = NSURL(string: value as! String)
                 self.receiptsURL.append(convertedURL!)
-                print("is it even going in here")
                 self.collectionView.reloadData()
             }
         })
-    }
     
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,6 +60,33 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource {
         cell.receiptsImageView.af_setImage(withURL: receipt as URL)
         return cell
     }
+    
+   /* func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        print("coming into did select item at")
+        let receipt = receiptsURL[indexPath.item]
+        if let data = try? Data(contentsOf: receipt as URL){
+            currReceipt = UIImage(data: data)
+            print(currReceipt)
+        }
+        performSegue(withIdentifier: "detailSegue", sender: nil)
+    }*/
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+            let cell = sender as! UICollectionViewCell
+            if let indexPath = collectionView.indexPath(for: cell){
+                let receipt = receiptsURL[indexPath.item]
+                let vc = segue.destination as! DetailReceiptViewController
+                if let data = try? Data(contentsOf: receipt as URL){
+                   vc.imageSegue  = UIImage(data: data)
+                }
+               
+        }
+       
+    }
+   
     
 
     /*
