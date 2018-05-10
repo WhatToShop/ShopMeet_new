@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
-<<<<<<< HEAD
-    <device id="retina4_0" orientation="portrait">
-=======
     <device id="retina5_5" orientation="portrait">
->>>>>>> cd442a0afd5b28bc7761f5bee7e1b06b6c452a37
+ cd442a0afd5b28bc7761f5bee7e1b06b6c452a37
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
