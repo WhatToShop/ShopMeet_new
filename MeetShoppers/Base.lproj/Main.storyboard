@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
     <device id="retina5_5" orientation="portrait">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
+    <device id="retina4_0" orientation="portrait">
+>>>>>>> 337e6238a17af7a103c71905d20cc5b725f7a3d0
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -372,6 +377,56 @@
             </objects>
             <point key="canvasLocation" x="-426" y="-399"/>
         </scene>
+        <!--Receipts View Controller-->
+        <scene sceneID="EgF-Gi-Ng1">
+            <objects>
+                <viewController id="ZGi-lA-wvR" customClass="ReceiptsViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y6g-1T-2Jc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="boj-Mm-kSB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Uy-VM-h0D">
+                                    <size key="itemSize" width="148" height="211"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ReceiptCell" reuseIdentifier="ReceiptCell" id="X2S-Va-LNA" customClass="ReceiptCell" customModule="MeetShoppers" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="211"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="148" height="211"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKP-fb-8Aq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="148" height="211"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="receiptsImageView" destination="QKP-fb-8Aq" id="WPJ-bY-yYT"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="HNk-pW-Deo"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="boj-Mm-kSB" id="KAz-fg-wav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ENO-N0-imZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="667.6056338028169"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="vGA-x3-EBA">
             <objects>
@@ -452,7 +507,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-Ae-WUh">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-Ae-WUh">
                                 <rect key="frame" x="0.0" y="64" width="140" height="504"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-3G-a2v">
@@ -468,7 +523,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Scan"/>
                                         <connections>
-                                            <segue destination="LR8-4Z-vuI" kind="show" identifier="cameraViewSegue" id="Ny6-Jg-6rU"/>
+                                            <action selector="showCamera:" destination="BhF-ek-jGG" eventType="touchUpInside" id="Bpl-cn-ge9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cV-xM-HYr">
@@ -486,6 +541,14 @@
                                         <connections>
                                             <action selector="showNotes:" destination="BhF-ek-jGG" eventType="touchUpInside" id="fAg-aj-Awk"/>
                                             <action selector="toNotes:" destination="BhF-ek-jGG" eventType="touchUpInside" id="0fw-yJ-sZG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cA-Cj-nKK">
+                                        <rect key="frame" x="30" y="237" width="86" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Bookmarked"/>
+                                        <connections>
+                                            <action selector="showBookmarks:" destination="BhF-ek-jGG" eventType="touchUpInside" id="GXD-EA-4MC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -532,6 +595,7 @@
                         <outlet property="viewConstraint" destination="xg8-bJ-LJY" id="7t5-dW-coc"/>
                         <segue destination="Alv-cI-Sza" kind="show" identifier="mapViewSegue" id="Rb7-sm-ef7"/>
                         <segue destination="cgn-sW-tDE" kind="show" identifier="notesSegue" id="hd8-3G-b0l"/>
+                        <segue destination="ZGi-lA-wvR" kind="show" identifier="receiptsSegue" id="MS4-BX-76F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7o-ex-6P5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,6 +607,7 @@
             </objects>
             <point key="canvasLocation" x="1494.375" y="-91.901408450704224"/>
         </scene>
+<<<<<<< HEAD
         <!--Camera View Controller-->
         <scene sceneID="y18-vp-W8z">
             <objects>
@@ -558,6 +623,8 @@
             </objects>
             <point key="canvasLocation" x="1545" y="627"/>
         </scene>
+=======
+>>>>>>> 337e6238a17af7a103c71905d20cc5b725f7a3d0
         <!--Store Detail View Controller-->
         <scene sceneID="D7C-Vd-TBw">
             <objects>
@@ -997,10 +1064,17 @@
         <image name="signup" width="320" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="RXb-f9-wlr"/>
         <segue reference="3gT-Ek-d6i"/>
         <segue reference="xYN-xl-PTz"/>
         <segue reference="Izv-sT-nom"/>
+=======
+        <segue reference="aKL-bM-UTS"/>
+        <segue reference="ROr-ri-spj"/>
+        <segue reference="hd8-3G-b0l"/>
+        <segue reference="pLH-PO-NdN"/>
+>>>>>>> 337e6238a17af7a103c71905d20cc5b725f7a3d0
         <segue reference="2V3-xr-ypw"/>
     </inferredMetricsTieBreakers>
 </document>

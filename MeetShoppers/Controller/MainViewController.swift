@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 import FirebaseAuth
+import Firebase
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
@@ -160,9 +161,8 @@ UINavigationControllerDelegate{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         switch segue.identifier! {
-        case "cameraViewSegue":
-            print("reached cameraViewSegue")
-            let vc = segue.destination as! CameraViewController
+        case "receiptsSegue":
+            let vc = segue.destination as! ReceiptsViewController
             break
         case "notesSegue":
             let vc = segue.destination as! ToDoViewController
@@ -207,41 +207,93 @@ UINavigationControllerDelegate{
     
     
     @IBAction func showReceipts(_ sender: Any) {
+        performSegue(withIdentifier: "receiptsSegue", sender: nil)
     }
     
     @IBAction func showNotes(_ sender: Any) {
     }
     
-    /*func testScan(){
-        menuView.delegate = self
-        print("coming into testScan")
-        performSegue(withIdentifier: "cameraViewSegue", sender: nil)
-        //let cameraViewController = CameraViewController()
-        //self.navigationController?.pushViewController(cameraViewController, animated: true)
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        //let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
-        //self.present(vc, animated: true, completion: nil);
-        //navigationController?.pushViewController(cameraViewController, animated: true)
-    }*/
+    @IBAction func showCamera(_ sender: Any) {
+        print("camera view controller view did load")
+        
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            vc.sourceType = .camera
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+        }
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func showBookmarks(_ sender: Any) {
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage{
+            selectedImageFromPicker = editedImage
+        }
+        else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            selectedImageFromPicker = originalImage
+        }
+       
+        if let selectedImage = selectedImageFromPicker{
+            let userID : String = (Auth.auth().currentUser?.uid)!
+            let uuid = UUID().uuidString
+            let receiptName : String = uuid + ".jpg"
+            let receiptsKey = "users/\(userID)/receipts/\(receiptName)"
+            let storageRef = Storage.storage().reference(withPath: receiptsKey)
+            let uploadMetadata = StorageMetadata()
+            uploadMetadata.contentType = "image/jpeg"
+            let ref = Firebase.Database.database().reference().child("users/\(userID)/receipts")
+            
+
+            if let uploadData = UIImagePNGRepresentation(selectedImage){
+                storageRef.putData(uploadData, metadata: uploadMetadata, completion: { (metadata, error) in
+                    storageRef.downloadURL(completion: { (url, error) in
+                        if let error = error {
+                            debugPrint(error)
+                            let alert = UIAlertController(title: "Receipt Unable to Uploaded", message: "Please Try Again", preferredStyle: .alert)
+                            let okayAction = UIAlertAction(title: "Continue", style: .default) { _ in
+                                // do nothing
+                            }
+                            alert.addAction(okayAction)
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                        else if let urlString = url?.absoluteString{
+                            let alert = UIAlertController(title: "Receipt Uploaded", message: "Look at your receipts in the receipts section of the menu", preferredStyle: .alert)
+                            let okayAction = UIAlertAction(title: "Continue", style: .default) { _ in
+                                // do nothing
+                            }
+                            alert.addAction(okayAction)
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                             ref.child(uuid).setValue(urlString)
+                        }
+                    })
+                })
+
+            }
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    
         
     }
     
     
     
-    /*func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        //self.photo = originalImage
-        //dismiss(animated: true, completion: nil)
-        //performSegue(withIdentifier: "tagSegue", sender: nil)
-        print("success")
-    }*/
 
- /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell){
-            let store = businesses[indexPath.row]
-            let detailViewController = segue.destination as! StoreDetailViewController
-            detailViewController.stores = store
-        }
-    }// sending data to another view controller
-*/
