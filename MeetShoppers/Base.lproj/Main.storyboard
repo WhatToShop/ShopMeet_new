@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
     <device id="retina5_5" orientation="portrait">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
-    <device id="retina4_0" orientation="portrait">
->>>>>>> 337e6238a17af7a103c71905d20cc5b725f7a3d0
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -382,7 +377,7 @@
             <objects>
                 <viewController id="ZGi-lA-wvR" customClass="ReceiptsViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y6g-1T-2Jc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="boj-Mm-kSB">
@@ -607,13 +602,12 @@
             </objects>
             <point key="canvasLocation" x="1494.375" y="-91.901408450704224"/>
         </scene>
-<<<<<<< HEAD
         <!--Camera View Controller-->
         <scene sceneID="y18-vp-W8z">
             <objects>
                 <viewController id="LR8-4Z-vuI" customClass="CameraViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K2u-j9-Xm4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="TV3-3m-ssk"/>
@@ -623,8 +617,6 @@
             </objects>
             <point key="canvasLocation" x="1545" y="627"/>
         </scene>
-=======
->>>>>>> 337e6238a17af7a103c71905d20cc5b725f7a3d0
         <!--Store Detail View Controller-->
         <scene sceneID="D7C-Vd-TBw">
             <objects>
@@ -1064,17 +1056,10 @@
         <image name="signup" width="320" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="RXb-f9-wlr"/>
-        <segue reference="3gT-Ek-d6i"/>
-        <segue reference="xYN-xl-PTz"/>
-        <segue reference="Izv-sT-nom"/>
-=======
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
         <segue reference="hd8-3G-b0l"/>
         <segue reference="pLH-PO-NdN"/>
->>>>>>> 337e6238a17af7a103c71905d20cc5b725f7a3d0
         <segue reference="2V3-xr-ypw"/>
     </inferredMetricsTieBreakers>
 </document>
