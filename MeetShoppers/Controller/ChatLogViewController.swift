@@ -24,7 +24,6 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
     }
     var business: Business!
     let cellId = "cellId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

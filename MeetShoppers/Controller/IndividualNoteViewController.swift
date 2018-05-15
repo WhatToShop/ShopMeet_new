@@ -1,19 +1,20 @@
 //
-//  CameraViewController.swift
+//  IndividualNoteViewController.swift
 //  MeetShoppers
 //
-//  Created by Bethany Bin on 4/27/18.
+//  Created by Kevin Nguyen on 5/7/18.
 //  Copyright © 2018 KevinVuNguyen. All rights reserved.
 //
 
 import UIKit
 
-class CameraViewController: UIViewController {
+class IndividualNoteViewController: UIViewController {
 
+    var value: note?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("camera view controller view did load")
+        
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

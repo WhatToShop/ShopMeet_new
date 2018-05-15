@@ -33,9 +33,14 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
         searchBar.delegate = self
         tableView.estimatedRowHeight = 150
+        
+        
         tableView.rowHeight = UITableViewAutomaticDimension
+        
         let userID = Firebase.Auth.auth().currentUser!.uid
         ref = Database.database().reference()
     ref?.child("users").child(userID).child("Notes").observe(.childAdded, with: {snapShot in
@@ -48,7 +53,6 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("value: ", snapShot.value)
         
        })
-        
         ref?.child("users").child(userID).child("Notes").observe(.childAdded, with: {(snapShot) in
           
         })
@@ -64,12 +68,6 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         popOverVC.didMove(toParentViewController: self)
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return noteFilter.count
@@ -79,15 +77,11 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoTableViewCell
         let todo = noteFilter[indexPath.row]
         cell.titleLabel.text = todo.title
-        cell.descriptionLabel.text = todo.message
+      //  cell.descriptionLabel.text = todo.message
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 100.0;//Choose your custom row height
-    }
-    
+  
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // When there is no text, filteredData is the same as the original data
         // When user has entered text into the search box
@@ -100,6 +94,14 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         tableView.reloadData()
         print("Made it to seaerch bar changes")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is IndividualNoteViewController
+        {
+            let vc = segue.destination as? IndividualNoteViewController
+         //   vc?.value = notes[]
+        }
     }
 
 }
