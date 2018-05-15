@@ -10,10 +10,15 @@ import UIKit
 
 class IndividualNoteViewController: UIViewController {
 
-    var value: note?
+    @IBOutlet weak var DetailTextLabel: UITextView!
+    
+    var singleNote: note?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let singleNote = singleNote {
+            DetailTextLabel.text = singleNote.message
+            self.title = singleNote.title
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -21,16 +26,4 @@ class IndividualNoteViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

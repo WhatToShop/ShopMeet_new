@@ -814,7 +814,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MH-Sf-96Y">
-                                <rect key="frame" x="40" y="133" width="334" height="419"/>
+                                <rect key="frame" x="40" y="89" width="334" height="463"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJk-6f-ekP">
                                         <rect key="frame" x="7" y="8" width="48" height="30"/>
@@ -830,7 +830,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hello my friends, I love to eat food." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z5t-9z-vtj">
-                                        <rect key="frame" x="25" y="145" width="191" height="220"/>
+                                        <rect key="frame" x="25" y="145" width="191" height="264"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="191" id="nca-sK-lqg"/>
@@ -840,7 +840,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWb-5l-Bex">
-                                        <rect key="frame" x="103" y="381" width="128" height="30"/>
+                                        <rect key="frame" x="103" y="425" width="128" height="30"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="saveMessageBtn:" destination="459-8h-r0p" eventType="touchUpInside" id="beQ-fv-s2D"/>
@@ -921,20 +921,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="103.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU5-LJ-49b">
-                                                    <rect key="frame" x="185" y="41" width="80" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU5-LJ-49b">
+                                                    <rect key="frame" x="167.33333333333334" y="31" width="79.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ml3-kv-Xlx">
+                                                    <rect key="frame" x="340" y="26" width="30" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <state key="normal" title="&gt;"/>
+                                                    <connections>
+                                                        <segue destination="BCU-Ei-KDW" kind="show" identifier="NoteSegue" id="lnu-1V-dgT"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XU5-LJ-49b" secondAttribute="trailing" constant="10" id="Gqf-RA-DpA"/>
-                                                <constraint firstItem="XU5-LJ-49b" firstAttribute="top" secondItem="ini-1l-9Kv" secondAttribute="topMargin" constant="10" id="weq-H2-IbV"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ml3-kv-Xlx" secondAttribute="bottom" constant="17" id="0c5-H9-gIh"/>
+                                                <constraint firstItem="Ml3-kv-Xlx" firstAttribute="top" secondItem="ini-1l-9Kv" secondAttribute="topMargin" constant="15" id="61o-gf-k4W"/>
+                                                <constraint firstItem="Ml3-kv-Xlx" firstAttribute="centerY" secondItem="ini-1l-9Kv" secondAttribute="centerY" id="8VE-5d-c7J"/>
+                                                <constraint firstItem="Ml3-kv-Xlx" firstAttribute="leading" secondItem="XU5-LJ-49b" secondAttribute="trailing" constant="93" id="Sxt-vK-dHO"/>
+                                                <constraint firstItem="XU5-LJ-49b" firstAttribute="centerX" secondItem="ini-1l-9Kv" secondAttribute="centerX" id="nMR-LM-rNq"/>
+                                                <constraint firstItem="XU5-LJ-49b" firstAttribute="top" secondItem="ini-1l-9Kv" secondAttribute="topMargin" constant="20" id="uiz-A0-DuA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="XU5-LJ-49b" secondAttribute="bottom" constant="41" id="xaI-V9-Gfm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="titleLabel" destination="XU5-LJ-49b" id="uHK-Zz-h3u"/>
+                                            <segue destination="BCU-Ei-KDW" kind="show" identifier="noteSegue" id="3Fx-Cq-Iyq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -966,33 +981,33 @@
             <objects>
                 <viewController id="BCU-Ei-KDW" customClass="IndividualNoteViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkg-2c-kCz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3g-DV-HC9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U3g-DV-HC9" firstAttribute="trailing" secondItem="36w-oM-NyM" secondAttribute="trailing" id="B9Q-gt-noe"/>
+                            <constraint firstItem="U3g-DV-HC9" firstAttribute="bottom" secondItem="36w-oM-NyM" secondAttribute="bottom" id="E54-7A-sjY"/>
+                            <constraint firstItem="U3g-DV-HC9" firstAttribute="leading" secondItem="36w-oM-NyM" secondAttribute="leading" id="Vpj-T7-UYd"/>
+                            <constraint firstItem="U3g-DV-HC9" firstAttribute="top" secondItem="36w-oM-NyM" secondAttribute="top" id="kam-r4-7H9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="36w-oM-NyM"/>
                     </view>
+                    <connections>
+                        <outlet property="DetailTextLabel" destination="U3g-DV-HC9" id="Pj4-zc-3el"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dmq-sz-Vsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6287" y="-96"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Eh0-fB-qvu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kz3-TR-pTU" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LPf-wL-Sgo">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="459-8h-r0p" kind="relationship" relationship="rootViewController" id="0UL-Vy-OsG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vsP-Mn-5Ed" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3694" y="375"/>
+            <point key="canvasLocation" x="6286.9565217391309" y="-96.195652173913047"/>
         </scene>
         <!--Username View Controller-->
         <scene sceneID="bqG-Ep-WsX">
@@ -1058,6 +1073,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
+        <segue reference="lnu-1V-dgT"/>
         <segue reference="hd8-3G-b0l"/>
         <segue reference="pLH-PO-NdN"/>
         <segue reference="2V3-xr-ypw"/>

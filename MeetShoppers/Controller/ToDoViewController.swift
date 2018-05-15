@@ -20,7 +20,7 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var ref: DatabaseReference?
     var notes: [note] = []
     var noteFilter: [note] = []
-    var noteData = [String: Any]()
+   // var noteData = [String: Any]()
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,16 +29,15 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("MADE IT INSIDE TODO VIEW CONTROLLER")
         self.title = "TODO"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addNoteAction(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addNoteAction(_:)))
         
         tableView.delegate = self
         tableView.dataSource = self
         
         
         searchBar.delegate = self
+        
         tableView.estimatedRowHeight = 150
-        
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let userID = Firebase.Auth.auth().currentUser!.uid
@@ -97,11 +96,21 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is IndividualNoteViewController
+        if segue.identifier == "noteSegue"
         {
             let vc = segue.destination as? IndividualNoteViewController
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell){
+                let note = noteFilter[indexPath.row]
+                let detailViewController = segue.destination as! IndividualNoteViewController
+                detailViewController.singleNote = note
+            }
          //   vc?.value = notes[]
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
 }
