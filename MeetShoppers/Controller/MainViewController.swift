@@ -13,11 +13,7 @@ import FirebaseAuth
 import Firebase
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate{
-
-   
-    
-    
+UINavigationControllerDelegate, BusinessCellDelegate {
     @IBOutlet weak var menuView: UIView!
     
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
@@ -76,11 +72,13 @@ UINavigationControllerDelegate{
     
     @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         showMenu()
-
+    }
+    
+    func businessCell(_ businessCell: UITableViewCell, didTapBusiness: Business) {
+        performSegue(withIdentifier: "businessDetailSegue", sender: businessCell)
     }
     
     func showMenu(){
-        
             UIView.animate(withDuration: 0.2, animations: {
                 self.menuView.alpha = 1
                 self.viewConstraint.constant = 0
@@ -101,9 +99,10 @@ UINavigationControllerDelegate{
     @IBAction func toNotes(_ sender: Any) {
         performSegue(withIdentifier: "notesSegue", sender: nil)
     }
-    @IBAction func handleMap(_ sender: UIButton) {
-        performSegue(withIdentifier: "mapViewSegue", sender: nil)
-    }
+    
+//    @IBAction func handleMap(_ sender: UIButton) {
+//        performSegue(withIdentifier: "mapViewSegue", sender: nil)
+//    }
     
     func refreshBusinesses(api: YelpAPIClient) {
         if api.isAuthenticated() {
@@ -121,12 +120,11 @@ UINavigationControllerDelegate{
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        chatLogViewController.business = businesses[indexPath.row]
-        navigationController?.pushViewController(chatLogViewController, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: false)
+//        let cell = tableView.cellForRow(at: indexPath)
+//        performSegue(withIdentifier: "businessDetailSegue", sender: cell)
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if businesses != nil {
@@ -139,6 +137,7 @@ UINavigationControllerDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell", for: indexPath) as! BusinessCell
         cell.business = businesses[indexPath.row]
+        cell.delegate = self 
         return cell
     }
     
@@ -181,14 +180,32 @@ UINavigationControllerDelegate{
                 let detailViewController = segue.destination as! StoreDetailViewController
                 detailViewController.stores = store
             }
+        case "businessDetailSegue":
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let business = businesses[indexPath.row]
+                api.getBusinessInfo(id: business.id!) { (json) in
+                    let detailedBusiness = DetailedBusiness(dictionary: json)
+                    let vc = segue.destination as! BusinessDetailViewController
+                    vc.business = detailedBusiness
+                }
+            }
         default:
             break
         }
     }
     
-    @IBAction func handleMenu(_ sender: Any) {
+    @IBAction func onMenu(_ sender: UIButton) {
         showMenu()
     }
+    
+    @IBAction func onMap(_ sender: UIButton) {
+        performSegue(withIdentifier: "mapSegue", sender: nil)
+    }
+    
+//    @IBAction func handleMenu(_ sender: Any) {
+//        showMenu()
+//    }
     
     @IBAction func logOut(_ sender: Any) {
         do
@@ -250,7 +267,6 @@ UINavigationControllerDelegate{
             let uploadMetadata = StorageMetadata()
             uploadMetadata.contentType = "image/jpeg"
             let ref = Firebase.Database.database().reference().child("users/\(userID)/receipts")
-            
 
             if let uploadData = UIImagePNGRepresentation(selectedImage){
                 storageRef.putData(uploadData, metadata: uploadMetadata, completion: { (metadata, error) in

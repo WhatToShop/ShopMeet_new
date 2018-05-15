@@ -11,8 +11,13 @@ import AlamofireImage
 import Firebase
 import SwiftyJSON
 
+protocol BusinessCellDelegate: NSObjectProtocol {
+    func businessCell(_ businessCell: UITableViewCell, didTapBusiness: Business)
+}
+
 class BusinessCell: UITableViewCell {
     let cellId = "cellId"
+    var delegate: BusinessCellDelegate!
     
     let likeCountLabel: UILabel = {
         let label = UILabel()
@@ -76,6 +81,8 @@ class BusinessCell: UITableViewCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.layer.cornerRadius = 20
         iv.clipsToBounds = true
+        iv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        iv.isUserInteractionEnabled = true
         return iv
     }()
     
@@ -85,7 +92,6 @@ class BusinessCell: UITableViewCell {
             if let url = business.imageURL { businessImageView.af_setImage(withURL: url) }
             if let name = business.name { nameLabel.text = name }
             if let distance = business.distance { distanceLabel.text = distance }
-            
         }
     }
     
@@ -97,6 +103,10 @@ class BusinessCell: UITableViewCell {
         // TODO
         
         
+    }
+    
+    @objc func handleTap() {
+        delegate.businessCell(self, didTapBusiness: business)
     }
     
     @objc func handleLike() {
@@ -116,7 +126,8 @@ class BusinessCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.selectionStyle = .none
         
         // Add name label to the cell
         contentView.addSubview(nameLabel)

@@ -9,6 +9,7 @@
 import SwiftyJSON
 import UIKit
 import Firebase
+import CoreLocation
 
 struct APIBusinessKey {
     static let name = "name"
@@ -17,6 +18,7 @@ struct APIBusinessKey {
     static let distance = "distance"
     static let coordinates = "coordinates"
     static let id = "id"
+    static let categories = "categories"
 }
 
 struct CustomizedBusinessKey {
@@ -35,13 +37,18 @@ struct LocationKey {
     static let neighborhoods = "neighborhoods"
 }
 
+struct CategoryKey {
+    static let title = "title"
+    static let alias = "alias"
+}
+
 class Business {
+    var categories: [String] = []
     let name: String?
     let address: String?
     let imageURL: URL?
+    let coordinate: CLLocationCoordinate2D?
     var distance: String?
-    let longitude: Float?
-    let latitude: Float?
     let id: String?
     var likeCount: Int? {
         didSet {
@@ -72,18 +79,22 @@ class Business {
             imageURL = nil
         }
         
-        var latitude: Float = 0
-        var longitude: Float = 0
-        if let coordinates = dictionary[APIBusinessKey.coordinates].dictionaryObject{
-            if let latitudeNumber = coordinates[CoordinateKey.latitude] as? NSNumber {
-                latitude = latitudeNumber.floatValue
-            }
-            if let longitudeNumber = coordinates[CoordinateKey.longitude] as? NSNumber {
-                longitude = longitudeNumber.floatValue
+        if let categories = dictionary[APIBusinessKey.categories].arrayObject {
+            for category in categories {
+                guard let categoryDictionary = category as? NSDictionary else { break }
+                self.categories.append(categoryDictionary[CategoryKey.title] as! String)
             }
         }
-        self.latitude = latitude
-        self.longitude = longitude
+        
+        self.coordinate = CLLocationCoordinate2D()
+        if let coordinates = dictionary[APIBusinessKey.coordinates].dictionaryObject{
+            if let latitude = coordinates[CoordinateKey.latitude] as? NSNumber {
+                self.coordinate?.latitude = latitude.doubleValue
+            }
+            if let longitude = coordinates[CoordinateKey.longitude] as? NSNumber {
+                self.coordinate?.longitude = longitude.doubleValue
+            }
+        }
         
         var address = ""
         if let location = dictionary[APIBusinessKey.location].dictionaryObject {
