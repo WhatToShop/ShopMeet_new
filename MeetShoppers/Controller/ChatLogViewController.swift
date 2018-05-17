@@ -158,11 +158,6 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         seperatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @objc func handleSend() {
         var uid = "pseudo-uid"  // For testing
         if let currentUser = Firebase.Auth.auth().currentUser {

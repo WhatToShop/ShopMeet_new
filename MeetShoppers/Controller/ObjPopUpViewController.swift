@@ -30,8 +30,9 @@ class ObjPopUpViewController: UIViewController {
     }
     
     @IBAction func saveMessageBtn(_ sender: Any) {
+        print("Save message btn")
         let userID = Firebase.Auth.auth().currentUser!.uid
-    ref?.child("users").child(userID).child("Notes").child(titleTextField.text).setValue(noteTextField.text)
+        ref?.child("users").child(userID).child("Notes").child(titleTextField.text).setValue(noteTextField.text)
         noteTextField.text = ""
         titleTextField.text = ""
     }

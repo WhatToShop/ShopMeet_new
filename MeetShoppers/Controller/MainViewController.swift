@@ -200,7 +200,7 @@ UINavigationControllerDelegate, BusinessCellDelegate {
     }
     
     @IBAction func onMap(_ sender: UIButton) {
-        performSegue(withIdentifier: "mapSegue", sender: nil)
+        performSegue(withIdentifier: "mapViewSegue", sender: nil)
     }
     
 //    @IBAction func handleMenu(_ sender: Any) {
