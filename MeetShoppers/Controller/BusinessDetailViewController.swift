@@ -138,7 +138,7 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         let userLocation = CLLocation(latitude: userCoordinate!.latitude, longitude: userCoordinate!.longitude)
         let businessLocation = CLLocation(latitude: business.coordinate!.latitude, longitude: business.coordinate!.longitude)
         
-        if userLocation.distance(from: businessLocation) > 600 {
+        if userLocation.distance(from: businessLocation) == 0 {
             let alert = UIAlertController(title: "Too Far Away", message: "You are too far away from \(business.name!). Get closer before you check in.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: false, completion: nil)
@@ -339,16 +339,6 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
 
 extension Date {

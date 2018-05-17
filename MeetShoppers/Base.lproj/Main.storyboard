@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QrO-Vn-hTo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -504,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peE-m6-r4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2220" y="-805"/>
+            <point key="canvasLocation" x="1493" y="-807"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="vGA-x3-EBA">
@@ -542,7 +541,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="businessCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="businessCell" rowHeight="205" id="lWv-9t-rSp" customClass="BusinessCell" customModule="MeetShoppers" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="businessCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="businessCell" rowHeight="205" id="lWv-9t-rSp" customClass="BusinessCell" customModule="MeetShoppers" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="205"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lWv-9t-rSp" id="EJd-oJ-Ea9">
@@ -811,7 +810,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bd-en-fdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4939" y="-1430"/>
+            <point key="canvasLocation" x="5996" y="-858"/>
         </scene>
         <!--Map Pop Up View Controller-->
         <scene sceneID="V1l-H5-MPb">
@@ -859,7 +858,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Zu-br-bgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4805.625" y="-856.69014084507046"/>
+            <point key="canvasLocation" x="5019" y="-857"/>
         </scene>
         <!--Obj Pop Up View Controller-->
         <scene sceneID="sv4-YG-BKt">
@@ -970,27 +969,15 @@
                                 <rect key="frame" x="0.0" y="56" width="320" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" rowHeight="104" id="lzb-go-HLN" customClass="ToDoTableViewCell" customModule="MeetShoppers" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" rowHeight="104" id="lzb-go-HLN" customClass="ToDoTableViewCell" customModule="MeetShoppers" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lzb-go-HLN" id="ini-1l-9Kv" customClass="ToDoTableViewCell" customModule="MeetShoppers" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU5-LJ-49b">
-                                                    <rect key="frame" x="185" y="41" width="80" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XU5-LJ-49b" secondAttribute="trailing" constant="10" id="Gqf-RA-DpA"/>
-                                                <constraint firstItem="XU5-LJ-49b" firstAttribute="top" secondItem="ini-1l-9Kv" secondAttribute="topMargin" constant="10" id="weq-H2-IbV"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="titleLabel" destination="XU5-LJ-49b" id="uHK-Zz-h3u"/>
+                                            <segue destination="BCU-Ei-KDW" kind="show" identifier="noteSegue" id="5sr-cR-YTQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1022,15 +1009,32 @@
             <objects>
                 <viewController id="BCU-Ei-KDW" customClass="IndividualNoteViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkg-2c-kCz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="TEXT TO INPUT" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-pA-p2a">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Dh-pA-p2a" firstAttribute="bottom" secondItem="36w-oM-NyM" secondAttribute="bottom" id="Bcj-md-TTz"/>
+                            <constraint firstItem="4Dh-pA-p2a" firstAttribute="trailing" secondItem="36w-oM-NyM" secondAttribute="trailing" id="PRL-rJ-CpO"/>
+                            <constraint firstItem="4Dh-pA-p2a" firstAttribute="leading" secondItem="36w-oM-NyM" secondAttribute="leading" id="fVf-ea-fcl"/>
+                            <constraint firstItem="4Dh-pA-p2a" firstAttribute="top" secondItem="36w-oM-NyM" secondAttribute="top" id="tes-da-GZE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="36w-oM-NyM"/>
                     </view>
+                    <connections>
+                        <outlet property="textLabel" destination="4Dh-pA-p2a" id="350-Hd-Sfd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dmq-sz-Vsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6287" y="-96"/>
+            <point key="canvasLocation" x="3765" y="-807.04225352112678"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eh0-fB-qvu">
@@ -1114,8 +1118,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
-        <segue reference="emF-RI-wN3"/>
-        <segue reference="pLH-PO-NdN"/>
-        <segue reference="2V3-xr-ypw"/>
+        <segue reference="hd8-3G-b0l"/>
+        <segue reference="Izv-sT-nom"/>
+        <segue reference="tbF-lh-h42"/>
     </inferredMetricsTieBreakers>
 </document>

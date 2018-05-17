@@ -8,6 +8,6 @@
 
 import UIKit 
 
-class TinderViewControlelr: UIViewController {
+class TinderViewController: UIViewController {
     
 }

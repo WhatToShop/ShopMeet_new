@@ -19,11 +19,6 @@ class WelcomeViewController: UIViewController {
         signinButton.clipsToBounds = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func onSignin(_ sender: UIButton) {
         performSegue(withIdentifier: "signinSegue", sender: nil)
     }
