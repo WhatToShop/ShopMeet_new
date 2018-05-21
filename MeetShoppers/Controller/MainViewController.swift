@@ -10,13 +10,10 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 import FirebaseAuth
+import Firebase
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate{
-
-   
-    
-    
+UINavigationControllerDelegate, BusinessCellDelegate {
     @IBOutlet weak var menuView: UIView!
     
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
@@ -75,11 +72,13 @@ UINavigationControllerDelegate{
     
     @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         showMenu()
-
+    }
+    
+    func businessCell(_ businessCell: UITableViewCell, didTapBusiness: Business) {
+        performSegue(withIdentifier: "businessDetailSegue", sender: businessCell)
     }
     
     func showMenu(){
-        
             UIView.animate(withDuration: 0.2, animations: {
                 self.menuView.alpha = 1
                 self.viewConstraint.constant = 0
@@ -100,9 +99,10 @@ UINavigationControllerDelegate{
     @IBAction func toNotes(_ sender: Any) {
         performSegue(withIdentifier: "notesSegue", sender: nil)
     }
-    @IBAction func handleMap(_ sender: UIButton) {
-        performSegue(withIdentifier: "mapViewSegue", sender: nil)
-    }
+    
+//    @IBAction func handleMap(_ sender: UIButton) {
+//        performSegue(withIdentifier: "mapViewSegue", sender: nil)
+//    }
     
     func refreshBusinesses(api: YelpAPIClient) {
         if api.isAuthenticated() {
@@ -120,12 +120,11 @@ UINavigationControllerDelegate{
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        let chatLogViewController = ChatLogViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        chatLogViewController.business = businesses[indexPath.row]
-        navigationController?.pushViewController(chatLogViewController, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: false)
+//        let cell = tableView.cellForRow(at: indexPath)
+//        performSegue(withIdentifier: "businessDetailSegue", sender: cell)
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if businesses != nil {
@@ -138,6 +137,7 @@ UINavigationControllerDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell", for: indexPath) as! BusinessCell
         cell.business = businesses[indexPath.row]
+        cell.delegate = self 
         return cell
     }
     
@@ -160,9 +160,8 @@ UINavigationControllerDelegate{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         switch segue.identifier! {
-        case "cameraViewSegue":
-            print("reached cameraViewSegue")
-            let vc = segue.destination as! CameraViewController
+        case "receiptsSegue":
+            let vc = segue.destination as! ReceiptsViewController
             break
         case "notesSegue":
             let vc = segue.destination as! ToDoViewController
@@ -181,14 +180,32 @@ UINavigationControllerDelegate{
                 let detailViewController = segue.destination as! StoreDetailViewController
                 detailViewController.stores = store
             }
+        case "businessDetailSegue":
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let business = businesses[indexPath.row]
+                api.getBusinessInfo(id: business.id!) { (json) in
+                    let detailedBusiness = DetailedBusiness(dictionary: json)
+                    let vc = segue.destination as! BusinessDetailViewController
+                    vc.business = detailedBusiness
+                }
+            }
         default:
             break
         }
     }
     
-    @IBAction func handleMenu(_ sender: Any) {
+    @IBAction func onMenu(_ sender: UIButton) {
         showMenu()
     }
+    
+    @IBAction func onMap(_ sender: UIButton) {
+        performSegue(withIdentifier: "mapViewSegue", sender: nil)
+    }
+    
+//    @IBAction func handleMenu(_ sender: Any) {
+//        showMenu()
+//    }
     
     @IBAction func logOut(_ sender: Any) {
         do
@@ -207,41 +224,92 @@ UINavigationControllerDelegate{
     
     
     @IBAction func showReceipts(_ sender: Any) {
+        performSegue(withIdentifier: "receiptsSegue", sender: nil)
     }
     
     @IBAction func showNotes(_ sender: Any) {
     }
     
-    /*func testScan(){
-        menuView.delegate = self
-        print("coming into testScan")
-        performSegue(withIdentifier: "cameraViewSegue", sender: nil)
-        //let cameraViewController = CameraViewController()
-        //self.navigationController?.pushViewController(cameraViewController, animated: true)
-        //let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        //let vc = storyboard.instantiateViewController(withIdentifier: "cameraViewController")
-        //self.present(vc, animated: true, completion: nil);
-        //navigationController?.pushViewController(cameraViewController, animated: true)
-    }*/
+    @IBAction func showCamera(_ sender: Any) {
+        print("camera view controller view did load")
+        
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is available 📸")
+            vc.sourceType = .camera
+        } else {
+            print("Camera 🚫 available so we will use photo library instead")
+        }
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func showBookmarks(_ sender: Any) {
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage{
+            selectedImageFromPicker = editedImage
+        }
+        else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            selectedImageFromPicker = originalImage
+        }
+       
+        if let selectedImage = selectedImageFromPicker{
+            let userID : String = (Auth.auth().currentUser?.uid)!
+            let uuid = UUID().uuidString
+            let receiptName : String = uuid + ".jpg"
+            let receiptsKey = "users/\(userID)/receipts/\(receiptName)"
+            let storageRef = Storage.storage().reference(withPath: receiptsKey)
+            let uploadMetadata = StorageMetadata()
+            uploadMetadata.contentType = "image/jpeg"
+            let ref = Firebase.Database.database().reference().child("users/\(userID)/receipts")
+
+            if let uploadData = UIImagePNGRepresentation(selectedImage){
+                storageRef.putData(uploadData, metadata: uploadMetadata, completion: { (metadata, error) in
+                    storageRef.downloadURL(completion: { (url, error) in
+                        if let error = error {
+                            debugPrint(error)
+                            let alert = UIAlertController(title: "Receipt Unable to Uploaded", message: "Please Try Again", preferredStyle: .alert)
+                            let okayAction = UIAlertAction(title: "Continue", style: .default) { _ in
+                                // do nothing
+                            }
+                            alert.addAction(okayAction)
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                        else if let urlString = url?.absoluteString{
+                            let alert = UIAlertController(title: "Receipt Uploaded", message: "Look at your receipts in the receipts section of the menu", preferredStyle: .alert)
+                            let okayAction = UIAlertAction(title: "Continue", style: .default) { _ in
+                                // do nothing
+                            }
+                            alert.addAction(okayAction)
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                             ref.child(uuid).setValue(urlString)
+                        }
+                    })
+                })
+
+            }
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    
         
     }
     
     
     
-    /*func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        //self.photo = originalImage
-        //dismiss(animated: true, completion: nil)
-        //performSegue(withIdentifier: "tagSegue", sender: nil)
-        print("success")
-    }*/
 
- /*   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell){
-            let store = businesses[indexPath.row]
-            let detailViewController = segue.destination as! StoreDetailViewController
-            detailViewController.stores = store
-        }
-    }// sending data to another view controller
-*/

@@ -24,7 +24,6 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
     }
     var business: Business!
     let cellId = "cellId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -157,11 +156,6 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         seperatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         seperatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
         seperatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc func handleSend() {
