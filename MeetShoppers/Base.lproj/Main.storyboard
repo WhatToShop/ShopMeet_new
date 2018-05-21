@@ -556,48 +556,69 @@
                                 <rect key="frame" x="0.0" y="64" width="140" height="504"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-3G-a2v">
-                                        <rect key="frame" x="52" y="30" width="48" height="30"/>
+                                        <rect key="frame" x="49" y="177" width="48" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Logout"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="logOut:" destination="BhF-ek-jGG" eventType="touchUpInside" id="gXy-8V-n2d"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TP-dj-0qJ">
-                                        <rect key="frame" x="58" y="83" width="35" height="30"/>
+                                        <rect key="frame" x="55" y="230" width="35" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Scan"/>
+                                        <state key="normal" title="Scan">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="showCamera:" destination="BhF-ek-jGG" eventType="touchUpInside" id="Bpl-cn-ge9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cV-xM-HYr">
-                                        <rect key="frame" x="45" y="142" width="60" height="30"/>
+                                        <rect key="frame" x="42" y="284" width="60" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Receipts"/>
+                                        <state key="normal" title="Receipts">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="showReceipts:" destination="BhF-ek-jGG" eventType="touchUpInside" id="L5H-cu-9uu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNh-ol-i1m">
-                                        <rect key="frame" x="55" y="197" width="41" height="30"/>
+                                        <rect key="frame" x="53" y="340" width="41" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Notes"/>
+                                        <state key="normal" title="Notes">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="showNotes:" destination="BhF-ek-jGG" eventType="touchUpInside" id="fAg-aj-Awk"/>
                                             <action selector="toNotes:" destination="BhF-ek-jGG" eventType="touchUpInside" id="0fw-yJ-sZG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cA-Cj-nKK">
-                                        <rect key="frame" x="30" y="237" width="86" height="30"/>
+                                        <rect key="frame" x="27" y="384" width="86" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Bookmarked"/>
+                                        <state key="normal" title="Bookmarked">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="showBookmarks:" destination="BhF-ek-jGG" eventType="touchUpInside" id="GXD-EA-4MC"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1hH-f2-QeU">
+                                        <rect key="frame" x="34" y="21" width="73" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ONE-8f-yRG">
+                                        <rect key="frame" x="31" y="127" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.83137254901960778" green="0.23921568627450979" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4Ez-dW-sE8"/>
                                 </constraints>
@@ -616,7 +637,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WNU-1F-0sj"/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="Zgk-t4-Ivc" appends="YES" id="x62-4T-QYc"/>
+                            <outletCollection property="gestureRecognizers" destination="ayG-8g-8sR" appends="YES" id="41X-dv-hDF"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Shops" id="XP1-n5-Zf3">
@@ -643,6 +664,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuView" destination="1Eb-Ae-WUh" id="aDA-dI-b1T"/>
+                        <outlet property="screenNameLabel" destination="ONE-8f-yRG" id="3P1-pr-mcG"/>
                         <outlet property="tableView" destination="xYb-VK-jqy" id="C6n-zk-84g"/>
                         <outlet property="viewConstraint" destination="xg8-bJ-LJY" id="7t5-dW-coc"/>
                         <segue destination="Alv-cI-Sza" kind="show" identifier="mapViewSegue" id="Rb7-sm-ef7"/>
@@ -652,13 +674,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7o-ex-6P5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="Zgk-t4-Ivc">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ayG-8g-8sR">
                     <connections>
-                        <action selector="handlePanEdge:" destination="BhF-ek-jGG" id="dUj-4a-biO"/>
+                        <action selector="handleMenuPan:" destination="BhF-ek-jGG" id="ELN-LK-Zxg"/>
                     </connections>
-                </screenEdgePanGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1494.2028985507247" y="-92.119565217391312"/>
+            <point key="canvasLocation" x="1492.5" y="-92.957746478873247"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="y18-vp-W8z">
@@ -1113,6 +1135,7 @@
         <image name="envelope" width="25" height="18"/>
         <image name="logo" width="130" height="130"/>
         <image name="password-icon" width="25" height="32"/>
+        <image name="profile-placeholder" width="64" height="64"/>
         <image name="signup" width="320" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>

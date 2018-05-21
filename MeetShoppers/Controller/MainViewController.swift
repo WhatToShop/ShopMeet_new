@@ -16,9 +16,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate, UITableVi
 UINavigationControllerDelegate, BusinessCellDelegate {
     @IBOutlet weak var menuView: UIView!
     
+    @IBOutlet weak var screenNameLabel: UILabel!
+    let userID  = (Auth.auth().currentUser?.uid)!
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var scrollCounter: Int = 0
+    lazy var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+    lazy var blurEffectView = UIVisualEffectView(effect: blurEffect)
     //var menuLauncher: SideMenu!
     //let menuView = SideMenu()
     var originalCellCenter: CGPoint!
@@ -49,17 +53,24 @@ UINavigationControllerDelegate, BusinessCellDelegate {
         tableView.separatorStyle = .none
         refreshBusinesses(api: api)
         
-        let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
-        edgePanRecognizer.edges = .left
-        view.addGestureRecognizer(edgePanRecognizer)
+        //let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
+        //edgePanRecognizer.edges = .left
+        //view.addGestureRecognizer(edgePanRecognizer)
         
-//        viewConstraint.constant = -175
+viewConstraint.constant = -150
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
         
         //menuLauncher = SideMenu()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         menuView.alpha = 0
+        self.blurEffectView.removeFromSuperview()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,9 +81,64 @@ UINavigationControllerDelegate, BusinessCellDelegate {
         }
     }
     
-    @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
-        showMenu()
+  
+    @IBAction func handleMenuPan(_ sender: UIPanGestureRecognizer) {
+        menuView.alpha = 1
+        if sender.state == .began || sender.state == .changed {
+            
+            let translation = sender.translation(in: self.view).x
+            
+            if translation > 0 {
+                
+                if viewConstraint.constant < 20 {
+                    UIView.animate(withDuration: 0.2, animations: {
+                        self.blurEffectView.frame = self.tableView.bounds
+                        self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                        self.tableView.addSubview(self.blurEffectView)
+                        self.viewConstraint.constant += translation / 10
+                        self.view.layoutIfNeeded()
+                        
+                    })
+                }
+                
+            }else {
+                if viewConstraint.constant > -150 {
+                    UIView.animate(withDuration: 0.2, animations: {
+                        
+                        self.viewConstraint.constant += translation / 10
+                        self.view.layoutIfNeeded()
+                        
+                    })
+                }
+            }
+            
+            
+        } else if sender.state == .ended {
+            
+            if viewConstraint.constant < -100 {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.blurEffectView.removeFromSuperview()
+                    
+                    self.viewConstraint.constant = -150
+                    self.menuView.alpha = 0
+                    self.view.layoutIfNeeded()
+                    
+                })
+            } else {
+                UIView.animate(withDuration: 0.2, animations: {
+                    
+                    self.viewConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                    
+                })
+            }
+            
+        }
+        
     }
+    /* @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
+        showMenu()
+    }*/
     
     func businessCell(_ businessCell: UITableViewCell, didTapBusiness: Business) {
         performSegue(withIdentifier: "businessDetailSegue", sender: businessCell)
@@ -82,6 +148,9 @@ UINavigationControllerDelegate, BusinessCellDelegate {
             UIView.animate(withDuration: 0.2, animations: {
                 self.menuView.alpha = 1
                 self.viewConstraint.constant = 0
+                self.blurEffectView.frame = self.tableView.bounds
+                self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.tableView.addSubview(self.blurEffectView)
                 self.menuView.layoutIfNeeded()
             })
             
@@ -92,6 +161,7 @@ UINavigationControllerDelegate, BusinessCellDelegate {
     @objc func handleDismiss() {
         UIView.animate(withDuration: 0.5) {
             self.menuView.alpha = 0
+            self.blurEffectView.removeFromSuperview()
             self.viewConstraint.constant = -175
         }
     }
