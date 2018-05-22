@@ -882,6 +882,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuView" destination="1Eb-Ae-WUh" id="aDA-dI-b1T"/>
+                        <outlet property="profilePicImageView" destination="1hH-f2-QeU" id="zAK-17-lm0"/>
                         <outlet property="screenNameLabel" destination="ONE-8f-yRG" id="3P1-pr-mcG"/>
                         <outlet property="tableView" destination="xYb-VK-jqy" id="C6n-zk-84g"/>
                         <outlet property="viewConstraint" destination="xg8-bJ-LJY" id="7t5-dW-coc"/>
@@ -890,6 +891,7 @@
                         <segue destination="ZGi-lA-wvR" kind="show" identifier="receiptsSegue" id="MS4-BX-76F"/>
                         <segue destination="l7K-bf-N4o" kind="show" identifier="businessDetailSegue" id="z6P-w6-3yW"/>
                         <segue destination="58c-ds-JcD" kind="show" identifier="changeNameSegue" id="ngT-rL-3Ev"/>
+                        <segue destination="4gF-uU-ECF" kind="show" identifier="changePicSegue" id="LR3-6X-eqb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7o-ex-6P5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -953,6 +955,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kne-pN-TqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2520" y="625.35211267605632"/>
+        </scene>
+        <!--Change Pic View Controller-->
+        <scene sceneID="YE6-TL-I7u">
+            <objects>
+                <viewController id="4gF-uU-ECF" customClass="ChangePicViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wZm-BO-e8Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Mlo-ub-zCD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ras-by-kIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="1414"/>
         </scene>
         <!--Store Detail View Controller-->
         <scene sceneID="D7C-Vd-TBw">
@@ -1407,7 +1424,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
-        <segue reference="emF-RI-wN3"/>
+        <segue reference="hd8-3G-b0l"/>
         <segue reference="Izv-sT-nom"/>
         <segue reference="tbF-lh-h42"/>
     </inferredMetricsTieBreakers>
