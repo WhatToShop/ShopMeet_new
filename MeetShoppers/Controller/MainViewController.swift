@@ -70,7 +70,6 @@ viewConstraint.constant = -150
             self.screenNameLabel.text = name
             
         })
-        
         //menuLauncher = SideMenu()
     }
     
@@ -381,7 +380,6 @@ viewConstraint.constant = -150
             }
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
