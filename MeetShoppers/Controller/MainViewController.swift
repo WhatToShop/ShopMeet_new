@@ -101,6 +101,7 @@ viewConstraint.constant = -150
                         self.blurEffectView.frame = self.tableView.bounds
                         self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                         self.tableView.addSubview(self.blurEffectView)
+                        self.tableView.isUserInteractionEnabled = false
                         self.viewConstraint.constant += translation / 10
                         self.view.layoutIfNeeded()
                         
@@ -111,6 +112,7 @@ viewConstraint.constant = -150
                 if viewConstraint.constant > -150 {
                     UIView.animate(withDuration: 0.2, animations: {
                         
+                        self.tableView.isUserInteractionEnabled = true
                         self.viewConstraint.constant += translation / 10
                         self.view.layoutIfNeeded()
                         
@@ -124,7 +126,7 @@ viewConstraint.constant = -150
             if viewConstraint.constant < -100 {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.blurEffectView.removeFromSuperview()
-                    
+                    self.tableView.isUserInteractionEnabled = true
                     self.viewConstraint.constant = -150
                     self.menuView.alpha = 0
                     self.view.layoutIfNeeded()
@@ -133,6 +135,7 @@ viewConstraint.constant = -150
             } else {
                 UIView.animate(withDuration: 0.2, animations: {
                     
+                    self.tableView.isUserInteractionEnabled = false
                     self.viewConstraint.constant = 0
                     self.view.layoutIfNeeded()
                     
@@ -157,6 +160,7 @@ viewConstraint.constant = -150
                 self.blurEffectView.frame = self.tableView.bounds
                 self.blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 self.tableView.addSubview(self.blurEffectView)
+                self.tableView.isUserInteractionEnabled = false
                 self.menuView.layoutIfNeeded()
             })
             
@@ -166,6 +170,7 @@ viewConstraint.constant = -150
     
     @objc func handleDismiss() {
         UIView.animate(withDuration: 0.5) {
+            self.tableView.isUserInteractionEnabled = true
             self.menuView.alpha = 0
             self.blurEffectView.removeFromSuperview()
             self.viewConstraint.constant = -175
