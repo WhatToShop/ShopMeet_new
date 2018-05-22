@@ -71,6 +71,10 @@ viewConstraint.constant = -150
             
         })
         
+        screenNameLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapChangeName))
+        screenNameLabel.addGestureRecognizer(tap)
+        
         //menuLauncher = SideMenu()
     }
     
@@ -386,6 +390,11 @@ viewConstraint.constant = -150
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func tapChangeName(sender:UITapGestureRecognizer) {
+        performSegue(withIdentifier: "changeNameSegue", sender: nil)
+        
     }
 
     
