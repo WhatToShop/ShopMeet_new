@@ -78,6 +78,16 @@ viewConstraint.constant = -150
         //menuLauncher = SideMenu()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("is it coming in view will appear")
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         menuView.alpha = 0
         self.blurEffectView.removeFromSuperview()
@@ -93,6 +103,12 @@ viewConstraint.constant = -150
     
   
     @IBAction func handleMenuPan(_ sender: UIPanGestureRecognizer) {
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
         menuView.alpha = 1
         if sender.state == .began || sender.state == .changed {
             
@@ -158,6 +174,12 @@ viewConstraint.constant = -150
     }
     
     func showMenu(){
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
             UIView.animate(withDuration: 0.2, animations: {
                 self.menuView.alpha = 1
                 self.viewConstraint.constant = 0

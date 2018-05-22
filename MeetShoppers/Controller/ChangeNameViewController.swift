@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
-class ChangeNameViewController: UIViewController, UITextViewDelegate {
+class ChangeNameViewController: UIViewController, UITextViewDelegate{
 
     @IBOutlet weak var changeNameTextView: UITextView!
+    let userID  = (Auth.auth().currentUser?.uid)!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,7 +30,20 @@ class ChangeNameViewController: UIViewController, UITextViewDelegate {
         self.view.addGestureRecognizer(tapGesture)
         
         
+        
 
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        //ref.observeSingleEvent(of: .value, with: { (snapshot) in
+          //  let name = snapshot.value as! String
+           // self.screenNameLabel.text = name
+            
+        //})
+        ref.setValue(changeNameTextView.text)
+        print(changeNameTextView.text)
 
     }
 
