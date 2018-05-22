@@ -34,8 +34,8 @@ class ToDoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         
         searchBar.delegate = self
-        tableView.estimatedRowHeight = 150
         
+        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
         updateTableView()

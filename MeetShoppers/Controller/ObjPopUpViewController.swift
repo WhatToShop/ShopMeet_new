@@ -29,6 +29,10 @@ class ObjPopUpViewController: UIViewController {
         self.view.removeFromSuperview()
     }
     
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBAction func saveMessageBtn(_ sender: Any) {
         print("Save message btn")
         let userID = Firebase.Auth.auth().currentUser!.uid
