@@ -51,6 +51,7 @@
 		C70AE8CE96DC3AB84CEB0708 /* Pods_MeetShoppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7612ADC570680EE0AF03A9E5 /* Pods_MeetShoppers.framework */; };
 		F312D8BC20A3D0A70030C698 /* DetailReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F312D8BB20A3D0A70030C698 /* DetailReceiptViewController.swift */; };
 		F31653E720A3624200FFD757 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31653E620A3624200FFD757 /* ReceiptCell.swift */; };
+		F395473220B27D2000C67794 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F395473120B27D2000C67794 /* ChangeNameViewController.swift */; };
 		F39D334D20A154770004AA89 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D334C20A154770004AA89 /* ReceiptsViewController.swift */; };
 		F3D7B6A120829984009F6F21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */; };
 		F3D7B6A320829D36009F6F21 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7B6A220829D36009F6F21 /* MenuViewController.swift */; };
@@ -135,6 +136,7 @@
 		D3154FDBCE430EF545FDFE22 /* Pods-MeetShoppers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.release.xcconfig"; sourceTree = "<group>"; };
 		F312D8BB20A3D0A70030C698 /* DetailReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailReceiptViewController.swift; sourceTree = "<group>"; };
 		F31653E620A3624200FFD757 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
+		F395473120B27D2000C67794 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		F39D334C20A154770004AA89 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3D7B6A220829D36009F6F21 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */,
 				BF56E9D42077CB0300D89184 /* SignupViewController.swift */,
 				BF1878E62081298700D97F9B /* MainViewController.swift */,
+				F395473120B27D2000C67794 /* ChangeNameViewController.swift */,
 				7B4F8AAC20829B2E007B91EC /* StoreDetailViewController.swift */,
 				7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */,
 				F312D8BB20A3D0A70030C698 /* DetailReceiptViewController.swift */,
@@ -643,6 +646,7 @@
 				7BE839F820A1444E007E3659 /* IndividualNoteViewController.swift in Sources */,
 				BFF12FD9208D559900A05269 /* MapViewController.swift in Sources */,
 				BF28F37A2096366C0063EEBD /* BusinessComment.swift in Sources */,
+				F395473220B27D2000C67794 /* ChangeNameViewController.swift in Sources */,
 				7B4F0B67209D4C1400948CDE /* MapPopUpViewController.swift in Sources */,
 				7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */,
 				7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */,

@@ -13,7 +13,7 @@ import FirebaseAuth
 import Firebase
 
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, BusinessCellDelegate {
+UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
     @IBOutlet weak var menuView: UIView!
     
     @IBOutlet weak var screenNameLabel: UILabel!
@@ -52,6 +52,12 @@ UINavigationControllerDelegate, BusinessCellDelegate {
         tableView.estimatedRowHeight = 500
         tableView.separatorStyle = .none
         refreshBusinesses(api: api)
+       /* usernameTextField.delegate = self
+        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
+        usernameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
+        usernameTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        usernameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
+        usernameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true*/
         
         //let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
         //edgePanRecognizer.edges = .left
@@ -260,6 +266,8 @@ viewConstraint.constant = -150
                     vc.business = detailedBusiness
                 }
             }
+        case "changeNameSegue":
+            let vc = segue.destination as! ChangeNameViewController
         default:
             break
         }
@@ -301,7 +309,6 @@ viewConstraint.constant = -150
     }
     
     @IBAction func showCamera(_ sender: Any) {
-        print("camera view controller view did load")
         
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -377,8 +384,10 @@ viewConstraint.constant = -150
     }
 
     
-        
-    }
+ 
+   
+    
+}
     
     
     
