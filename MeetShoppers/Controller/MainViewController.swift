@@ -61,6 +61,8 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
             
         })
         
+         menuView.alpha = 0
+        
         screenNameLabel.isUserInteractionEnabled = true
         let nameTap = UITapGestureRecognizer(target: self, action: #selector(tapChangeName))
         screenNameLabel.addGestureRecognizer(nameTap)
@@ -195,6 +197,10 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
     }
     
     func showMenu(){
+        if(menuView.alpha == 1){
+            handleDismiss()
+            return
+        }
         let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let name = snapshot.value as! String
@@ -227,6 +233,7 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
             
         
         menuView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        
     }
     
     @objc func handleDismiss() {

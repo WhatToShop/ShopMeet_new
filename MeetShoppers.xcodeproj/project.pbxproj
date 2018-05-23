@@ -841,10 +841,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJGXAZ7LPD;
+				DEVELOPMENT_TEAM = MTX6M2BR57;
 				INFOPLIST_FILE = MeetShoppers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.KevinVuNguyen.shopmeet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Bethany.shopmeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MeetShoppers/CheckMarkHeader.h;
@@ -859,10 +859,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DJGXAZ7LPD;
+				DEVELOPMENT_TEAM = MTX6M2BR57;
 				INFOPLIST_FILE = MeetShoppers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.KevinVuNguyen.shopmeet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Bethany.shopmeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = MeetShoppers/CheckMarkHeader.h;

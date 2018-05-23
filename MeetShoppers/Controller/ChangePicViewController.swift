@@ -64,15 +64,15 @@ class ChangePicViewController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-        goBack()
+         _ = navigationController?.popViewController(animated: true)
         
 
     }
     
-    func goBack(){
+    /*func goBack(){
         print("is it coming in go back")
         self.dismiss(animated: true)
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
