@@ -29,6 +29,9 @@ class ChangeNameViewController: UIViewController, UITextViewDelegate{
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doneClicked))
         self.view.addGestureRecognizer(tapGesture)
         
+       changeNameTextView.text = "Enter your screen name"
+       changeNameTextView.textColor = UIColor.lightGray
+        
         
         
 
@@ -36,15 +39,18 @@ class ChangeNameViewController: UIViewController, UITextViewDelegate{
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
-        //ref.observeSingleEvent(of: .value, with: { (snapshot) in
-          //  let name = snapshot.value as! String
-           // self.screenNameLabel.text = name
-            
-        //})
-        ref.setValue(changeNameTextView.text)
-        print(changeNameTextView.text)
-
+        if(changeNameTextView.text != "Enter your screen name"){
+            let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+            ref.setValue(changeNameTextView.text)
+            print(changeNameTextView.text)
+        }
+    }
+    
+    func textViewDidBeginEditing(_ changeNameTextView: UITextView) {
+        if changeNameTextView.textColor == UIColor.lightGray {
+            changeNameTextView.text = nil
+            changeNameTextView.textColor = UIColor.black
+        }
     }
 
     override func didReceiveMemoryWarning() {
