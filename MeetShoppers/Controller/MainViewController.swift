@@ -15,7 +15,7 @@ import Firebase
 class MainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
     @IBOutlet weak var menuView: UIView!
-    
+    @IBOutlet weak var profilePicImageView: UIImageView!
     @IBOutlet weak var screenNameLabel: UILabel!
     let userID  = (Auth.auth().currentUser?.uid)!
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
@@ -52,18 +52,8 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
         tableView.estimatedRowHeight = 500
         tableView.separatorStyle = .none
         refreshBusinesses(api: api)
-       /* usernameTextField.delegate = self
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        usernameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -20).isActive = true
-        usernameTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        usernameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-        usernameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true*/
-        
-        //let edgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handlePanEdge))
-        //edgePanRecognizer.edges = .left
-        //view.addGestureRecognizer(edgePanRecognizer)
-        
-viewConstraint.constant = -150
+      
+        viewConstraint.constant = -150
         let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let name = snapshot.value as! String
@@ -71,7 +61,39 @@ viewConstraint.constant = -150
             
         })
         
+        screenNameLabel.isUserInteractionEnabled = true
+        let nameTap = UITapGestureRecognizer(target: self, action: #selector(tapChangeName))
+        screenNameLabel.addGestureRecognizer(nameTap)
+        
+        profilePicImageView.isUserInteractionEnabled = true
+        let picTap = UITapGestureRecognizer(target: self, action: #selector(tapChangePic))
+        profilePicImageView.addGestureRecognizer(picTap)
+        
+        profilePicImageView.layer.cornerRadius = profilePicImageView.frame.width / 2
+        profilePicImageView.clipsToBounds = true
+        
         //menuLauncher = SideMenu()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
+        let picRef  = Firebase.Database.database().reference().child("users/\(self.userID)")
+        let picNewRef  = Firebase.Database.database().reference().child("users/\(self.userID)/photoUrl")
+        picRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("photoUrl"){
+                picNewRef.observeSingleEvent(of: .value, with: { (snapchat) in
+                    let snap = snapchat
+                    let url = snap.value
+                    let convertedURL = NSURL(string: url as! String)
+                    self.profilePicImageView.af_setImage(withURL: convertedURL! as URL)
+                })
+            }
+        })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -89,6 +111,25 @@ viewConstraint.constant = -150
     
   
     @IBAction func handleMenuPan(_ sender: UIPanGestureRecognizer) {
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
+        let picRef  = Firebase.Database.database().reference().child("users/\(self.userID)")
+        let picNewRef  = Firebase.Database.database().reference().child("users/\(self.userID)/photoUrl")
+        picRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("photoUrl"){
+                picNewRef.observeSingleEvent(of: .value, with: { (snapchat) in
+                    let snap = snapchat
+                    let url = snap.value
+                    let convertedURL = NSURL(string: url as! String)
+                    self.profilePicImageView.af_setImage(withURL: convertedURL! as URL)
+                })
+            }
+        })
+
         menuView.alpha = 1
         if sender.state == .began || sender.state == .changed {
             
@@ -154,6 +195,26 @@ viewConstraint.constant = -150
     }
     
     func showMenu(){
+        let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            self.screenNameLabel.text = name
+            
+        })
+        let picRef  = Firebase.Database.database().reference().child("users/\(self.userID)")
+        let picNewRef  = Firebase.Database.database().reference().child("users/\(self.userID)/photoUrl")
+        picRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("photoUrl"){
+                picNewRef.observeSingleEvent(of: .value, with: { (snapchat) in
+                    let snap = snapchat
+                    let url = snap.value
+                    let convertedURL = NSURL(string: url as! String)
+                    self.profilePicImageView.af_setImage(withURL: convertedURL! as URL)
+                })
+            }
+        })
+        
+
             UIView.animate(withDuration: 0.2, animations: {
                 self.menuView.alpha = 1
                 self.viewConstraint.constant = 0
@@ -273,6 +334,8 @@ viewConstraint.constant = -150
             }
         case "changeNameSegue":
             let vc = segue.destination as! ChangeNameViewController
+        case "changePicSegue":
+            let vc = segue.destination as! ChangePicViewController
         default:
             break
         }
@@ -386,6 +449,15 @@ viewConstraint.constant = -150
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func tapChangeName(sender:UITapGestureRecognizer) {
+        performSegue(withIdentifier: "changeNameSegue", sender: nil)
+        
+    }
+    
+    @objc func tapChangePic(sender: UITapGestureRecognizer){
+        performSegue(withIdentifier: "changePicSegue", sender: nil)
     }
 
     

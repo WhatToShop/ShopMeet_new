@@ -463,8 +463,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-Jq-t9W">
+                                <rect key="frame" x="137" y="237" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="boj-Mm-kSB">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="16" y="-20" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Uy-VM-h0D">
@@ -498,13 +503,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="HNk-pW-Deo"/>
                     </view>
+                    <navigationItem key="navigationItem" id="XZ1-Dy-9tq">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" style="plain" id="odo-fG-WsW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bRU-Yn-gja">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="toEdit:" destination="ZGi-lA-wvR" eventType="touchUpInside" id="5J6-95-hST"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="boj-Mm-kSB" id="KAz-fg-wav"/>
+                        <outlet property="editButton" destination="bRU-Yn-gja" id="gIe-0Q-gkd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENO-N0-imZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639" y="660"/>
+            <point key="canvasLocation" x="681" y="1178"/>
         </scene>
         <!--Detail Receipt View Controller-->
         <scene sceneID="amO-8u-J0b">
@@ -882,6 +900,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuView" destination="1Eb-Ae-WUh" id="aDA-dI-b1T"/>
+                        <outlet property="profilePicImageView" destination="1hH-f2-QeU" id="zAK-17-lm0"/>
                         <outlet property="screenNameLabel" destination="ONE-8f-yRG" id="3P1-pr-mcG"/>
                         <outlet property="tableView" destination="xYb-VK-jqy" id="C6n-zk-84g"/>
                         <outlet property="viewConstraint" destination="xg8-bJ-LJY" id="7t5-dW-coc"/>
@@ -890,6 +909,7 @@
                         <segue destination="ZGi-lA-wvR" kind="show" identifier="receiptsSegue" id="MS4-BX-76F"/>
                         <segue destination="l7K-bf-N4o" kind="show" identifier="businessDetailSegue" id="z6P-w6-3yW"/>
                         <segue destination="58c-ds-JcD" kind="show" identifier="changeNameSegue" id="ngT-rL-3Ev"/>
+                        <segue destination="4gF-uU-ECF" kind="show" identifier="changePicSegue" id="LR3-6X-eqb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7o-ex-6P5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -933,13 +953,41 @@
                     <view key="view" contentMode="scaleToFill" id="GbA-SS-iKM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" text="Enter your screen name" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gkt-Ze-PWt">
+                                <rect key="frame" x="40" y="49" width="240" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="crY-ME-NsJ"/>
                     </view>
+                    <connections>
+                        <outlet property="changeNameTextView" destination="Gkt-Ze-PWt" id="Kpj-Mz-JmY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kne-pN-TqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2520" y="626"/>
+            <point key="canvasLocation" x="2520" y="625.35211267605632"/>
+        </scene>
+        <!--Change Pic View Controller-->
+        <scene sceneID="YE6-TL-I7u">
+            <objects>
+                <viewController id="4gF-uU-ECF" customClass="ChangePicViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wZm-BO-e8Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Mlo-ub-zCD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ras-by-kIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466" y="1414"/>
         </scene>
         <!--Store Detail View Controller-->
         <scene sceneID="D7C-Vd-TBw">
@@ -1394,7 +1442,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
-        <segue reference="emF-RI-wN3"/>
+        <segue reference="hd8-3G-b0l"/>
         <segue reference="Izv-sT-nom"/>
         <segue reference="2V3-xr-ypw"/>
     </inferredMetricsTieBreakers>
