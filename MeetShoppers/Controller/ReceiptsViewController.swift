@@ -12,6 +12,7 @@ import Firebase
 
 class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     var receiptsURL: [NSURL] = []
     var currReceipt : UIImage!
@@ -87,6 +88,16 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
        
     }
    
+    
+    @IBAction func toEdit(_ sender: UIButton) {
+        var currentTitle = sender.title(for: .normal)
+        if(currentTitle == "Edit"){
+            editButton.setTitle("Delete", for: .normal)
+        }
+        else{
+            editButton.setTitle("Edit", for: .normal)
+        }
+    }
     
 
     /*
