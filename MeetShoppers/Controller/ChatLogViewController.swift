@@ -7,7 +7,7 @@
 import UIKit
 import Firebase
 
-class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout {
+class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -138,7 +138,36 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
     }()
     
     @objc func handleCamera() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
+        let imageName = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("messages").child(imageName)
+        let uploadMetadata = StorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        if let imageData = UIImageJPEGRepresentation(originalImage, 1.0) {
+            storageRef.putData(imageData, metadata: uploadMetadata) { (metadata, error) in
+                storageRef.downloadURL(completion: { (url, error) in
+                    if let error = error {
+                        debugPrint(error)
+                    } else if let urlString = url?.absoluteString {
+                        print(urlString)
+                    }
+                })
+            }
+        }
+
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func handleMicrophone() {
@@ -329,3 +358,22 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
         return false
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
