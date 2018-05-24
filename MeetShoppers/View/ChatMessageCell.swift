@@ -8,7 +8,6 @@
 import UIKit
 
 class ChatMessageCell: UICollectionViewCell {
-    
     static let blueColor = UIColor(red: 0, green: 137, blue: 249)
     
     var bubbleWidthAnchor: NSLayoutConstraint?
@@ -18,7 +17,6 @@ class ChatMessageCell: UICollectionViewCell {
     
     let textView: UITextView = {
         let tv = UITextView()
-        tv.text = "Sample"
         tv.font = UIFont.systemFont(ofSize: 16)
         tv.textAlignment = NSTextAlignment.left
         tv.backgroundColor = UIColor.clear
@@ -46,12 +44,27 @@ class ChatMessageCell: UICollectionViewCell {
         return iv
     }()
     
+    let messageImaegView: UIImageView = {
+        let iv = UIImageView()
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.layer.cornerRadius = 16
+        iv.layer.masksToBounds = true
+        iv.contentMode = UIViewContentMode.scaleToFill
+        return iv
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(bubbleView)
         addSubview(textView)
         addSubview(profileImageView)
+        
+        bubbleView.addSubview(messageImaegView)
+        messageImaegView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
+        messageImaegView.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
+        messageImaegView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
+        messageImaegView.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
         
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         profileImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
@@ -77,5 +90,11 @@ class ChatMessageCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        if self.subviews.contains(contentView) {
+            self.contentView.removeFromSuperview()
+        }
     }
 }

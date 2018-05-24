@@ -60,7 +60,7 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
             self.screenNameLabel.text = name
             
         })
-        
+   
          menuView.alpha = 0
         
         screenNameLabel.isUserInteractionEnabled = true
@@ -451,7 +451,6 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
             }
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

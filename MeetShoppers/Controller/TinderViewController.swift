@@ -26,7 +26,6 @@ class TinderViewController: UIViewController {
     
     @IBAction func didPan(_ sender: UIPanGestureRecognizer) {
         print("made it inside didPan")
-        
     }
     
     override func viewDidLoad() {
