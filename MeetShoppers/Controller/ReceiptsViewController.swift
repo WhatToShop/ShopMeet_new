@@ -15,7 +15,9 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     var receiptsURL: [NSURL] = []
+    var toDeleteURL: [String] = []
     var currReceipt : UIImage!
+    var editBool: Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
@@ -27,10 +29,12 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         let interItemSpacingTotal = layout.minimumInteritemSpacing * (cellsPerLine - 1)
         let width = collectionView.frame.size.width/cellsPerLine - interItemSpacingTotal/cellsPerLine
         layout.itemSize = CGSize(width: width, height: width * 3/2)
+        editBool = false
         loadReceipts()
 
         
     }
+    
 
     func loadReceipts(){
         let userID  = (Auth.auth().currentUser?.uid)!
@@ -40,8 +44,11 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
                 let value = snap.value
+                let key = snap.key
                 let convertedURL = NSURL(string: value as! String)
                 self.receiptsURL.append(convertedURL!)
+                self.toDeleteURL.append(key)
+                //add something to deleteURL
                 self.collectionView.reloadData()
             }
         })
@@ -59,9 +66,30 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceiptCell", for: indexPath) as! ReceiptCell
         let receipt = receiptsURL[indexPath.item]
         cell.receiptsImageView.af_setImage(withURL: receipt as URL)
+        cell.link = receipt as URL!
+        cell.ID = toDeleteURL[indexPath.item]
         return cell
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = self.collectionView?.cellForItem(at: indexPath)  as! ReceiptCell
+        if(editBool){
+            var itemToRemove = cell.ID
+            if let index = toDeleteURL.index(of: itemToRemove!) {
+                toDeleteURL.remove(at: index)
+            }
+            var itemToRemove2 = cell.link
+            if let index = receiptsURL.index(of: itemToRemove2 as! NSURL) {
+                receiptsURL.remove(at: index)
+            }
+
+            let userID  = (Auth.auth().currentUser?.uid)!
+            FirebaseDatabase.Database.database().reference(withPath: "users/\(userID)/receipts").child(cell.ID).removeValue()
+        }
+         self.collectionView.reloadData()
+        
+    }
    /* func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         print("coming into did select item at")
         let receipt = receiptsURL[indexPath.item]
@@ -73,29 +101,36 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
     }*/
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-            let cell = sender as! UICollectionViewCell
-            if let indexPath = collectionView.indexPath(for: cell){
-                let receipt = receiptsURL[indexPath.item]
-                let vc = segue.destination as! DetailReceiptViewController
-                if let data = try? Data(contentsOf: receipt as URL){
-                   vc.imageSegue  = UIImage(data: data)
-                }
-               
-        }
-       
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return !editBool
     }
-   
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: cell){
+            let receipt = receiptsURL[indexPath.item]
+            let vc = segue.destination as! DetailReceiptViewController
+            if let data = try? Data(contentsOf: receipt as URL){
+                vc.imageSegue  = UIImage(data: data)
+    }
+        }
+    }
     @IBAction func toEdit(_ sender: UIButton) {
         var currentTitle = sender.title(for: .normal)
-        if(currentTitle == "Edit"){
-            editButton.setTitle("Delete", for: .normal)
+        if(currentTitle == "Delete"){
+            editButton.setTitle("Done", for: .normal)
+            editBool = true
+            let alert = UIAlertController(title: "Delete Receipts", message: "click on photo(s) to delete", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Continue", style: .default) { _ in
+                // do nothing
+            }
+            alert.addAction(okayAction)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
         }
         else{
-            editButton.setTitle("Edit", for: .normal)
+            editButton.setTitle("Delete", for: .normal)
+            editBool = false
         }
     }
     

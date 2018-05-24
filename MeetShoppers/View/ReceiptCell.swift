@@ -11,4 +11,7 @@ import UIKit
 class ReceiptCell: UICollectionViewCell {
     
     @IBOutlet weak var receiptsImageView: UIImageView!
+    var link: URL!
+    var ID: String!
+    
 }

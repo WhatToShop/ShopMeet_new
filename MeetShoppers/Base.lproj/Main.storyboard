@@ -508,7 +508,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bRU-Yn-gja">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Edit"/>
+                                <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="toEdit:" destination="ZGi-lA-wvR" eventType="touchUpInside" id="5J6-95-hST"/>
                                 </connections>
