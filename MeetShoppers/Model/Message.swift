@@ -13,10 +13,17 @@ class Message: NSObject {
     var timestamp: Double?
     var text: String?
     var toId: String?
+    var imageUrl: String?
+    var imageHeight: Float?
+    var imageWidth: Float?
     
     init(dictionary: NSDictionary) {
+        toId = dictionary["toId"] as? String
         fromId = dictionary["fromId"] as? String
         timestamp = dictionary["timestamp"] as? Double
         text = dictionary["text"] as? String
+        imageUrl = dictionary["imageUrl"] as? String
+        imageHeight = dictionary["imageHeight"] as? Float
+        imageWidth = dictionary["imageWidth"] as? Float
     }
 }
