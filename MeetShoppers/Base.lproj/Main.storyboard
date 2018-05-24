@@ -1193,21 +1193,11 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want to do?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqV-rF-zKR">
-                                        <rect key="frame" x="25" y="46" width="191" height="20.5"/>
+                                        <rect key="frame" x="25" y="46" width="191" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Hello my friend" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="z5t-9z-vtj">
-                                        <rect key="frame" x="25" y="119" width="191" height="52"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="191" id="nca-sK-lqg"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWb-5l-Bex">
                                         <rect key="frame" x="101" y="179" width="34" height="30"/>
                                         <state key="normal" title="Save"/>
@@ -1215,36 +1205,41 @@
                                             <action selector="saveMessageBtn:" destination="459-8h-r0p" eventType="touchUpInside" id="beQ-fv-s2D"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MZS-UI-mfj">
-                                        <rect key="frame" x="23" y="78" width="191" height="52"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Title here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pi5-P2-Buc">
+                                        <rect key="frame" x="65" y="81" width="103" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="191" id="Haq-2O-t76"/>
-                                            <constraint firstAttribute="height" constant="52" id="aab-rC-dvE"/>
+                                            <constraint firstAttribute="height" constant="30" id="Uhy-fr-QUL"/>
                                         </constraints>
-                                        <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Description here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAd-8W-phX">
+                                        <rect key="frame" x="39" y="119" width="177" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="2Bq-vn-kJf"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="z5t-9z-vtj" secondAttribute="trailing" constant="20" id="6z1-1d-t84"/>
+                                    <constraint firstItem="JAd-8W-phX" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="39" id="334-59-xjn"/>
+                                    <constraint firstItem="JAd-8W-phX" firstAttribute="top" secondItem="Pi5-P2-Buc" secondAttribute="bottom" constant="8" symbolic="YES" id="6IC-C2-rUs"/>
                                     <constraint firstAttribute="bottom" secondItem="UWb-5l-Bex" secondAttribute="bottom" id="Bw6-Zg-1PT"/>
                                     <constraint firstItem="UWb-5l-Bex" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="101" id="CHP-ZM-y8z"/>
                                     <constraint firstAttribute="trailing" secondItem="zqV-rF-zKR" secondAttribute="trailing" constant="20" id="Kzy-9R-0xx"/>
-                                    <constraint firstItem="z5t-9z-vtj" firstAttribute="top" secondItem="MZS-UI-mfj" secondAttribute="bottom" constant="-11" id="OX5-dH-2LQ"/>
+                                    <constraint firstItem="Pi5-P2-Buc" firstAttribute="top" secondItem="zqV-rF-zKR" secondAttribute="bottom" constant="14" id="LmH-40-MeO"/>
                                     <constraint firstItem="mJk-6f-ekP" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="7" id="PR0-Z1-qEb"/>
                                     <constraint firstItem="zqV-rF-zKR" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="25" id="TyQ-pX-aVO"/>
                                     <constraint firstItem="zqV-rF-zKR" firstAttribute="top" secondItem="mJk-6f-ekP" secondAttribute="bottom" constant="8" id="W2y-AV-7rr"/>
-                                    <constraint firstItem="UWb-5l-Bex" firstAttribute="top" secondItem="z5t-9z-vtj" secondAttribute="bottom" constant="8" id="f66-Ax-Mld"/>
-                                    <constraint firstItem="MZS-UI-mfj" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="23" id="g4e-Qb-g3e"/>
-                                    <constraint firstItem="MZS-UI-mfj" firstAttribute="top" secondItem="zqV-rF-zKR" secondAttribute="bottom" constant="11.5" id="nEz-pR-S7C"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pi5-P2-Buc" secondAttribute="trailing" constant="68" id="hv9-aO-hhH"/>
                                     <constraint firstItem="mJk-6f-ekP" firstAttribute="top" secondItem="2MH-Sf-96Y" secondAttribute="top" constant="8" id="pTA-e8-zJy"/>
+                                    <constraint firstItem="JAd-8W-phX" firstAttribute="trailing" secondItem="zqV-rF-zKR" secondAttribute="trailing" id="pxy-dm-Qe1"/>
                                     <constraint firstItem="zqV-rF-zKR" firstAttribute="top" secondItem="mJk-6f-ekP" secondAttribute="bottom" constant="8" id="r84-DJ-LH3"/>
-                                    <constraint firstItem="z5t-9z-vtj" firstAttribute="leading" secondItem="2MH-Sf-96Y" secondAttribute="leading" constant="25" id="rxD-2b-D1M"/>
                                     <constraint firstAttribute="trailing" secondItem="UWb-5l-Bex" secondAttribute="trailing" constant="101" id="s4j-Ao-SDF"/>
-                                    <constraint firstAttribute="trailing" secondItem="MZS-UI-mfj" secondAttribute="trailing" constant="22" id="wEk-RJ-kk3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1263,8 +1258,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="cdm-i0-pux"/>
                     <connections>
-                        <outlet property="noteTextField" destination="z5t-9z-vtj" id="Y6U-Cj-mq7"/>
-                        <outlet property="titleTextField" destination="MZS-UI-mfj" id="j8U-69-PgH"/>
+                        <outlet property="noteTextField" destination="JAd-8W-phX" id="pmz-S6-4So"/>
+                        <outlet property="titleTextField" destination="Pi5-P2-Buc" id="tGD-Q0-v6m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdH-5M-dVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
