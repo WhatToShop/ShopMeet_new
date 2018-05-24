@@ -51,6 +51,7 @@
 		C70AE8CE96DC3AB84CEB0708 /* Pods_MeetShoppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7612ADC570680EE0AF03A9E5 /* Pods_MeetShoppers.framework */; };
 		F312D8BC20A3D0A70030C698 /* DetailReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F312D8BB20A3D0A70030C698 /* DetailReceiptViewController.swift */; };
 		F31653E720A3624200FFD757 /* ReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31653E620A3624200FFD757 /* ReceiptCell.swift */; };
+		F36C4BD220B4CC1100DF38A6 /* ChangePicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C4BD120B4CC1100DF38A6 /* ChangePicViewController.swift */; };
 		F395473220B27D2000C67794 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F395473120B27D2000C67794 /* ChangeNameViewController.swift */; };
 		F39D334D20A154770004AA89 /* ReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39D334C20A154770004AA89 /* ReceiptsViewController.swift */; };
 		F3D7B6A120829984009F6F21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */; };
@@ -136,6 +137,7 @@
 		D3154FDBCE430EF545FDFE22 /* Pods-MeetShoppers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetShoppers.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetShoppers/Pods-MeetShoppers.release.xcconfig"; sourceTree = "<group>"; };
 		F312D8BB20A3D0A70030C698 /* DetailReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailReceiptViewController.swift; sourceTree = "<group>"; };
 		F31653E620A3624200FFD757 /* ReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCell.swift; sourceTree = "<group>"; };
+		F36C4BD120B4CC1100DF38A6 /* ChangePicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePicViewController.swift; sourceTree = "<group>"; };
 		F395473120B27D2000C67794 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 		F39D334C20A154770004AA89 /* ReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsViewController.swift; sourceTree = "<group>"; };
 		F3D7B6A020829984009F6F21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				BFF12FDA208E92AA00A05269 /* ChatLogViewController.swift */,
 				BFDB79432092DCF800C019B2 /* UsernameViewController.swift */,
 				7B4F0B66209D4C1400948CDE /* MapPopUpViewController.swift */,
+				F36C4BD120B4CC1100DF38A6 /* ChangePicViewController.swift */,
 				7BE839F720A1444E007E3659 /* IndividualNoteViewController.swift */,
 				BFD2812920A666A900C3FC6D /* BusinessDetailViewController.swift */,
 				BFD2812D20AA4CE900C3FC6D /* TinderViewController.swift */,
@@ -664,6 +667,7 @@
 				7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */,
 				BF56E9D92077DEB800D89184 /* UIExtension.swift in Sources */,
 				7BE839F620A13FD8007E3659 /* BEMPathManager.m in Sources */,
+				F36C4BD220B4CC1100DF38A6 /* ChangePicViewController.swift in Sources */,
 				BFD2812C20A7C32F00C3FC6D /* DetailedBusiness.swift in Sources */,
 				BF18790D20829B8C00D97F9B /* Business.swift in Sources */,
 				BF2EBB35208ED85F00592D72 /* Message.swift in Sources */,
