@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MeetShoppers/Controller/UserInTableCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:MeetShoppers.xcodeproj">
    </FileRef>
    <FileRef

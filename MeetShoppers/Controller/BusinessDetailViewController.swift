@@ -9,13 +9,14 @@ import UIKit
 import Firebase
 import CoreLocation
 
-class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate {
+class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource{
     
     let greyLineDividerHeight: CGFloat = 8
     var locationManager: CLLocationManager?
     var userCoordinate: CLLocationCoordinate2D?
     var isUserCheckedIn: Bool?
     var checkInsRefs: DatabaseReference?
+    var userList: [String?] = []
     
     let menuButton: UIButton = {
         let button = UIButton()
@@ -119,6 +120,26 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         return label
     }()
     
+    let myTableView: UITableView = {
+       let tableView = UITableView()
+        
+        
+        
+        return tableView
+    }()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (userList.count)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserInViewCell
+     //   cell.Name = userList[indexPath.row].child("name").value()
+        
+        return cell
+    }
+ 
+    
     @objc private func handleBookmark() {
         bookmarkButton.isSelected = !bookmarkButton.isSelected
     }
@@ -129,6 +150,8 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
             if snapshot.hasChild(uid) {
                 self.checkInsRefs?.child(uid).removeValue()
                 self.isUserCheckedIn = false
+                let ref = Firebase.Database.database().reference().child("businesses").child(self.business.id!).child("userList") // business UID
+                ref.child(uid).removeValue()
             }
         })
     }
@@ -149,8 +172,11 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
             }
             alert.addAction(UIAlertAction(title: "Send", style: UIAlertActionStyle.default, handler: { (action) in
                 self.isUserCheckedIn = true
-                let uid = Firebase.Auth.auth().currentUser!.uid
+                let uid = Firebase.Auth.auth().currentUser!.uid // current UID
                 self.checkInsRefs!.child(uid).setValue(alert.textFields![0].text!)
+                let ref = Firebase.Database.database().reference().child("businesses").child(self.business.id!).child("userList") // business UID
+               ref.child(uid).setValue(true)
+                
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -251,6 +277,21 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         
         isUserCheckedIn = false
         
+        let ref = Firebase.Database.database().reference().child("businesses")
+        
+        ref.observeSingleEvent(of: .value, with: {  (snapShot) in
+            for child in snapShot.children {
+                let snap = child as! DataSnapshot
+                let key = snap.key
+                self.userList.append(key as! String)
+                self.myTableView.reloadData()
+            }
+        })
+        
+        
+       // myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+      
+        
         // Setup location manager
         userCoordinate = CLLocationCoordinate2D()
         locationManager = CLLocationManager()
@@ -316,6 +357,18 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         hourLabel.topAnchor.constraint(equalTo: businessTypeLabel.bottomAnchor, constant: 8).isActive = true
         hourLabel.leftAnchor.constraint(equalTo: statusLabel.rightAnchor, constant: 4).isActive = true
         hourLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        
+        
+        view.addSubview(myTableView)
+        //myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        myTableView.topAnchor.constraint(equalTo: hourLabel.bottomAnchor, constant: 8).isActive = true
+        myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor , constant: 0).isActive = true
+        
+        myTableView.register(UserInViewCell.classForCoder(), forCellReuseIdentifier: "cell")
+        
+        
         
         // Add grey divider
         //        view.addSubview(greyLineDivider)

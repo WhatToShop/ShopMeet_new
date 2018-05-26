@@ -21,6 +21,7 @@
 		7B4F8AB32082B1FC007B91EC /* ObjPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */; };
 		7B4F8AB52082B98F007B91EC /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */; };
 		7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */; };
+		7B5CDE6720B9F73200C3D444 /* UserInViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5CDE6620B9F73200C3D444 /* UserInViewCell.swift */; };
 		7BE839F320A13FD8007E3659 /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839EC20A13FD7007E3659 /* BEMAnimationManager.m */; };
 		7BE839F420A13FD8007E3659 /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839EE20A13FD7007E3659 /* BEMCheckBox.m */; };
 		7BE839F520A13FD8007E3659 /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE839F020A13FD7007E3659 /* BEMCheckBoxGroup.m */; };
@@ -99,6 +100,7 @@
 		7B4F8AB22082B1FC007B91EC /* ObjPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjPopUpViewController.swift; sourceTree = "<group>"; };
 		7B4F8AB42082B98F007B91EC /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		7B5008A52098081B00A23F14 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		7B5CDE6620B9F73200C3D444 /* UserInViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInViewCell.swift; sourceTree = "<group>"; };
 		7BE839EB20A13FD7007E3659 /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationManager.h; sourceTree = "<group>"; };
 		7BE839EC20A13FD7007E3659 /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationManager.m; sourceTree = "<group>"; };
 		7BE839ED20A13FD7007E3659 /* BEMCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBox.h; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				7BE839F720A1444E007E3659 /* IndividualNoteViewController.swift */,
 				BFD2812920A666A900C3FC6D /* BusinessDetailViewController.swift */,
 				BFD2812D20AA4CE900C3FC6D /* TinderViewController.swift */,
+				7B5CDE6620B9F73200C3D444 /* UserInViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				7B4F8AAF20829DA7007B91EC /* MessageCell.swift in Sources */,
 				7B5008A62098081B00A23F14 /* ToDoTableViewCell.swift in Sources */,
 				BF56E9D92077DEB800D89184 /* UIExtension.swift in Sources */,
+				7B5CDE6720B9F73200C3D444 /* UserInViewCell.swift in Sources */,
 				7BE839F620A13FD8007E3659 /* BEMPathManager.m in Sources */,
 				F36C4BD220B4CC1100DF38A6 /* ChangePicViewController.swift in Sources */,
 				BFD2812C20A7C32F00C3FC6D /* DetailedBusiness.swift in Sources */,
