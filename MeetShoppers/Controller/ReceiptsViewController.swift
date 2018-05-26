@@ -31,8 +31,6 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         layout.itemSize = CGSize(width: width, height: width * 3/2)
         editBool = false
         loadReceipts()
-
-        
     }
     
 
@@ -52,8 +50,8 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.collectionView.reloadData()
             }
         })
-    
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,7 +68,6 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.ID = toDeleteURL[indexPath.item]
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = self.collectionView?.cellForItem(at: indexPath)  as! ReceiptCell
@@ -114,6 +111,7 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
         }
     }
+
     @IBAction func toEdit(_ sender: UIButton) {
         var currentTitle = sender.title(for: .normal)
         if(currentTitle == "Delete"){
@@ -134,7 +132,6 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-
     /*
     // MARK: - Navigation
 

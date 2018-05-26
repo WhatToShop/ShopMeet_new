@@ -73,8 +73,6 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
         
         profilePicImageView.layer.cornerRadius = profilePicImageView.frame.width / 2
         profilePicImageView.clipsToBounds = true
-        
-        //menuLauncher = SideMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,7 +108,6 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
             return tableView.estimatedRowHeight
         }
     }
-    
   
     @IBAction func handleMenuPan(_ sender: UIPanGestureRecognizer) {
         let ref  = Firebase.Database.database().reference().child("users/\(self.userID)/displayName")
@@ -186,7 +183,6 @@ UINavigationControllerDelegate, BusinessCellDelegate, UITextFieldDelegate {
             }
             
         }
-        
     }
     /* @objc func handlePanEdge(_ recognizer: UIScreenEdgePanGestureRecognizer) {
         showMenu()
