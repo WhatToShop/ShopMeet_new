@@ -138,22 +138,47 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         let userLocation = CLLocation(latitude: userCoordinate!.latitude, longitude: userCoordinate!.longitude)
         let businessLocation = CLLocation(latitude: business.coordinate!.latitude, longitude: business.coordinate!.longitude)
         
-        if userLocation.distance(from: businessLocation) == 0 {
-            let alert = UIAlertController(title: "Too Far Away", message: "You are too far away from \(business.name!). Get closer before you check in.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: false, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Greeting", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addTextField { (textfield) in
-                textfield.placeholder = "Enter your greeting message here..."
+        let alert = UIAlertController(title: "Greeting", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Enter your greeting message here..."
+        }
+        alert.addAction(UIAlertAction(title: "Send", style: UIAlertActionStyle.default, handler: { (action) in
+            self.isUserCheckedIn = true
+            let uid = Firebase.Auth.auth().currentUser!.uid
+            self.checkInsRefs!.child(uid).setValue(alert.textFields![0].text!)
+            self.sendGreetingToChatroom(message: alert.textFields![0].text!)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        //        }
+    }
+    
+    private func sendGreetingToChatroom(message: String) {
+        guard let currentUser = Firebase.Auth.auth().currentUser else { return }
+        
+        let uid = currentUser.uid
+        // Get name
+        var userRef = Firebase.Database.database().reference().child("users").child(uid)
+        var displayName = "Anonymous"
+        
+        userRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            if snapshot.hasChild("displayName") {
+                displayName = snapshot.childSnapshot(forPath: "displayName").value as! String
             }
-            alert.addAction(UIAlertAction(title: "Send", style: UIAlertActionStyle.default, handler: { (action) in
-                self.isUserCheckedIn = true
-                let uid = Firebase.Auth.auth().currentUser!.uid
-                self.checkInsRefs!.child(uid).setValue(alert.textFields![0].text!)
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            
+            let timestamp = NSTimeIntervalSince1970
+            let ref = Firebase.Database.database().reference().child("businesses").child(self.business.id!).child("messages")
+            let childRef = ref.childByAutoId()
+            let values: [String: Any] = [
+                "text": "\(displayName) checks in to the store: \"\(message)\"",
+                "fromId": uid,
+                "timestamp": timestamp
+            ]
+            
+            childRef.updateChildValues(values)
+        }) { (error) in
+            print(error)
         }
     }
     
@@ -229,8 +254,8 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//        userCoordinate?.latitude = locValue.latitude
-//        userCoordinate?.longitude = locValue.longitude
+        //        userCoordinate?.latitude = locValue.latitude
+        //        userCoordinate?.longitude = locValue.longitude
         userCoordinate?.latitude = 22.3204
         userCoordinate?.longitude = 114.1698
         
@@ -238,12 +263,12 @@ class BusinessDetailViewController: UIViewController, CLLocationManagerDelegate 
         let userLocation = CLLocation(latitude: userCoordinate!.latitude, longitude: userCoordinate!.longitude)
         let businessLocation = CLLocation(latitude: business.coordinate!.latitude, longitude: business.coordinate!.longitude)
         
-        if userLocation.distance(from: businessLocation) > 600 {
-            isUserCheckedIn = false
-            let alert = UIAlertController(title: "Too Far Away", message: "You appear to be getting away from \(business.name!). Please get closer to check in again.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: false, completion: nil)
-        }
+//        if userLocation.distance(from: businessLocation) > 600 {
+//            isUserCheckedIn = false
+//            let alert = UIAlertController(title: "Too Far Away", message: "You appear to be getting away from \(business.name!). Please get closer to check in again.", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: false, completion: nil)
+//        }
     }
     
     override func viewDidLoad() {

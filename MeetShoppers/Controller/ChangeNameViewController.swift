@@ -11,12 +11,12 @@ import FirebaseAuth
 import Firebase
 
 class ChangeNameViewController: UIViewController, UITextViewDelegate{
-
+    
     @IBOutlet weak var changeNameTextView: UITextView!
     let userID  = (Auth.auth().currentUser?.uid)!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         //let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target:nil, action: nil)
@@ -29,13 +29,8 @@ class ChangeNameViewController: UIViewController, UITextViewDelegate{
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(doneClicked))
         self.view.addGestureRecognizer(tapGesture)
         
-       changeNameTextView.text = "Enter your screen name"
-       changeNameTextView.textColor = UIColor.lightGray
-        
-        
-        
-
-
+        changeNameTextView.text = "Enter your screen name"
+        changeNameTextView.textColor = UIColor.lightGray
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -52,7 +47,7 @@ class ChangeNameViewController: UIViewController, UITextViewDelegate{
             changeNameTextView.textColor = UIColor.black
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,15 +63,15 @@ class ChangeNameViewController: UIViewController, UITextViewDelegate{
     @objc func doneClicked(){
         changeNameTextView.endEditing(true)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -28,8 +28,6 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         let width = collectionView.frame.size.width/cellsPerLine - interItemSpacingTotal/cellsPerLine
         layout.itemSize = CGSize(width: width, height: width * 3/2)
         loadReceipts()
-
-        
     }
 
     func loadReceipts(){
@@ -45,8 +43,8 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.collectionView.reloadData()
             }
         })
-    
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,17 +60,6 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         return cell
     }
     
-   /* func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        print("coming into did select item at")
-        let receipt = receiptsURL[indexPath.item]
-        if let data = try? Data(contentsOf: receipt as URL){
-            currReceipt = UIImage(data: data)
-            print(currReceipt)
-        }
-        performSegue(withIdentifier: "detailSegue", sender: nil)
-    }*/
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -83,12 +70,9 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
                 if let data = try? Data(contentsOf: receipt as URL){
                    vc.imageSegue  = UIImage(data: data)
                 }
-               
         }
-       
     }
    
-    
     @IBAction func toEdit(_ sender: UIButton) {
         var currentTitle = sender.title(for: .normal)
         if(currentTitle == "Edit"){
@@ -99,7 +83,6 @@ class ReceiptsViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-
     /*
     // MARK: - Navigation
 

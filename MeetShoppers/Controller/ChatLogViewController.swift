@@ -65,17 +65,24 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
     var business: Business!
     let cellId = "cellId"
     
+    let groupButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "group"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleGroup))
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
         collectionView?.contentInset = UIEdgeInsetsMake(8, 0, 8, 0)
-//        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.keyboardDismissMode = .interactive
+        
+        // Add group button
+        navigationItem.setRightBarButton(groupButton, animated: false)
         
         observeMessages()
     }
@@ -108,6 +115,10 @@ class ChatLogViewController: UICollectionViewController, UITextFieldDelegate, UI
 
         return containerView
     }()
+    
+    @objc func handleGroup() {
+        
+    }
     
     @objc func handleCamera() {
         let imagePickerController = UIImagePickerController()

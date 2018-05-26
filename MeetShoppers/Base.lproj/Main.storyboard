@@ -573,6 +573,21 @@
             </objects>
             <point key="canvasLocation" x="1395" y="1498.943661971831"/>
         </scene>
+        <!--Checked In Users View Controller-->
+        <scene sceneID="UwM-z0-KhS">
+            <objects>
+                <viewController id="HPp-Lh-0zu" customClass="CheckedInUsersViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AbK-bJ-GfB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pzo-zM-OAn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1P-WS-07G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="-1709"/>
+        </scene>
         <!--Tinder View Controller-->
         <scene sceneID="IMc-9g-9eB">
             <objects>
@@ -634,11 +649,12 @@
                     <connections>
                         <segue destination="cgn-sW-tDE" kind="show" identifier="notesSegue" id="emF-RI-wN3"/>
                         <segue destination="SFG-sR-lKw" kind="show" identifier="tinderSegue" id="t7d-B0-Hgy"/>
+                        <segue destination="HPp-Lh-0zu" kind="show" id="oFZ-W0-Dkl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peE-m6-r4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="-807"/>
+            <point key="canvasLocation" x="1414" y="-977"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="vGA-x3-EBA">
@@ -662,7 +678,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q77-Ph-oTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="-769.56521739130437"/>
+            <point key="canvasLocation" x="720" y="-977"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="RUa-T3-45S">
@@ -757,7 +773,7 @@
             </objects>
             <point key="canvasLocation" x="3851" y="584"/>
         </scene>
-        <!--Nearby Shops-->
+        <!--Nearby-->
         <scene sceneID="klM-lD-UVR">
             <objects>
                 <viewController id="BhF-ek-jGG" customClass="MainViewController" customModule="MeetShoppers" customModuleProvider="target" sceneMemberID="viewController">
@@ -876,7 +892,7 @@
                             <outletCollection property="gestureRecognizers" destination="ayG-8g-8sR" appends="YES" id="41X-dv-hDF"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Nearby Shops" id="XP1-n5-Zf3">
+                    <navigationItem key="navigationItem" title="Nearby" id="XP1-n5-Zf3">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="qEe-TE-fJx">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oFj-YZ-Ajf">
                                 <rect key="frame" x="16" y="7" width="92" height="30"/>
@@ -1406,7 +1422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miV-za-I4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="776" y="-952"/>
+            <point key="canvasLocation" x="71" y="-977"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hgO-1f-wvc">
@@ -1442,7 +1458,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="aKL-bM-UTS"/>
         <segue reference="ROr-ri-spj"/>
-        <segue reference="hd8-3G-b0l"/>
+        <segue reference="emF-RI-wN3"/>
         <segue reference="Izv-sT-nom"/>
         <segue reference="tbF-lh-h42"/>
     </inferredMetricsTieBreakers>
