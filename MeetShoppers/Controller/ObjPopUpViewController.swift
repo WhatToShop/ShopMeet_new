@@ -12,8 +12,8 @@ import Firebase
 
 class ObjPopUpViewController: UIViewController {
 
-    @IBOutlet weak var noteTextField: UITextView!
-    @IBOutlet weak var titleTextField: UITextView!
+    @IBOutlet weak var noteTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
     var ref: DatabaseReference?
     
     override func viewDidLoad() {
@@ -36,8 +36,16 @@ class ObjPopUpViewController: UIViewController {
     @IBAction func saveMessageBtn(_ sender: Any) {
         print("Save message btn")
         let userID = Firebase.Auth.auth().currentUser!.uid
-        ref?.child("users").child(userID).child("Notes").child(titleTextField.text).setValue(noteTextField.text)
+        ref?.child("users").child(userID).child("Notes").child(titleTextField.text!).setValue(noteTextField.text)
         noteTextField.text = ""
         titleTextField.text = ""
     }
+    
+    func textViewDidBeginEditing(_ noteTextField: UITextView) {
+        if noteTextField.textColor == UIColor.lightGray {
+            noteTextField.text = nil
+            noteTextField.textColor = UIColor.black
+        }
+    }
+
 }
