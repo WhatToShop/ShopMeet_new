@@ -23,7 +23,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }()
     
     func createShopPin(business: Business) {
-        guard let latitude = business.latitude, let longitude = business.longitude else { return }
+        guard let latitude = business.coordinate?.latitude, let longitude = business.coordinate?.longitude else { return }
         
         var pin = MKPointAnnotation()
         let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
@@ -59,15 +59,4 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
